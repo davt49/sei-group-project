@@ -2,42 +2,43 @@ const router = require('express').Router()
 const gems = require('../controllers/gems')
 const chats = require('../controllers/chats')
 const users = require('../controllers/users')
+const secure = require('../lib/secureRoute')
 
 // gems route
-router.route('/gems/:id/likes')
-  .get(gems.like)
+router.route('/gems/:gemId/likes')
+  .get(secure, gems.like)
 
-router.route('/gems/:id/comments/:commentId')
-  .delete(gems.commentDelete)
+router.route('/gems/:gemId/comments/:commentId')
+  .delete(secure, gems.commentDelete)
 
-router.route('/gems/:id/comments')
-  .post(gems.commentCreate)
+router.route('/gems/:gemId/comments')
+  .post(secure, gems.commentCreate)
 
-router.route('/gems/:id')
-  .get(gems.show)
-  .put(gems.edit)
-  .delete(gems.delete)
+router.route('/gems/:gemId')
+  .get(secure, gems.show)
+  .put(secure, gems.edit)
+  .delete(secure, gems.delete)
 
 router.route('/gems')
-  .get(gems.index)
-  .post(gems.create)
+  .get(secure, gems.index)
+  .post(secure, gems.create)
 
 
 // chats routes
-router.route('/chats/:id/likes')
-  .get(chats.like)
+router.route('/chats/:chatId/likes')
+  .get(secure, chats.like)
 
-router.route('/chats/:id/comments/:commentId')
-  .delete(chats.commentDelete)
+router.route('/chats/:chatId/comments/:commentId')
+  .delete(secure, chats.commentDelete)
 
-router.route('/chats/:id/comments')
-  .post(chats.commentCreate)
+router.route('/chats/:chatId/comments')
+  .post(secure, chats.commentCreate)
 
-router.route('/chats/:id')
-  .get(chats.show)
+router.route('/chats/:chatId')
+  .get(secure, chats.show)
 
 router.route('/chats')
-  .get(chats.index)
+  .get(secure, chats.index)
 
 
 // user login and register router
