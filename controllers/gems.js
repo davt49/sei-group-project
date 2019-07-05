@@ -10,7 +10,7 @@ function indexRoute(req, res) {
 
 function showRoute(req, res) {
   Gem
-    .findById(req.params.id)
+    .findById(req.params.gemId)
     .populate('user')
     .populate('comments.user')
     .then(gem => {
@@ -29,7 +29,7 @@ function createRoute(req, res) {
 
 function editRoute(req, res) {
   Gem
-    .findById(req.params.id)
+    .findById(req.params.gemId)
     .then(gem => {
       if (!gem) return res.status(404).json({ message: 'Not Found' })
       Object.assign(gem, req.body)
@@ -41,7 +41,7 @@ function editRoute(req, res) {
 
 function deleteRoute(req, res) {
   Gem
-    .findById(req.params.id)
+    .findById(req.params.gemId)
     .then(gem => {
       if (!gem) return res.status(404).json({ message: 'Not Found' })
       return gem.remove()
@@ -52,7 +52,7 @@ function deleteRoute(req, res) {
 
 function commentCreateRoute(req, res) {
   Gem
-    .findById(req.params.id)
+    .findById(req.params.gemId)
     .then(gem => {
       if (!gem) return res.status(404).json({ message: 'Not Found' })
       gem.comments.push(req.body)
@@ -68,7 +68,7 @@ function commentDeleteRoute(req, res) {
     .findById(req.params.id)
     .then(gem => {
       if (!gem) return res.status(404).json({ message: 'Not Found' })
-      const comment = gem.comments.id(req.params.commentId)
+      const comment = gem.comments.gemId(req.params.commentId)
       if (!comment) return res.status(404).json({ message: 'Not Found' })
       comment.remove()
       return gem.save()
@@ -79,7 +79,7 @@ function commentDeleteRoute(req, res) {
 
 function likeRoute(req, res) {
   Gem
-    .findById(req.params.id)
+    .findById(req.params.gemId)
     .populate('user')
     .then(gem => {
       if (!gem) return res.status(404).json({ message: 'Not Found' })

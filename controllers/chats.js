@@ -12,7 +12,7 @@ function indexRoute(req, res) {
 // SHOW
 function showRoute(req, res) {
   Chat
-    .find(req.params.id)
+    .find(req.params.chatId)
     .then(chat => res.status(200).json(chat))
     .catch(err => res.status(404).json(err))
 }
@@ -36,11 +36,11 @@ function commentCreateRoute(req, res) {
 // COMMENT: DELETE
 function commentDeleteRoute(req, res) {
   Chat
-    .findById(req.params.id)
+    .findById(req.params.chatId)
     .populate('user')
     .then(chat => {
       if (!chat) res.status(404).json({ message: 'Not found' })
-      const comment = chat.comments.id(req.params.commentId)
+      const comment = chat.comments.chatId(req.params.commentId)
       if (!comment) res.status(404).json({ message: 'Not found' })
       comment.remove()
       return chat.save()
@@ -53,7 +53,7 @@ function commentDeleteRoute(req, res) {
 // LIKE
 function likeRoute(req, res) {
   Chat
-    .findById(req.params.id)
+    .findById(req.params.chatId)
     .populate('user')
     .then(chat => {
       if (!chat) res.status(404).json({ message: 'Not found' })
