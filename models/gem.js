@@ -18,7 +18,7 @@ const gemSchema = new mongoose.Schema({
   caption: { type: String, required: true },
   location: { type: String, required: true },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  category: { type: mongoose.Schema.ObjectId, ref: 'Category' },
+  category: { type: String, required: true, enam: ['Markets','Temples','Beaches','Landscapes','Others'] },
   likes: [ likeSchema ],
   comments: [ commentSchema ]
 }, {
