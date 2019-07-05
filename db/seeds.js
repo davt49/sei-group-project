@@ -137,333 +137,338 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
 
     .then(users => {
       console.log(`${users.length} users created`)
-      return Gem.create([
-        {
-          image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/0/image.jpg',
-          caption: 'Hoi An Central Market in this UNESCO-listed ancient town offers an authentic shopping experience for travellers in Vietnam. Located along the Thu Bon Riverbank, the marketplace is flocked with locals and tourists bargaining purchasing fresh fruits, vegetables, spices, handicrafts, and street snacks.',
-          location: 'Hoi An Central Market',
-          user: users[8],
-          category: 'Markets',
-          likes: [
-            {
-              user: users[9]
-            },
-            {
-              user: users[10]
-            },
-            {
-              user: users[11]
-            },
-            {
-              user: users[7]
-            }
-          ],
-          comments: [
-            {
-              user: users[10],
-              text: 'Awesome!'
-            },
-            {
-              user: users[9],
-              text: 'Looks like fun :)'
-            }
-          ]
-        },
-        {
-          image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/00/image.jpg',
-          caption: 'Han Market is a prominent attraction in Da Nang, having served the local population since the French occupation in the early 20th century. Located at the grand intersection of Tran Phu Street, Bach Dang Street, Hung Vuong Street and Tran Hung Dao Street, visitors can find hundreds of stalls selling just about everything from local produce and coffee beans to T-shirts, jewellery, and accessories.',
-          location: 'Han Market',
-          user: users[3],
-          category: 'Markets',
-          likes: [
-            {
-              user: users[10]
-            },
-            {
-              user: users[9]
-            }
-          ],
-          comments: [
-            {
-              user: users[6],
-              text: 'Great stuff'
-            },
-            {
-              user: users[7],
-              text: 'It is beautiful!'
-            }
-          ]
-        },
-        {
-          image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Chua_Tran_Quoc1.jpg',
-          caption: 'Dating back to the 6th century, Tran Quoc Pagoda is one of the oldest temples in Hanoi, Vietnam. ',
-          location: 'Tran Quoc Pagoda',
-          user: users[9],
-          category: 'Temples',
-          likes: [
-            {
-              user: users[11]
-            },
-            {
-              user: users[7]
-            },
-            {
-              user: users[10]
-            },
-            {
-              user: users[8]
-            }
-          ],
-          comments: []
-        },
-        {
-          image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Cao-Dai-Temple.jpg',
-          caption: 'Cao Dai Temple is one of 1,000 Cao Dai Temples, and one of the most well-known temples in Vietnam. Constructed in the 1930s and completed in 1955, Cao Dai temple is a technicolored religious site that attracts hundreds of travelers every day.',
-          location: 'Cao Dai Temple',
-          user: users[10],
-          category: 'Temples',
-          likes: [
-            {
-              user: users[9]
-            },
-            {
-              user: users[11]
-            },
-            {
-              user: users[8]
-            },
-            {
-              user: users[7]
-            }
-          ],
-          comments: [
-            {
-              user: users[6],
-              text: 'WOW!'
-            }
-          ]
-        },
-        {
-          image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Mariamman-Hindu-Temple.jpg',
-          caption: 'Visit one of the most famous Hindu temples in Vietnam, the Mariamman Hindu Temple of Ho Chi Minh City. It is called Chua Ba Mariamman in Vietnamese and was built at the end of the 19th century as a dedication to the Hindu goddess Mariamman. ',
-          location: 'Mariamman Hindu Temple',
-          user: users[6],
-          category: 'Temples',
-          likes: [
-            {
-              user: users[7]
-            },
-            {
-              user: users[8]
-            },
-            {
-              user: users[9]
-            }
-          ],
-          comments: [
-            {
-              user: users[10],
-              text: 'Send more reccomendations, loved this'
-            },
-            {
-              user: users[11],
-              text: 'Love your photo'
-            },
-            {
-              user: users[8],
-              text: 'Looks like fun, excited to go there'
-            }
-          ]
-        },
-        {
-          image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Thien-Mu-Pagoda.jpg',
-          caption: 'Located in the village of Huong Long, this beautiful temple is at a distance of 5 km from the city of Hue. The temple is situated on the banks of the Perfume River and is a very well preserved tourist attraction.',
-          location: 'Thien Mu Pagoda',
-          user: users[2],
-          category: 'Temples',
-          likes: [],
-          comments: [
-            {
-              user: users[7],
-              text: 'Nice picture'
-            }
-          ]
-        },
-        {
-          image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-beaches-in-vietnam/allParagraphs/00/top10Set/0/image.jpg',
-          caption: 'Long Beach (Bai Trong) is a 20-km-long coastal area on Phu Quoc Island, where you can find swanky beachfront resorts, beachfront restaurants, cafés and bars with breathtaking sunset views.',
-          location: 'Long Beach (Bai Trong)',
-          user: users[8],
-          category: 'Beaches',
-          likes: [
-            {
-              user: users[10]
-            },
-            {
-              user: users[11]
-            }
-          ],
-          comments: [
-            {
-              user: users[10],
-              text: 'Love it'
-            },
-            {
-              user: users[11],
-              text: 'Beautiful!'
-            },
-            {
-              user: users[9],
-              text: 'Nice'
-            }
-          ]
-        },
-        {
-          image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-beaches-in-vietnam/allParagraphs/00/top10Set/00/image.jpg',
-          caption: 'Mui Ne Beach spans 15 km of sandy beaches and rock-free waters, with luxurious beachfront resorts concentrated at the northern end and a traditional fishing village in the south. Located in the Binh Thuan province, the beach attracts throngs of visitors looking for somewhere to swim and enjoy some water sports, but the most popular activity in Mui Ne Beach is kitesurfing.',
-          location: 'Mui Ne Beach',
-          user: users[10],
-          category: 'Beaches',
-          likes: [
-            {
-              user: users[11]
-            },
-            {
-              user: users[7]
-            }
-          ],
-          comments: [
-            {
-              user: users[11],
-              text: 'Nice'
-            },
-            {
-              user: users[6],
-              text: 'Where is this?'
-            },
-            {
-              user: users[8],
-              text: 'Cute picture, I love it!'
-            }
-          ]
-        },
-        {
-          image: 'https://asianwaytravel.com/wp-content/uploads/2018/12/ban-gioc-waterfall-2.jpg',
-          caption: 'Ban Gioc Waterfall is a lesser-known destination in North Vietnam compared to Sapa and Ha Long Bay, making a truly hidden gem for nature lovers and adventurers to discover. Located in northeastern of Vietnam, Cao Bang Province, on a height of 30 meters and a width of 300 meters, Ban Gioc is the widest waterfall in Vietnam, creating such impressive sight of nature.',
-          location: 'Ban Gioc Waterfall',
-          user: users[1],
-          category: 'Lanscapes',
-          likes: [
-            {
-              user: users[10]
-            },
-            {
-              user: users[8]
-            },
-            {
-              user: users[9]
-            }
-          ],
-          comments: [
-            {
-              user: users[10],
-              text: 'Cannot wait to visit'
-            },
-            {
-              user: users[7],
-              text: 'I hope to visit soon'
-            }
-          ]
-        },
-        {
-          image: 'https://asianwaytravel.com/wp-content/uploads/2018/10/Halong_Bay_Sunset.jpg',
-          caption: 'As the name describes, Halong is a land where dragon descended into. This is a rather poetic explanation of thousands of limestone islands and islets scattering on an area of 434 sqkm, reflecting on the greenish bay water. Halong Bay’s geographical landscape was the result of complex geological processes taking over 500 million years. Halong is home to beautiful, unique karst caves such as Dau Go Cave, Sung Sot Cave and Thien Cung Cave.',
-          location: 'Halong Bay',
-          user: users[10],
-          category: 'Lanscapes',
-          likes: [
-            {
-              user: users[11]
-            }
-          ],
-          comments: [
-            {
-              user: users[6],
-              text: 'Very nice'
-            },
-            {
-              user: users[7],
-              text: 'Lovely'
-            },
-            {
-              user: users[11],
-              text: 'Visited last year, would go again'
-            }
-          ]
-        },
-        {
-          image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/ho-chi-minh-city/top10/top10-ho-chi-minh-nightlife/allParagraphs/00/top10Set/0/image.jpg',
-          caption: 'Ho Chi Minh City has one of the most impressive collections of rooftop bars in the world. From the colonial charm of Saigon Saigon to the chic and modern style of the Chill Skybar, there is a rooftop spot to suit any mood in Saigon. Sit back with a cocktail and soak up the stunning view of Ho Chi Minh City from sunset until the early hours of morning',
-          location: 'Chill Skybar',
-          user: users[7],
-          category: 'Others',
-          likes: [
-            {
-              user: users[10]
-            },
-            {
-              user: users[11]
-            },
-            {
-              user: users[8]
-            }
-          ],
-          comments: [
-            {
-              user: users[6],
-              text: 'I am very excited to visit'
-            },
-            {
-              user: users[8],
-              text: 'Great picture'
-            }
-          ]
-        },
-        {
-          image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/ho-chi-minh-city/top10/best-theatre-live-shows-ho-chi-minh/allParagraphs/0/top10Set/0/image.jpg',
-          caption: 'The Golden Dragon Water Puppetry Theatre is where you can learn about the culture, traditions and folklore of Vietnamese life during your holiday in Ho Chi Minh City. Located in Tao Dan Park, visitors are entertained by puppets acting on a ‘stage’ of water accompanied by live old-fashioned music played on authentic instruments.',
-          location: 'The Golden Dragon Water Puppetry Theatre',
-          user: users[0],
-          category: 'Others',
-          likes: [
-            {
-              user: users[11]
-            },
-            {
-              user: users[9]
-            },
-            {
-              user: users[8]
-            },
-            {
-              user: users[7]
-            }
-          ],
-          comments: [
-            {
-              user: users[11],
-              text: 'Do you have more recommendation?'
-            },
-            {
-              user: users[6],
-              text: 'Wonderful, I went there as well'
-            }
-          ]
-        }
+      return Promise.all([
+        Gem.create([
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/0/image.jpg',
+            caption: 'Hoi An Central Market in this UNESCO-listed ancient town offers an authentic shopping experience for travellers in Vietnam. Located along the Thu Bon Riverbank, the marketplace is flocked with locals and tourists bargaining purchasing fresh fruits, vegetables, spices, handicrafts, and street snacks.',
+            location: 'Hoi An Central Market',
+            user: users[8],
+            category: 'Markets',
+            likes: [
+              {
+                user: users[9]
+              },
+              {
+                user: users[10]
+              },
+              {
+                user: users[11]
+              },
+              {
+                user: users[7]
+              }
+            ],
+            comments: [
+              {
+                user: users[10],
+                text: 'Awesome!'
+              },
+              {
+                user: users[9],
+                text: 'Looks like fun :)'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/00/image.jpg',
+            caption: 'Han Market is a prominent attraction in Da Nang, having served the local population since the French occupation in the early 20th century. Located at the grand intersection of Tran Phu Street, Bach Dang Street, Hung Vuong Street and Tran Hung Dao Street, visitors can find hundreds of stalls selling just about everything from local produce and coffee beans to T-shirts, jewellery, and accessories.',
+            location: 'Han Market',
+            user: users[3],
+            category: 'Markets',
+            likes: [
+              {
+                user: users[10]
+              },
+              {
+                user: users[9]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'Great stuff'
+              },
+              {
+                user: users[7],
+                text: 'It is beautiful!'
+              }
+            ]
+          },
+          {
+            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Chua_Tran_Quoc1.jpg',
+            caption: 'Dating back to the 6th century, Tran Quoc Pagoda is one of the oldest temples in Hanoi, Vietnam. ',
+            location: 'Tran Quoc Pagoda',
+            user: users[9],
+            category: 'Temples',
+            likes: [
+              {
+                user: users[11]
+              },
+              {
+                user: users[7]
+              },
+              {
+                user: users[10]
+              },
+              {
+                user: users[8]
+              }
+            ],
+            comments: []
+          },
+          {
+            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Cao-Dai-Temple.jpg',
+            caption: 'Cao Dai Temple is one of 1,000 Cao Dai Temples, and one of the most well-known temples in Vietnam. Constructed in the 1930s and completed in 1955, Cao Dai temple is a technicolored religious site that attracts hundreds of travelers every day.',
+            location: 'Cao Dai Temple',
+            user: users[10],
+            category: 'Temples',
+            likes: [
+              {
+                user: users[9]
+              },
+              {
+                user: users[11]
+              },
+              {
+                user: users[8]
+              },
+              {
+                user: users[7]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'WOW!'
+              }
+            ]
+          },
+          {
+            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Mariamman-Hindu-Temple.jpg',
+            caption: 'Visit one of the most famous Hindu temples in Vietnam, the Mariamman Hindu Temple of Ho Chi Minh City. It is called Chua Ba Mariamman in Vietnamese and was built at the end of the 19th century as a dedication to the Hindu goddess Mariamman. ',
+            location: 'Mariamman Hindu Temple',
+            user: users[6],
+            category: 'Temples',
+            likes: [
+              {
+                user: users[7]
+              },
+              {
+                user: users[8]
+              },
+              {
+                user: users[9]
+              }
+            ],
+            comments: [
+              {
+                user: users[10],
+                text: 'Send more reccomendations, loved this'
+              },
+              {
+                user: users[11],
+                text: 'Love your photo'
+              },
+              {
+                user: users[8],
+                text: 'Looks like fun, excited to go there'
+              }
+            ]
+          },
+          {
+            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Thien-Mu-Pagoda.jpg',
+            caption: 'Located in the village of Huong Long, this beautiful temple is at a distance of 5 km from the city of Hue. The temple is situated on the banks of the Perfume River and is a very well preserved tourist attraction.',
+            location: 'Thien Mu Pagoda',
+            user: users[2],
+            category: 'Temples',
+            likes: [],
+            comments: [
+              {
+                user: users[7],
+                text: 'Nice picture'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-beaches-in-vietnam/allParagraphs/00/top10Set/0/image.jpg',
+            caption: 'Long Beach (Bai Trong) is a 20-km-long coastal area on Phu Quoc Island, where you can find swanky beachfront resorts, beachfront restaurants, cafés and bars with breathtaking sunset views.',
+            location: 'Long Beach (Bai Trong)',
+            user: users[8],
+            category: 'Beaches',
+            likes: [
+              {
+                user: users[10]
+              },
+              {
+                user: users[11]
+              }
+            ],
+            comments: [
+              {
+                user: users[10],
+                text: 'Love it'
+              },
+              {
+                user: users[11],
+                text: 'Beautiful!'
+              },
+              {
+                user: users[9],
+                text: 'Nice'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-beaches-in-vietnam/allParagraphs/00/top10Set/00/image.jpg',
+            caption: 'Mui Ne Beach spans 15 km of sandy beaches and rock-free waters, with luxurious beachfront resorts concentrated at the northern end and a traditional fishing village in the south. Located in the Binh Thuan province, the beach attracts throngs of visitors looking for somewhere to swim and enjoy some water sports, but the most popular activity in Mui Ne Beach is kitesurfing.',
+            location: 'Mui Ne Beach',
+            user: users[10],
+            category: 'Beaches',
+            likes: [
+              {
+                user: users[11]
+              },
+              {
+                user: users[7]
+              }
+            ],
+            comments: [
+              {
+                user: users[11],
+                text: 'Nice'
+              },
+              {
+                user: users[6],
+                text: 'Where is this?'
+              },
+              {
+                user: users[8],
+                text: 'Cute picture, I love it!'
+              }
+            ]
+          },
+          {
+            image: 'https://asianwaytravel.com/wp-content/uploads/2018/12/ban-gioc-waterfall-2.jpg',
+            caption: 'Ban Gioc Waterfall is a lesser-known destination in North Vietnam compared to Sapa and Ha Long Bay, making a truly hidden gem for nature lovers and adventurers to discover. Located in northeastern of Vietnam, Cao Bang Province, on a height of 30 meters and a width of 300 meters, Ban Gioc is the widest waterfall in Vietnam, creating such impressive sight of nature.',
+            location: 'Ban Gioc Waterfall',
+            user: users[1],
+            category: 'Lanscapes',
+            likes: [
+              {
+                user: users[10]
+              },
+              {
+                user: users[8]
+              },
+              {
+                user: users[9]
+              }
+            ],
+            comments: [
+              {
+                user: users[10],
+                text: 'Cannot wait to visit'
+              },
+              {
+                user: users[7],
+                text: 'I hope to visit soon'
+              }
+            ]
+          },
+          {
+            image: 'https://asianwaytravel.com/wp-content/uploads/2018/10/Halong_Bay_Sunset.jpg',
+            caption: 'As the name describes, Halong is a land where dragon descended into. This is a rather poetic explanation of thousands of limestone islands and islets scattering on an area of 434 sqkm, reflecting on the greenish bay water. Halong Bay’s geographical landscape was the result of complex geological processes taking over 500 million years. Halong is home to beautiful, unique karst caves such as Dau Go Cave, Sung Sot Cave and Thien Cung Cave.',
+            location: 'Halong Bay',
+            user: users[10],
+            category: 'Lanscapes',
+            likes: [
+              {
+                user: users[11]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'Very nice'
+              },
+              {
+                user: users[7],
+                text: 'Lovely'
+              },
+              {
+                user: users[11],
+                text: 'Visited last year, would go again'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/ho-chi-minh-city/top10/top10-ho-chi-minh-nightlife/allParagraphs/00/top10Set/0/image.jpg',
+            caption: 'Ho Chi Minh City has one of the most impressive collections of rooftop bars in the world. From the colonial charm of Saigon Saigon to the chic and modern style of the Chill Skybar, there is a rooftop spot to suit any mood in Saigon. Sit back with a cocktail and soak up the stunning view of Ho Chi Minh City from sunset until the early hours of morning',
+            location: 'Chill Skybar',
+            user: users[7],
+            category: 'Others',
+            likes: [
+              {
+                user: users[10]
+              },
+              {
+                user: users[11]
+              },
+              {
+                user: users[8]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'I am very excited to visit'
+              },
+              {
+                user: users[8],
+                text: 'Great picture'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/ho-chi-minh-city/top10/best-theatre-live-shows-ho-chi-minh/allParagraphs/0/top10Set/0/image.jpg',
+            caption: 'The Golden Dragon Water Puppetry Theatre is where you can learn about the culture, traditions and folklore of Vietnamese life during your holiday in Ho Chi Minh City. Located in Tao Dan Park, visitors are entertained by puppets acting on a ‘stage’ of water accompanied by live old-fashioned music played on authentic instruments.',
+            location: 'The Golden Dragon Water Puppetry Theatre',
+            user: users[0],
+            category: 'Others',
+            likes: [
+              {
+                user: users[11]
+              },
+              {
+                user: users[9]
+              },
+              {
+                user: users[8]
+              },
+              {
+                user: users[7]
+              }
+            ],
+            comments: [
+              {
+                user: users[11],
+                text: 'Do you have more recommendation?'
+              },
+              {
+                user: users[6],
+                text: 'Wonderful, I went there as well'
+              }
+            ]
+          }
+        ]),
+        users
       ])
     })
 
-    .then(users => {
+    .then(data => {
+      const [ gems, users ] = data
+      console.log(`${gems.length} gems created`)
       return Chat.create([
         {
           title: 'locals',
@@ -554,5 +559,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
           ]
         }
       ])
+    })
+    .then(chats => {
+      console.log(`${chats.length} chats created`)
     })
 })
