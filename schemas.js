@@ -9,9 +9,9 @@
 //
 //
 // const userSchema = new mongoose.Schema({
-//   name: { type: String, required: true },
+//   username: { type: String, required: true },
 //   image: { },
-//   origin: { type: String, required: true },
+//   lang: { type: String, required: true },
 //   dateSignedUp: { type: String, required: true },//or time?
 //   interests: { type: String, maxlength: 200 }
 // }, {
