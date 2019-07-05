@@ -1,66 +1,46 @@
 const router = require('express').Router()
 const gems = require('../controllers/gems')
-const users = require('../controllers/auth')
-const secureRoute = require('../lib/secureRoute')
+const chats = require('../controllers/chats')
+const users = require('../controllers/users')
 
+// gems route
+router.route('/gems/:id/likes')
+  .get(gems.like)
 
-// gem route
-router.route('/gems')
-  .get(gems.index)
-  .post(secureRoute, gems.create)
+router.route('/gems/:id/comments/:commentId')
+  .delete(gems.commentDelete)
+
+router.route('/gems/:id/comments')
+  .post(gems.commentCreate)
 
 router.route('/gems/:id')
   .get(gems.show)
-  .put(secureRoute, gems.edit)
-  .delete(secureRoute, gems.delete)
+  .put(gems.edit)
+  .delete(gems.delete)
 
-router.route('/gems/:id/comments')
-  .post(secureRoute, gems.commentCreate)
-
-router.route('/gems/:id/comments/:commentId')
-  .delete(secureRoute, gems.commentDelete)
+router.route('/gems')
+  .get(gems.index)
+  .post(gems.create)
 
 
-// topic route
-router.route('/topics')
-  .get(topics.index)
-  .post(secureRoute, topics.create)
+// chats routes
+router.route('/chats/:id/likes')
+  .get(chats.like)
 
-router.route('/topics/:id')
-  .get(topics.show)
-  .put(secureRoute, topics.edit)
-  .delete(secureRoute, topics.delete)
+router.route('/chats/:id/comments/:commentId')
+  .delete(chats.commentDelete)
 
-router.route('/topics/:id/comments')
-  .post(secureRoute, topics.commentCreate)
+router.route('/chats/:id/comments')
+  .post(chats.commentCreate)
 
-router.route('/topics/:id/comments/:commentId')
-  .delete(secureRoute, topics.commentDelete)
+router.route('/chats/:id')
+  .get(chats.show)
 
-// phrases route
-
-router.route('/phrases')
-  .get(phrases.index)
-  .post(secureRoute, phrases.create)
-
-router.route('/phrases/:id')
-  .get(phrases.show)
-  .put(secureRoute, phrases.edit)
-  .delete(secureRoute, phrases.delete)
-
-router.route('/phrases/:id/comments')
-  .post(secureRoute, phrases.commentCreate)
-
-router.route('/phrases/:id/comments/:commentId')
-  .delete(secureRoute, phrases.commentDelete)
-
-// chats route
 router.route('/chats')
   .get(chats.index)
-  .post(secureRoute, chats.create)
 
 
-// login and register router
+// user login and register router
 router.route('/register')
   .post(users.register)
 
