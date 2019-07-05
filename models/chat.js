@@ -13,9 +13,4 @@ const chatSchema = new mongoose.Schema({
   comments: [commentSchema]
 })
 
-// module.exports = mongoose.model('Chat', chatSchema)
-
-module.exports = {
-  chat: chatSchema,
-  comment: commentSchema
-}
+module.exports = mongoose.model('Chat', chatSchema)
