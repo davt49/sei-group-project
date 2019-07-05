@@ -21,6 +21,7 @@ function showRoute(req, res) {
 }
 
 function createRoute(req, res) {
+  req.body.user = req.currentUser
   Gem
     .create(req.body)
     .then(gem => res.status(201).json(gem))
@@ -28,29 +29,36 @@ function createRoute(req, res) {
 }
 
 function editRoute(req, res) {
+  req.body.user = req.currentUser
   Gem
     .findById(req.params.gemId)
     .then(gem => {
+      console.log('here')
       if (!gem) return res.status(404).json({ message: 'Not Found' })
+      console.log(gem.user)
+      console.log(req.currentUser)
+      if (!gem.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
       Object.assign(gem, req.body)
       return gem.save()
     })
-    .then(gem => res.status(202).json(gem))
+    .then(gem => res.status(200).json(gem))
     .catch(err => res.status(422).json(err))
 }
 
 function deleteRoute(req, res) {
+  req.body.user = req.currentUser
   Gem
-    .findById(req.params.gemId)
+    .findByIdAndRemove(req.params.gemId)
     .then(gem => {
       if (!gem) return res.status(404).json({ message: 'Not Found' })
-      return gem.remove()
+      if (!gem.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
     })
-    .then(() => res.status(204).json({ message: 'Deleted successfully ' }))
+    .then(() => res.status(200).json({ message: 'Deleted successfully ' }))
     .catch(err => res.status(422).json(err))
 }
 
 function commentCreateRoute(req, res) {
+  req.body.user = req.currentUser
   Gem
     .findById(req.params.gemId)
     .then(gem => {
@@ -64,26 +72,29 @@ function commentCreateRoute(req, res) {
 
 
 function commentDeleteRoute(req, res) {
+  req.body.user = req.currentUser
   Gem
-    .findById(req.params.id)
+    .findById(req.params.gemId)
     .then(gem => {
       if (!gem) return res.status(404).json({ message: 'Not Found' })
-      const comment = gem.comments.gemId(req.params.commentId)
+      const comment = gem.comments.id(req.params.commentId)
       if (!comment) return res.status(404).json({ message: 'Not Found' })
+      if (!comment.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
       comment.remove()
       return gem.save()
     })
-    .then(() => res.status(204).json({ message: 'Deleted successfully ' }))
+    .then(() => res.status(200).json({ message: 'Deleted successfully ' }))
     .catch(err => res.status(401).json(err))
 }
 
 function likeRoute(req, res) {
+  req.body.user = req.currentUser
   Gem
     .findById(req.params.gemId)
     .populate('user')
     .then(gem => {
       if (!gem) return res.status(404).json({ message: 'Not Found' })
-      gem.likes.push({ user: {} })
+      gem.likes.push({ user: req.currentUser })
       return gem.save()
     })
     .then(gem => res.status(200).json(gem))

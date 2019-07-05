@@ -12,7 +12,7 @@ function indexRoute(req, res) {
 // SHOW
 function showRoute(req, res) {
   Chat
-    .find(req.params.chatId)
+    .findById(req.params.chatId)
     .then(chat => res.status(200).json(chat))
     .catch(err => res.status(404).json(err))
 }
@@ -20,28 +20,30 @@ function showRoute(req, res) {
 //<<< CHAT COMMENTS >>>
 // COMMENT: CREATE
 function commentCreateRoute(req, res) {
+  req.body.user = req.currentUser
   Chat
-    .create(req.body)
-    .populate('user')
+    .findById(req.params.chatId)
     .then(chat => {
       if (!chat) res.status(404).json({ message: 'Not found' })
       chat.comments.push(req.body)
       chat.save()
     })
     .then(chat => res.status(201).json(chat))
-    .chatch(err => res.status(422).json(err))
+    .catch(err => res.status(422).json(err))
 }
 
 
 // COMMENT: DELETE
 function commentDeleteRoute(req, res) {
+  req.body.user = req.currentUser
   Chat
     .findById(req.params.chatId)
     .populate('user')
     .then(chat => {
       if (!chat) res.status(404).json({ message: 'Not found' })
-      const comment = chat.comments.chatId(req.params.commentId)
+      const comment = chat.comments.id(req.params.commentId)
       if (!comment) res.status(404).json({ message: 'Not found' })
+      if (!comment.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
       comment.remove()
       return chat.save()
     })
@@ -49,22 +51,9 @@ function commentDeleteRoute(req, res) {
     .catch(err => res.status(422).json(err))
 }
 
-// <<< CHAT LIKES >>>
-// LIKE
-function likeRoute(req, res) {
-  Chat
-    .findById(req.params.chatId)
-    .populate('user')
-    .then(chat => {
-      if (!chat) res.status(404).json({ message: 'Not found' })
-      return chat.likes.push( { user: {} } )
-    })
-}
-
 module.exports = {
   index: indexRoute,
   show: showRoute,
   commentCreate: commentCreateRoute,
-  commentDelete: commentDeleteRoute,
-  like: likeRoute
+  commentDelete: commentDeleteRoute
 }
