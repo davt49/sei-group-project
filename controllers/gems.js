@@ -53,7 +53,7 @@ function deleteRoute(req, res) {
       if (!gem) return res.status(404).json({ message: 'Not Found' })
       if (!gem.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
     })
-    .then(() => res.status(200).json({ message: 'Deleted successfully ' }))
+    .then(() => res.status(204).json({ message: 'Deleted successfully ' }))
     .catch(err => res.status(422).json(err))
 }
 

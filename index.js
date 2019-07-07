@@ -15,3 +15,5 @@ const router = require('./config/router')
 app.use('/api', router)
 
 app.listen(port, () => console.log(port))
+
+module.exports = app
