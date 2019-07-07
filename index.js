@@ -2,6 +2,9 @@ const express = require('express')
 const { port, dbURI } = require('./config/environment')
 const app = express()
 
+const logger = require('./lib/logger')
+app.use(logger)
+
 const mongoose = require('mongoose')
 mongoose.connect(dbURI, { useNewUrlParser: true }, () => console.log(dbURI))
 
