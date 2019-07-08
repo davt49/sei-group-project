@@ -112,13 +112,9 @@ describe('Chat test', () => {
     })
   })
   describe('GET /api/chats/:id', () => {
-<<<<<<< HEAD
 
     let chat = {}
 
-=======
-    let chat
->>>>>>> development
     beforeEach(done => {
       Chat.create({
         title: 'Hotels',
@@ -149,12 +145,8 @@ describe('Chat test', () => {
           done()
         })
     })
-<<<<<<< HEAD
 
     it('should return a chat object', done => {
-=======
-    it('should return an array of chat objects', done => {
->>>>>>> development
       api
         .get(`/api/chats/${chat._id}`)
         .set('Accept', 'application/json')
