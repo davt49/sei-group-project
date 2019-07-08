@@ -7,6 +7,7 @@ import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
 
 import Login from './components/auth/Login'
+import Register from './components/auth/Register'
 
 import Gems from './components/gems/Gems'
 
@@ -18,6 +19,7 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path='/login' component={Login}/>
+          <Route path='/register' component={Register}/>
           <Route path='/gems' component={Gems}/>
         </Switch>
         <Footer/>
