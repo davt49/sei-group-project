@@ -1,17 +1,17 @@
 const express = require('express')
 const { port, dbURI } = require('./config/environment')
+const bodyParser = require('body-parser')
+const router = require('./config/router')
+const mongoose = require('mongoose')
+const logger = require('./lib/logger')
 const app = express()
 
-const logger = require('./lib/logger')
-app.use(logger)
-
-const mongoose = require('mongoose')
 mongoose.connect(dbURI, { useNewUrlParser: true }, () => console.log(dbURI))
 
-const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
-const router = require('./config/router')
+app.use(logger)
+
 app.use('/api', router)
 
 app.listen(port, () => console.log(port))

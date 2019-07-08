@@ -10,41 +10,29 @@ const { secret } = require('../../config/environment')
 // test suite, container of tests
 describe('Gem Tests', () => {
 
-  let user
-  let token
-  
-  //setup of the test suite
+  let user = ''
+  let token = ''
+
   beforeEach(done => {
     User.create(
       {
-        username: 'jennypham',
-        email: 'jennypham@email',
+        username: 'jennypham1',
+        email: 'jennypham1@email',
         password: 'pass',
         passwordConfirmation: 'pass',
         image: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Midu_-_Summer_2012_%28Explored_1_-_May_24th%29_cropped.jpg',
         lang: 'vi',
         text: 'I know places yeah.',
         userType: 'Local'
-      }) 
+      })
       .then(userData => {
         user = userData
-
-        // find user and retrieve token
-        User
-          .findOne({ email: user.email })
-          .then(user => {       
-            token = jwt.sign({ sub: user._id }, secret, { expiresIn: '10d' })
-          })
-          .catch(done)
-
-        //delete previously existing gems from the database
-        Gem.collection.deleteMany()
+        token = jwt.sign({ sub: userData._id }, secret, { expiresIn: '10d' })
         done()
       })
       .catch(done)
   })
 
-  // tear down of the test suite
   afterEach(done => {
     Gem.collection.deleteMany()
     User.collection.deleteMany()
@@ -52,7 +40,7 @@ describe('Gem Tests', () => {
   })
 
   describe('GET /api/gems', () => {
-      
+
     beforeEach(done => {
 
       Gem.create({
@@ -86,7 +74,7 @@ describe('Gem Tests', () => {
           done()
         })
     })
-  
+
     it('should return an array of gems', done => {
       api
         .get('/api/gems')
@@ -97,7 +85,7 @@ describe('Gem Tests', () => {
           done()
         })
     })
-  
+
     it('should return an array of gem objects', done => {
       api.get('/api/gems')
         .set('Accept', 'application/json')
@@ -123,41 +111,41 @@ describe('Gem Tests', () => {
           done()
         })
     })
-  
+
     it('gem objects should have properities: _id, image, caption, location, user, category', done => {
       api.get('/api/gems')
         .set('Accept', 'application/json')
         .set('Authorization', 'Bearer ' + token)
         .end((err, res) => {
           const firstGem = res.body[0]
-  
+
           expect(firstGem)
             .to.have.property('_id')
             .and.to.be.a('string')
-  
+
           expect(firstGem)
             .to.have.property('image')
             .and.to.be.a('string')
-  
+
           expect(firstGem)
             .to.have.property('caption')
             .and.to.be.a('string')
-  
-  
+
+
           expect(firstGem)
             .to.have.property('location')
             .and.to.be.a('string')
-        
+
           expect(firstGem)
             .to.have.property('category')
             .and.to.be.a('string')
-  
+
           done()
         })
     })
-  
+
     describe('Make more than one gem', () => {
-  
+
       beforeEach(done => {
         Gem.create([
           {
@@ -168,32 +156,37 @@ describe('Gem Tests', () => {
             image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/0/image.jpg'
           },
           {
-            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Cao-Dai-Temple.jpg',
             caption: 'Cao Dai Temple is one of 1,000 Cao Dai Temples, and one of the most well-known temples in Vietnam. Constructed in the 1930s and completed in 1955, Cao Dai temple is a technicolored religious site that attracts hundreds of travelers every day.',
             location: 'Cao Dai Temple',
             user: user,
-            category: 'Temples'
+            category: 'Temples',
+            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Cao-Dai-Temple.jpg'
+          },
+          {
+            caption: 'Long Beach (Bai Trong) is a 20-km-long coastal area on Phu Quoc Island, where you can find swanky beachfront resorts, beachfront restaurants, cafés and bars with breathtaking sunset views.',
+            location: 'Long Beach (Bai Trong)',
+            user: user,
+            category: 'Beaches',
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-beaches-in-vietnam/allParagraphs/00/top10Set/0/image.jpg'
           }
         ])
           .then(() => done())
           .catch(done)
       })
-  
+
       it('should return three gems', done => {
         api
           .get('/api/gems')
           .set('Accept', 'application/json')
           .set('Authorization', 'Bearer ' + token)
           .end((err, res) => {
-            expect(res.body.length).to.equal(3)
+            expect(res.body.length).to.equal(4)
             done()
           })
       })
     })
   })
 
-  
-  
   describe('POST /api/gems - Create Gem API Endpoint', () => {
 
 
@@ -212,7 +205,7 @@ describe('Gem Tests', () => {
         )
         .expect(201, done)
     })
-  /*
+
     it('should create a gem', done => {
       api
         .post('/api/gems')
@@ -222,99 +215,48 @@ describe('Gem Tests', () => {
           caption: 'Han Market is a prominent attraction in Da Nang, having served the local population since the French occupation in the early 20th century. Located at the grand intersection of Tran Phu Street, Bach Dang Street, Hung Vuong Street and Tran Hung Dao Street, visitors can find hundreds of stalls selling just about everything from local produce and coffee beans to T-shirts, jewellery, and accessories.',
           location: 'Han Market',
           user: user,
-          category: 'Markets',    
+          category: 'Markets',
           image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/0/image.jpg'
 
         }
         )
         .end((err, res) => {
           const gem = res.body
-  
+
+          // expect(gem)
+          //   .to.have.property('_id')
+          //   .and.to.be.a('object')
+
           expect(gem)
             .to.have.property('id')
             .and.to.be.a('string')
-  
+
+          expect(gem)
+            .to.have.property('_id')
+            .and.to.be.a('string')
+
           expect(gem)
             .to.have.property('image')
             .and.to.be.a('string')
-  
+
           expect(gem)
             .to.have.property('caption')
             .and.to.be.a('string')
-  
+
           expect(gem)
             .to.have.property('location')
             .and.to.be.a('string')
-  
+
           expect(gem)
             .to.have.property('user')
-            .and.to.be.a('string')
-  
+            .and.to.be.a('object')
+
           expect(gem)
             .to.have.property('category')
             .and.to.be.a('string')
-  
-          done()
-        })
-    })
-  */
-  })
-  
-  describe('GET /api/gems/:id', () => {
-  
-    let gem
-  
-    beforeEach(done => {
-      Gem.create({
-        caption: 'Han Market is a prominent attraction in Da Nang, having served the local population since the French occupation in the early 20th century. Located at the grand intersection of Tran Phu Street, Bach Dang Street, Hung Vuong Street and Tran Hung Dao Street, visitors can find hundreds of stalls selling just about everything from local produce and coffee beans to T-shirts, jewellery, and accessories.',
-        location: 'Han Market',
-        user: user,
-        category: 'Markets',
-        image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/0/image.jpg'
-      })
-        .then(gemData => {
-          gem = gemData
-          done()
-        })
-        .catch(done)
-    })
-  
-    it('should return a 200 response', done => {
-      api
-        .get(`/api/gems/${gem.id}`)
-        .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer ' + token)
-        .expect(200, done)
-    })
-  })
 
-
-  
-  describe('DELETE /api/gems/:id', () => {
-  
-    let gem
-  
-    beforeEach(done => {
-      Gem.create({
-        caption: 'Han Market is a prominent attraction in Da Nang, having served the local population since the French occupation in the early 20th century. Located at the grand intersection of Tran Phu Street, Bach Dang Street, Hung Vuong Street and Tran Hung Dao Street, visitors can find hundreds of stalls selling just about everything from local produce and coffee beans to T-shirts, jewellery, and accessories.',
-        location: 'Han Market',
-        user: user,
-        category: 'Markets',
-        image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/0/image.jpg'
-      })
-        .then(gemData => {
-          gem = gemData
           done()
         })
-        .catch(done)
-    })
-  
-    it('should return a 204 response', done => {
-      api
-        .delete(`/api/gems/${gem.id}`)
-        .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer ' + token)
-        .expect(204, done)
     })
   })
 })

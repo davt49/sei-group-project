@@ -25,7 +25,10 @@ function createRoute(req, res) {
   Gem
     .create(req.body)
     .then(gem => res.status(201).json(gem))
-    .catch(err => res.status(422).json(err))
+    .catch(err => {
+      console.log(err)
+      return res.status(422).json(err)
+    })
 }
 
 function editRoute(req, res) {
