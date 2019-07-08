@@ -1,15 +1,11 @@
 /* globals api, expect, describe, beforeEach, afterEach, it */
-
 require('../spec_helper')
-
 const Chat = require('../../models/chat')
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../../config/environment')
-
 describe('Chat test', () => {
   let token = ''
-
   beforeEach(done => {
     User.create(
       {
@@ -28,13 +24,11 @@ describe('Chat test', () => {
       })
       .catch(done)
   })
-
   afterEach(done => {
     Chat.collection.deleteMany()
     User.collection.deleteMany()
     done()
   })
-
   describe('GET /api/chats', () => {
     beforeEach(done => {
       Chat.create([
@@ -47,7 +41,6 @@ describe('Chat test', () => {
         .then(() => done())
         .catch(done)
     })
-
     it('should return a 200 response', done => {
       api
         .get('/api/chats')
@@ -55,7 +48,6 @@ describe('Chat test', () => {
         .set('Authorization', 'Bearer ' + token)
         .expect(200, done)
     })
-
     it('should respond with a JSON object', done => {
       api
         .get('/api/chats')
@@ -67,7 +59,6 @@ describe('Chat test', () => {
           done()
         })
     })
-
     it('should return an array of chats', done => {
       api
         .get('/api/chats')
@@ -78,7 +69,6 @@ describe('Chat test', () => {
           done()
         })
     })
-
     it('should return an array of chat objects', done => {
       api
         .get('/api/chats')
@@ -98,7 +88,6 @@ describe('Chat test', () => {
           done()
         })
     })
-
     it('chat objects should have properities: _id, title, image, comments', done => {
       api
         .get('/api/chats')
@@ -106,33 +95,30 @@ describe('Chat test', () => {
         .set('Authorization', 'Bearer ' + token)
         .end((err, res) => {
           const firstChat = res.body[0]
-
           expect(firstChat)
             .to.have.property('_id')
             .and.to.be.a('string')
-
           expect(firstChat)
             .to.have.property('title')
             .and.to.be.a('string')
-
           expect(firstChat)
             .to.have.property('image')
             .and.to.be.a('string')
-
-
           expect(firstChat)
             .to.have.property('comments')
             .and.to.be.a('array')
-
           done()
         })
     })
   })
-
   describe('GET /api/chats/:id', () => {
+<<<<<<< HEAD
 
     let chat = {}
 
+=======
+    let chat
+>>>>>>> development
     beforeEach(done => {
       Chat.create({
         title: 'Hotels',
@@ -145,7 +131,6 @@ describe('Chat test', () => {
         .then(() => done())
         .catch(done)
     })
-
     it('should return a 200 response', done => {
       api
         .get(`/api/chats/${chat._id}`)
@@ -153,7 +138,6 @@ describe('Chat test', () => {
         .set('Authorization', 'Bearer ' + token)
         .expect(200, done)
     })
-
     it('should respond with a JSON object', done => {
       api
         .get(`/api/chats/${chat._id}`)
@@ -165,8 +149,12 @@ describe('Chat test', () => {
           done()
         })
     })
+<<<<<<< HEAD
 
     it('should return a chat object', done => {
+=======
+    it('should return an array of chat objects', done => {
+>>>>>>> development
       api
         .get(`/api/chats/${chat._id}`)
         .set('Accept', 'application/json')
@@ -184,7 +172,6 @@ describe('Chat test', () => {
           done()
         })
     })
-
     it('chat object should have properities: _id, title, image, comments', done => {
       api
         .get(`/api/chats/${chat._id}`)
@@ -196,25 +183,17 @@ describe('Chat test', () => {
           expect(chat)
             .to.have.property('_id')
             .and.to.be.a('string')
-
           expect(chat)
             .to.have.property('title')
             .and.to.be.a('string')
-
           expect(chat)
             .to.have.property('image')
             .and.to.be.a('string')
-
-
           expect(chat)
             .to.have.property('comments')
             .and.to.be.a('array')
-
           done()
         })
     })
   })
-
-
-
 })
