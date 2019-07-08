@@ -187,9 +187,106 @@ describe('Gem Tests', () => {
     })
   })
 
+  describe('GET /api/chats/:id', () => {
+
+    let gem = {}
+
+    beforeEach(done => {
+      Gem.create({
+        image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/00/image.jpg',
+        caption: 'Han Market is a prominent attraction in Da Nang, having served the local population since the French occupation in the early 20th century. Located at the grand intersection of Tran Phu Street, Bach Dang Street, Hung Vuong Street and Tran Hung Dao Street, visitors can find hundreds of stalls selling just about everything from local produce and coffee beans to T-shirts, jewellery, and accessories.',
+        location: 'Han Market',
+        user: user,
+        category: 'Markets'
+      })
+        .then(gemData => {
+          return gem = gemData
+        })
+        .then(() => done())
+        .catch(done)
+    })
+
+    it('should return a 200 response', done => {
+      api
+        .get(`/api/gems/${gem._id}`)
+        .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer ' + token)
+        .expect(200, done)
+    })
+
+    it('should respond with a JSON object', done => {
+      api
+        .get(`/api/gems/${gem._id}`)
+        .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer ' + token)
+        .end((err, res) => {
+          expect(res.header['content-type'])
+            .to.be.eq('application/json; charset=utf-8')
+          done()
+        })
+    })
+
+    it('should return a gem object', done => {
+      api
+        .get(`/api/gems/${gem._id}`)
+        .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer ' + token)
+        .end((err, res) => {
+          expect(res.body)
+            .and.be.an('object')
+            .and.have.all.keys([
+              '__v',
+              '_id',
+              'image',
+              'caption',
+              'location',
+              'user',
+              'category',
+              'comments',
+              'createdAt',
+              'id',
+              'likeCount',
+              'updatedAt'
+            ])
+          done()
+        })
+    })
+
+    it('gem object should have properities: _id, title, image, comments', done => {
+      api
+        .get(`/api/gems/${gem._id}`)
+        .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer ' + token)
+        .end((err, res) => {
+          const gem = res.body
+
+          expect(gem)
+            .to.have.property('_id')
+            .and.to.be.a('string')
+
+          expect(gem)
+            .to.have.property('image')
+            .and.to.be.a('string')
+
+          expect(gem)
+            .to.have.property('caption')
+            .and.to.be.a('string')
+
+
+          expect(gem)
+            .to.have.property('location')
+            .and.to.be.a('string')
+
+          expect(gem)
+            .to.have.property('category')
+            .and.to.be.a('string')
+
+          done()
+        })
+    })
+  })
+
   describe('POST /api/gems - Create Gem API Endpoint', () => {
-
-
 
     it('should return a 201 response', done => {
       api

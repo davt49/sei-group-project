@@ -49,7 +49,6 @@ describe('User tests', () => {
           userType: 'traveller'
         })
         .end((err, res) => {
-          console.log(res)
           const user = res.body
 
           expect(user)

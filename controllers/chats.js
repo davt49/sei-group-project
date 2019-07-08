@@ -15,22 +15,22 @@ function indexRoute(req, res) {
 // SHOW
 function showRoute(req, res) {
   req.body.user = req.currentUser
-
+  const lang = req.currentUser.lang === 'vi' ? 'en-vi' : 'vi-en'
   Chat
     .findById(req.params.chatId)
     .then(chat => {
-      if (req.currentUser.lang === 'vi') {
-        chat.comments.map(comment => {
-          axios.get(encodeURI(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${key}&text=${comment.text}&lang=en-vi`))
-            .then(comment => {
-              console.log(comment.data.text.join('+'))
-            })
-        })
-      }
-      console.log(chat.comments)
-      return chat.comments
+      return Promise.all([chat, ...chat.comments.map(comment => {
+        return axios.get(encodeURI(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${key}&text=${comment.text}&lang=${lang}`))
+      })])
+
     })
-    .then(chat => res.status(200).json(chat))
+    .then(values => {
+      const [ chat, ...comments ] = values
+      chat.comments.forEach((comment, index) => {
+        comment.text = comments[index].data.text[0]
+      })
+      res.json(chat)
+    })
     .catch(err => res.status(400).json(err))
 }
 

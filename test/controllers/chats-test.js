@@ -8,7 +8,6 @@ const jwt = require('jsonwebtoken')
 const { secret } = require('../../config/environment')
 
 describe('Chat test', () => {
-  let user = ''
   let token = ''
 
   beforeEach(done => {
@@ -24,7 +23,6 @@ describe('Chat test', () => {
         userType: 'Local'
       })
       .then(userData => {
-        user = userData
         token = jwt.sign({ sub: userData._id }, secret, { expiresIn: '10d' })
         done()
       })
@@ -133,18 +131,18 @@ describe('Chat test', () => {
 
   describe('GET /api/chats/:id', () => {
 
-    let chat
+    let chat = {}
 
     beforeEach(done => {
-      Chat.create([{
+      Chat.create({
         title: 'Hotels',
         image: 'https://dynaimage.cdn.cnn.com/cnn/q_auto,w_412,c_fill,g_auto,h_232,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606122114-vietnam---travel-destination--shutterstock-168342398.jpg',
         comments: []
-      }])
+      })
         .then(chatData => {
-          chat = chatData
-          done()
+          return chat = chatData
         })
+        .then(() => done())
         .catch(done)
     })
 
@@ -168,15 +166,14 @@ describe('Chat test', () => {
         })
     })
 
-    it('should return an array of chat objects', done => {
+    it('should return a chat object', done => {
       api
-        .get('/api/chats')
+        .get(`/api/chats/${chat._id}`)
         .set('Accept', 'application/json')
         .set('Authorization', 'Bearer ' + token)
         .end((err, res) => {
           expect(res.body)
-            .and.be.an('array')
-            .and.have.property(0)
+            .and.be.an('object')
             .and.have.all.keys([
               '__v',
               '_id',
@@ -194,8 +191,8 @@ describe('Chat test', () => {
         .set('Accept', 'application/json')
         .set('Authorization', 'Bearer ' + token)
         .end((err, res) => {
-          const chat = res.body[0]
-          console.log(chat)
+          const chat = res.body
+
           expect(chat)
             .to.have.property('_id')
             .and.to.be.a('string')
