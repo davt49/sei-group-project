@@ -30,12 +30,33 @@ class Login extends React.Component {
   render(){
     return (
       <section className="section">
-        <div className="form-group">
-          <label className="form-label" htmlFor="name">Name</label>
-          <input className="form-input" type="text" id="name" placeholder="Name"/>
-          <label className="form-label" htmlFor="email">Email</label>
-          <input className="form-input" type="text" id="email" placeholder="Email"/>
-          <button className="btn btn-primary input-group-btn">Submit</button>
+        <div className="container">
+          <form onSubmit={this.handleSubmit}>
+            <h2 className="title">Login</h2>
+            <div className="form-group">
+              <label className="form-label" htmlFor="name">Email</label>
+              <div className="control">
+                <input
+                  className="form-input"
+                  name="email"
+                  placeholder="Email"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="email">Password</label>
+              <input className="form-input"
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button className="btn btn-primary input-group-btn">Login</button>
+            <p> Dont have an account?
+            Register here </p>
+          </form>
         </div>
       </section>
     )
@@ -43,34 +64,3 @@ class Login extends React.Component {
 }
 
 export default Login
-
-
-//<div className="container">
-//   <form onSubmit={this.handleSubmit}>
-//     <h2 className="title">Login</h2>
-//     <div className="field">
-//       <label className="label">Email</label>
-//       <div className="control">
-//         <input
-//           className={`input ${this.state.error ? 'btn btn-error' : ''} `}
-//           name="email"
-//           placeholder="Email"
-//           onChange={this.handleChange}
-//         />
-//       </div>
-//     </div>
-//     <div className="field">
-//       <label className="label">Password</label>
-//       <div className="control">
-//         <input
-//           className={`input ${this.state.error ? 'btn btn-error' : ''} `}
-//           type="password"
-//           name="password"
-//           placeholder="Password"
-//           onChange={this.handleChange}
-//         />
-//       </div>
-//     </div>
-//     <button type="submit" className="btn btn-success">Login</button>
-//   </form>
-// </div>
