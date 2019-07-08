@@ -30,7 +30,7 @@ class Login extends React.Component {
   render(){
     return (
       <section className="section">
-        <div classNames="form-group">
+        <div className="form-group">
           <label className="form-label" htmlFor="name">Name</label>
           <input className="form-input" type="text" id="name" placeholder="Name"/>
           <label className="form-label" htmlFor="email">Email</label>

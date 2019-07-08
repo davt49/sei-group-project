@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
 import Login from './components/auth/Login'
+import Register from './components/auth/Register'
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
     <BrowserRouter>
       <main>
         <Navbar />
+        <Register/>
         <Login />
         <Footer/>
       </main>
