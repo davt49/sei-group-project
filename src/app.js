@@ -12,6 +12,7 @@ import GemNew from './components/gems/GemNew'
 import GemsShow from './components/gems/GemsShow'
 import Gems from './components/gems/Gems'
 import ChatIndex from './components/chats/ChatIndex'
+import ChatShow from './components/chats/ChatShow'
 
 
 const App = () => {
@@ -20,12 +21,13 @@ const App = () => {
       <main>
         <Navbar />
         <Switch>
+          <Route path='/chats/:chatId' component={ChatShow}/>
           <Route path='/chats' component={ChatIndex}/>
           <Route path='/gems/new' component={GemNew}/>
           <Route path='/gems/:gemId' component={GemsShow}/>
           <Route path='/gems' component={Gems}/>
           <Route path='/register' component={Register}/>
-          <Route exact path='/' component={Login} />
+          <Route path='/login' component={Login} />
         </Switch>
         <Footer/>
       </main>
