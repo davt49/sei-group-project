@@ -43,7 +43,7 @@ class Profile extends React.Component {
           <div>
             <div className="columns col-oneline">
               <div className="column col-5">
-                <img src={this.state.user.image} />
+                <img src={this.state.user.image} className="s-circle"/>
               </div>
               <div className="column col-7">
                 <h2>{this.state.user.username}</h2>
@@ -66,10 +66,11 @@ class Profile extends React.Component {
             <div>
               <hr />
               <div className="columns col-oneline">
-                <div className="column col-6">
+                <div className="column col-5">
                   <Link to="/gems">Find new gems</Link>
                 </div>
-                <div className="column col-6">
+                <div className="divider text-center col-2" data-content="OR"></div>
+                <div className="column col-5">
                   <Link to="/chats">Find new friends</Link>
                 </div>
               </div>

@@ -1,107 +1,107 @@
 const Gem = require('../models/gem')
 
-function indexRoute(req, res) {
+function indexRoute(req, res, next) {
   Gem
     .find()
     .populate('user')
-    .then(gems => res.status(200).json(gems))
-    .catch(err => res.status(404).json(err))
+    .then(gems => {
+      if (!gems) throw new Error('Not Found')
+      return res.status(200).json(gems)
+    })
+    .catch(next)
 }
 
-function showRoute(req, res) {
+function showRoute(req, res, next) {
   Gem
     .findById(req.params.gemId)
     .populate('user')
     .populate('comments.user')
     .then(gem => {
-      if (!gem) return (err => res.status(404).json(err))
+      if (!gem) throw new Error('Not Found')
       return res.status(200).json(gem)
     })
-    .catch(err => res.status(404).json(err))
+    .catch(next)
 }
 
-function createRoute(req, res) {
+function createRoute(req, res, next) {
   req.body.user = req.currentUser
   Gem
     .create(req.body)
     .then(gem => res.status(201).json(gem))
-    .catch(err => {
-      console.log(err)
-      return res.status(422).json(err)
-    })
+    .catch(next)
 }
 
-function editRoute(req, res) {
+function editRoute(req, res, next) {
   req.body.user = req.currentUser
   Gem
     .findById(req.params.gemId)
     .then(gem => {
       console.log('here')
-      if (!gem) return res.status(404).json({ message: 'Not Found' })
+      if (!gem) throw new Error('Not Found')
       console.log(gem.user)
       console.log(req.currentUser)
-      if (!gem.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
+      if (!gem.user.equals(req.currentUser._id)) throw new Error('Unauthorized')
       Object.assign(gem, req.body)
       return gem.save()
     })
     .then(gem => res.status(200).json(gem))
-    .catch(err => res.status(422).json(err))
+    .catch(next)
 }
 
-function deleteRoute(req, res) {
+function deleteRoute(req, res, next) {
   req.body.user = req.currentUser
   Gem
     .findByIdAndRemove(req.params.gemId)
     .then(gem => {
-      if (!gem) return res.status(404).json({ message: 'Not Found' })
-      if (!gem.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
+      if (!gem) throw new Error('Not Found')
+      if (!gem.user.equals(req.currentUser._id)) throw new Error('Unauthorized')
     })
     .then(() => res.status(204).json({ message: 'Deleted successfully ' }))
-    .catch(err => res.status(422).json(err))
+    .catch(next)
 }
 
-function commentCreateRoute(req, res) {
+function commentCreateRoute(req, res, next) {
   req.body.user = req.currentUser
   Gem
     .findById(req.params.gemId)
     .then(gem => {
-      if (!gem) return res.status(404).json({ message: 'Not Found' })
+      if (!gem) throw new Error('Not Found')
       gem.comments.push(req.body)
       return gem.save()
     })
     .then(gem => res.status(201).json(gem))
-    .catch(err => res.status(422).json(err))
+    .catch(next)
 }
 
 
-function commentDeleteRoute(req, res) {
+function commentDeleteRoute(req, res, next) {
   req.body.user = req.currentUser
   Gem
     .findById(req.params.gemId)
     .then(gem => {
-      if (!gem) return res.status(404).json({ message: 'Not Found' })
+      if (!gem) throw new Error('Not Found')
       const comment = gem.comments.id(req.params.commentId)
-      if (!comment) return res.status(404).json({ message: 'Not Found' })
-      if (!comment.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
+      if (!comment) throw new Error('Not Found')
+      if (!comment.user.equals(req.currentUser._id)) throw new Error('Unauthorized')
       comment.remove()
       return gem.save()
     })
     .then(() => res.status(200).json({ message: 'Deleted successfully ' }))
-    .catch(err => res.status(401).json(err))
+    .catch(next)
 }
 
-function likeRoute(req, res) {
+function likeRoute(req, res, next) {
   req.body.user = req.currentUser
   Gem
     .findById(req.params.gemId)
     .populate('user')
     .then(gem => {
-      if (!gem) return res.status(404).json({ message: 'Not Found' })
+      if (!gem) throw new Error('Not Found')
       gem.likes.push({ user: req.currentUser })
       return gem.save()
     })
     .then(gem => res.status(200).json(gem))
-    .catch(err => res.status(422).json(err))
+    .catch(next)
 }
 
 module.exports = {
