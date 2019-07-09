@@ -40,6 +40,9 @@ router.route('/chats')
 
 
 // user login and register router
+router.route('/profile')
+  .get(secure, users.show)
+
 router.route('/register')
   .post(users.register)
 

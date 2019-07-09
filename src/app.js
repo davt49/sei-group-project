@@ -9,12 +9,13 @@ import Footer from './components/common/Footer'
 
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import Profile from './components/auth/Profile'
 
 import Gems from './components/gems/Gems'
 import GemsShow from './components/gems/GemsShow'
 import GemNew from './components/gems/GemNew'
 
-import ChatIndex from './components/chats/chatIndex'
+import ChatIndex from './components/chats/ChatIndex'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/gems/new' component={GemNew}/>
           <Route path='/gems' component={Gems}/>
           <Route path='/gems/:gemId' component={GemsShow}/>
+          <Route path='/profile' component={Profile}/>
           <Route path='/register' component={Register}/>
           <Route path='/login' component={Login} />
         </Switch>
