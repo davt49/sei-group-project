@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import { Link } from 'react-router-dom'
 
 class ChatIndex extends React.Component {
   constructor() {
@@ -13,7 +14,7 @@ class ChatIndex extends React.Component {
     axios.get('/api/chats', {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(res => console.log(res.data))
+      .then(res => this.setState({ chats: res.data }))
       .catch(err => console.log(err))
   }
 
@@ -22,6 +23,7 @@ class ChatIndex extends React.Component {
   }
 
   render() {
+    console.log(this.state.chats)
     return (
       <section>
         <div className="text-center">
@@ -29,15 +31,23 @@ class ChatIndex extends React.Component {
         </div>
         <div className="container">
           <div className="columns text-center">
-            <div className="col-4">
-            Accomodation
-            </div>
-            <div className="col-4">
-            Public Transport
-            </div>
-            <div className="col-4">
-            Activities
-            </div>
+            {
+              this.state.chats &&
+              this.state.chats.map(chat => (
+                <div className="col-6" key={chat._id}>
+                  <Link to={`chats/${chat.title}`}>
+                    <div className="card cardstyle">
+                      <div className="card-image">
+                        <img src={chat.image} alt={chat.title} className="imagestyle"/>
+                      </div>
+                      <div className="card-body">
+                        {chat.title}
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))
+            }
           </div>
         </div>
       </section>
