@@ -472,7 +472,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
       return Chat.create([
         {
           title: 'locals',
-          image: 'https://www.adventureinyou.com/wp-content/uploads/2015/07/solo-female-traveller-INDEPENDENCE-960x640.jpg',
+          image: 'http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/food/allParagraphs/BucketComponent/ListingContainer/014/image/hanoi-beer.jpg',
           comments: [
             {
               text: 'Hi, I am planning to visit your beautiful town. Do you have some suggestion for me to where to stay?',
@@ -518,7 +518,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
         },
         {
           title: 'travellers',
-          image: 'http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/food/allParagraphs/BucketComponent/ListingContainer/014/image/hanoi-beer.jpg',
+          image: 'https://www.adventureinyou.com/wp-content/uploads/2015/07/solo-female-traveller-INDEPENDENCE-960x640.jpg',
           comments: [
             {
               text: 'Hi guys, I am in Hanoi toinght. Someone wants to go out for a drink?',

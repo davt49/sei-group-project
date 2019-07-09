@@ -6,15 +6,12 @@ import './style.scss'
 
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
-
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-
-import Gems from './components/gems/Gems'
-import GemsShow from './components/gems/GemsShow'
 import GemNew from './components/gems/GemNew'
-
+import Gems from './components/gems/Gems'
 import ChatIndex from './components/chats/ChatIndex'
+import GemsShow from './components/gems/GemsShow'
 
 const App = () => {
   return (
