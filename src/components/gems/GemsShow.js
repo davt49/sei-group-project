@@ -10,22 +10,20 @@ class GemsShow extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCommentDelete = this.handleCommentDelete.bind(this)
-    // this.addLike = this.addLike.bind(this)
+    this.addLike = this.addLike.bind(this)
   }
 
   componentDidMount() {
     this.getData()
   }
 
-  // addLike(gems) {
-  //   axios.post(`/api/gems/${this.props.match.params.gemId}/announcements/${this.props.match.params.id}/likes`, gem ,{
-  //     headers: { Authorization: `Bearer ${Auth.getToken()}` }
-  //   })
-  //     .then(console.log(gems))
-  //     .then(() => this.getAnnouncement())
-  //     .then(() => console.log(this.state))
-  //     .catch(err => console.log(err))
-  // }
+  addLike() {
+    axios.get(`/api/gems/${this.props.match.params.gemId}/likes`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(this.getData())
+      .catch(err => console.log(err))
+  }
 
   handleChange(e) {
     this.setState({ comment: { text: e.target.value } })
@@ -93,7 +91,8 @@ class GemsShow extends React.Component {
                 <p>{gem.category}</p>
                 <hr />
                 <h4 className="title is-4">💎</h4>
-                <p>{gem.likes}</p>
+                <p>{gem.likeCount}</p>
+                <button onClick={this.addLike} >Like</button>
                 <hr />
               </div>
             </div>
