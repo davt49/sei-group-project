@@ -33,7 +33,7 @@ class GemNew extends React.Component {
           <label className="form-label" htmlFor="name">Image</label>
           <input
             className="form-input input-sm"
-            name="Image"
+            name="image"
             placeholder="image url"
             onChange={this.handleChange}
 
@@ -44,7 +44,6 @@ class GemNew extends React.Component {
             name="caption"
             placeholder="caption here"
             onChange={this.handleChange}
-
           />
           <label className="form-label" htmlFor="location">Location</label>
           <input
@@ -52,25 +51,24 @@ class GemNew extends React.Component {
             name="location"
             placeholder="where is this?"
             onChange={this.handleChange}
+          />
 
-          />
-          <label className="form-label" htmlFor="user">User</label>
-          <input
-            className="form-input input-sm"
-            name="user"
-            placeholder="user"
-            onChange={this.handleChange}
-          />
           <label className="form-label" htmlFor="category">Category</label>
-          <input
-            className="form-input input-sm"
-            name="category"
-            placeholder="category"
-            onChange={this.handleChange}
+          <div className="form-group">
+            <select
+              className="form-select"
+              name="category"
+              onChange={this.handleChange}
+            >
+              <option>Choose an option</option>
+              <option>Markets</option>
+              <option>Temples</option>
+              <option>Beaches</option>
+              <option>Landscapes</option>
+              <option>Others</option>
+            </select>
+          </div>
 
-          />
-          <label className="form-label" htmlFor="likes">Likes</label>
-          <label className="form-label" htmlFor="comments">Comments</label>
           <button type="submit" className="btn btn-primary input-group-btn input-sm">Submit</button>
         </form>
       </div>
