@@ -14,7 +14,7 @@ import Gems from './components/gems/Gems'
 import GemsShow from './components/gems/GemsShow'
 import GemNew from './components/gems/GemNew'
 
-import ChatIndex from './components/chats/chatIndex'
+import ChatIndex from './components/chats/ChatIndex'
 
 const App = () => {
   return (
@@ -23,9 +23,9 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path='/chats' component={ChatIndex}/>
+          <Route path='/gems/:gemId' component={GemsShow}/>
           <Route path='/gems/new' component={GemNew}/>
           <Route path='/gems' component={Gems}/>
-          <Route path='/gems/:gemId' component={GemsShow}/>
           <Route path='/register' component={Register}/>
           <Route path='/login' component={Login} />
         </Switch>

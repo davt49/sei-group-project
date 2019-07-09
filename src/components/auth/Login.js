@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import { Link } from  'react-router-dom'
 
 class Login extends React.Component {
   constructor() {
@@ -46,7 +47,7 @@ class Login extends React.Component {
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="email">Password</label>
-              <input  
+              <input
                 className={`input ${this.state.error ? 'is-danger' : ''} `}
                 type="password"
                 name="password"
@@ -56,8 +57,8 @@ class Login extends React.Component {
             </div>
             {this.state.error && <small className="help is-danger">{this.state.error}</small>}
             <button className="btn btn-primary input-group-btn">Login</button>
-            <p> Dont have an account?
-            Register here </p>
+            <p> Dont have an account? </p>
+            <Link to="/register">Register here</Link>
           </form>
         </div>
       </section>

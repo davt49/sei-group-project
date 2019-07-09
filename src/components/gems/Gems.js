@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Gem from './Gem'
 import Auth from '../../lib/Auth'
+import { Link } from  'react-router-dom'
 
 class Gems extends React.Component {
   constructor() {
@@ -42,7 +43,7 @@ class Gems extends React.Component {
           this.state.data &&
           <div>
             <div>
-              <button>Post a gem</button>
+              <Link to="/gems/new">Post a gem</Link>
               <div className="form-group">
                 <select className="form-select" name="category" onChange={this.handleChange}>
                   <option value="">Filter by category</option>
