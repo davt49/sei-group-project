@@ -34,28 +34,27 @@ class Login extends React.Component {
         <div className="container">
           <form onSubmit={this.handleSubmit}>
             <h2 className="title">Login</h2>
+            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
             <div className="form-group">
               <label className="form-label" htmlFor="name">Email</label>
-              <div className="control">
-                <input
-                  className={`form-input ${this.state.error ? 'is-error' : ''} `}
-                  name="email"
-                  placeholder="Email"
-                  onChange={this.handleChange}
-                />
-              </div>
+              <input
+                className={`form-input ${this.state.error ? 'is-error' : ''} `}
+                name="email"
+                placeholder="Email"
+                onChange={this.handleChange}
+              />
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="email">Password</label>
               <input
-                className={`input ${this.state.error ? 'is-error' : ''} `}
+                className={`form-input ${this.state.error ? 'is-error' : ''} `}
                 type="password"
                 name="password"
                 placeholder="Password"
                 onChange={this.handleChange}
               />
             </div>
-            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
+            <br />
             <button className="btn btn-primary input-group-btn">Login</button>
             <p> Dont have an account? </p>
             <Link to="/register" className="c-hand">Register here</Link>
