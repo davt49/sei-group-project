@@ -50,9 +50,9 @@ class GemsShow extends React.Component {
       .catch(err => console.log(err))
   }
 
-isOwner(comment) {
-  return Auth.getPayload().sub === comment.user._id
-}
+  isOwner(comment) {
+    return Auth.getPayload().sub === comment.user._id
+  }
 
   handleCommentDelete(comment) {
     axios.delete(`/api/gems/${this.props.match.params.gemId}/comments/${comment._id}`, {

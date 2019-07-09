@@ -5,20 +5,24 @@ const axios = require('axios')
 
 // <<< CHAT >>>
 // INDEX
-function indexRoute(req, res) {
+function indexRoute(req, res, next) {
   Chat
     .find()
-    .then(chats => res.status(200).json(chats))
-    .catch(err => res.status(404).json(err))
+    .then(chats => {
+      if (!chats) throw new Error('Not Found')
+      return res.status(200).json(chats)
+    })
+    .catch(next)
 }
 
 // SHOW
-function showRoute(req, res) {
+function showRoute(req, res, next) {
   req.body.user = req.currentUser
   const lang = req.currentUser.lang === 'vi' ? 'en-vi' : 'vi-en'
   Chat
     .findById(req.params.chatId)
     .then(chat => {
+      if (!chat) throw new Error('Not Found')
       return Promise.all([chat, ...chat.comments.map(comment => {
         return axios.get(encodeURI(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${key}&text=${comment.text}&lang=${lang}`))
       })])
@@ -31,41 +35,41 @@ function showRoute(req, res) {
       })
       res.json(chat)
     })
-    .catch(err => res.status(400).json(err))
+    .catch(next)
 }
 
 //<<< CHAT COMMENTS >>>
 // COMMENT: CREATE
-function commentCreateRoute(req, res) {
+function commentCreateRoute(req, res, next) {
   req.body.user = req.currentUser
   Chat
     .findById(req.params.chatId)
     .then(chat => {
-      if (!chat) res.status(404).json({ message: 'Not found' })
+      if (!chat) throw new Error('Not Found')
       chat.comments.push(req.body)
       chat.save()
     })
     .then(chat => res.status(201).json(chat))
-    .catch(err => res.status(422).json(err))
+    .catch(next)
 }
 
 
 // COMMENT: DELETE
-function commentDeleteRoute(req, res) {
+function commentDeleteRoute(req, res, next) {
   req.body.user = req.currentUser
   Chat
     .findById(req.params.chatId)
     .populate('user')
     .then(chat => {
-      if (!chat) res.status(404).json({ message: 'Not found' })
+      if (!chat) throw new Error('Not Found')
       const comment = chat.comments.id(req.params.commentId)
-      if (!comment) res.status(404).json({ message: 'Not found' })
-      if (!comment.user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
+      if (!comment) throw new Error('Not Found')
+      if (!comment.user.equals(req.currentUser._id)) throw new Error('Unauthorized')
       comment.remove()
       return chat.save()
     })
     .then(() => res.status(200).json({ message: 'Comment deleted' }))
-    .catch(err => res.status(422).json(err))
+    .catch(next)
 }
 
 module.exports = {
