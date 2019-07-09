@@ -187,11 +187,61 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[6],
-                text: 'Great stuff'
+                text: 'Great stuff.'
               },
               {
                 user: users[7],
                 text: 'It is beautiful!'
+              }
+            ]
+          },
+          {
+            image: 'https://www.holidify.com/images/cmsuploads/compressed/31454200935_b4b70cb5af_b_20180827144238.jpg',
+            caption: 'Under the starry Vietnamese sky, the experience of shopping at Hanoi Night Market is one that is unique in every right. A myriad of colours and bubbling crowd will welcome you into this happy affair, where you can also see historic landmarks decorated for this weekly market. The best part about this shopping encounter is perhaps its wide array of delicious Hanoi street food such as bun thang (rice vermicelli soup with shredded chicken, fried egg, and pork), La Vong grilled fish, pho (noodle soup with beef or chicken), banh mi (Vietnamese sandwich), and bun cha (rice noodles served with roasted pork). Other miscellaneous items up for sale are t-shirts, handicrafts, accessories, shoes, sunglasses and souvenirs, which you can buy at prices as low as 25 percent of the original quoted prices, so do not forget to bargain! Many cultural and musical events hosted by the locals are regularly held here, and the entire spectacle of this market is an aesthetic extravaganza.',
+            location: 'Hanoi Night Market',
+            user: users[1],
+            category: 'Markets',
+            likes: [
+              {
+                user: users[10]
+              },
+              {
+                user: users[9]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'Great stuff.'
+              },
+              {
+                user: users[7],
+                text: 'Can not wait to go!'
+              }
+            ]
+          },
+          {
+            image: 'https://www.holidify.com/images/cmsuploads/compressed/Lemarche%C3%8C%C2%81flottant(CaiRang,Vietnam)_20180827180805.jpg',
+            caption: 'If you have had enough of land-based markets, worry not for Vietnam has you covered! Located in the Mekong Delta is Cai Rang which is an entire market-spread based on boats, and the biggest one in the entire delta region. A picturesque bridge serves as the perfect location for some good old photography. If you wish to avoid the rush of customers, you might want to visit this destination during the morning hours. Navigating the market requires you to hire a boat after which you can quickly look into the various goodies up for sale. The market mainly sells fruit, vegetables and fish, but you can also get an authentic pho breakfast here. Visit this destination for an authentic experience.',
+            location: 'Cai Rang Floating Market',
+            user: users[1],
+            category: 'Markets',
+            likes: [
+              {
+                user: users[10]
+              },
+              {
+                user: users[9]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'Very cool!'
+              },
+              {
+                user: users[4],
+                text: 'Awesome!'
               }
             ]
           },
@@ -264,15 +314,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[10],
-                text: 'Send more reccomendations, loved this'
+                text: 'Send more reccomendations, loved this.'
               },
               {
                 user: users[11],
-                text: 'Love your photo'
+                text: 'Love your photo.'
               },
               {
                 user: users[8],
-                text: 'Looks like fun, excited to go there'
+                text: 'Looks like fun, excited to go there.'
               }
             ]
           },
@@ -286,7 +336,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[7],
-                text: 'Nice picture'
+                text: 'Nice picture.'
               }
             ]
           },
@@ -307,7 +357,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[10],
-                text: 'Love it'
+                text: 'Love it.'
               },
               {
                 user: users[11],
@@ -315,7 +365,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               },
               {
                 user: users[9],
-                text: 'Nice'
+                text: 'Nice!'
               }
             ]
           },
@@ -336,7 +386,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[11],
-                text: 'Nice'
+                text: 'Nice!'
               },
               {
                 user: users[6],
@@ -353,7 +403,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             caption: 'Ban Gioc Waterfall is a lesser-known destination in North Vietnam compared to Sapa and Ha Long Bay, making a truly hidden gem for nature lovers and adventurers to discover. Located in northeastern of Vietnam, Cao Bang Province, on a height of 30 meters and a width of 300 meters, Ban Gioc is the widest waterfall in Vietnam, creating such impressive sight of nature.',
             location: 'Ban Gioc Waterfall',
             user: users[1],
-            category: 'Lanscapes',
+            category: 'Landscapes',
             likes: [
               {
                 user: users[10]
@@ -368,11 +418,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[10],
-                text: 'Cannot wait to visit'
+                text: 'Cannot wait to visit.'
               },
               {
                 user: users[7],
-                text: 'I hope to visit soon'
+                text: 'I hope to visit soon.'
               }
             ]
           },
@@ -381,7 +431,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             caption: 'As the name describes, Halong is a land where dragon descended into. This is a rather poetic explanation of thousands of limestone islands and islets scattering on an area of 434 sqkm, reflecting on the greenish bay water. Halong Bay’s geographical landscape was the result of complex geological processes taking over 500 million years. Halong is home to beautiful, unique karst caves such as Dau Go Cave, Sung Sot Cave and Thien Cung Cave.',
             location: 'Halong Bay',
             user: users[10],
-            category: 'Lanscapes',
+            category: 'Landscapes',
             likes: [
               {
                 user: users[11]
@@ -390,15 +440,143 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[6],
-                text: 'Very nice'
+                text: 'Very nice.'
               },
               {
                 user: users[7],
-                text: 'Lovely'
+                text: 'Lovely!'
               },
               {
                 user: users[11],
-                text: 'Visited last year, would go again'
+                text: 'Visited last year, would go again.'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-amazing-landscape-vietnam/allParagraphs/00/top10Set/04/image.jpg',
+            caption: 'Hiking Sapa’s Fansipan Mountain may require a good level of fitness, but you’ll be rewarded with breathtaking views of mountain ranges and countryside within north-western Vietnam as well as glimpses of Yulong Mountain in China. Located 9 kilometres southwest of Sapa Village, three-day to five-day hiking excursions are available between October and March, where you’ll pass through hill tribe hamlets and dense forest trails, followed by a 2000 metre-tall climb to the top of the mountain.',
+            location: 'Fansipan Mountain',
+            user: users[5],
+            category: 'Landscapes',
+            likes: [
+              {
+                user: users[11]
+              },
+              {
+                user: users[3]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'Looks great!'
+              },
+              {
+                user: users[7],
+                text: 'Nice views!'
+              },
+              {
+                user: users[11],
+                text: 'Would definitely go again.'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-amazing-landscape-vietnam/allParagraphs/00/top10Set/05/image.jpg',
+            caption: 'Home to thousands of endangered flora and fauna species, Cuc Phuong National Park is Vietnam’s largest nature reserve. Set within the Ninh Binh Province, there are dozens of hiking trails within the forest, with guided tours available at USD 25 upwards. The park also houses the ethnic Muong hill tribe, where you can visit traditional stilt houses, waterwheels, bamboo rafts, and expansive rice terraces. It takes between three and four hours to reach Cuc Phuong National Park from Hanoi if you’re travelling by bus, car or motorbike.',
+            location: 'Cuc Phuong National Park',
+            user: users[6],
+            category: 'Landscapes',
+            likes: [
+              {
+                user: users[9]
+              },
+              {
+                user: users[3]
+              },{
+                user: users[2]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'Looks great!'
+              },
+              {
+                user: users[7],
+                text: 'great stuff.'
+              },
+              {
+                user: users[11],
+                text: 'Would definitely go again.'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-amazing-landscape-vietnam/allParagraphs/00/top10Set/06/image.jpg',
+            caption: 'Located within Dong Thap Province, Tram Chim National Park is a must-visit for avid bird enthusiasts and wildlife photographers. Between late December and early May, over 60,000 birds (particularly the sarus cranes) fly to Tram Chim every year and the best way to see them is by taking a boat through the park. There are three boat routes available, with the shortest route (45 minutes) priced at VND500,000 per boat and the longest (2½ hours) costing VND800,000 per boat. Visitors can enjoy various activities during off-peak seasons, including cycling, trekking, rice harvesting, and fishing.',
+            location: 'Tram Chim National Park',
+            user: users[6],
+            category: 'Landscapes',
+            likes: [
+              {
+                user: users[9]
+              },
+              {
+                user: users[3]
+              },{
+                user: users[2]
+              }
+              ,{
+                user: users[5]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'Why is it purple?'
+              },
+              {
+                user: users[7],
+                text: 'colorful picture!'
+              },
+              {
+                user: users[11],
+                text: 'Is this paradise?'
+              }
+            ]
+          },
+          {
+            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-amazing-landscape-vietnam/allParagraphs/00/top10Set/01/image.jpg',
+            caption: 'Ba Vi National Park, located 58 kilometres west of downtown Hanoi, is famed for its three-peaked mountain that juts steeply up into the sky. Featuring numerous forest trails, natural hot springs, and slopes between three mountain summits, the park offers a great escape from the city with fresh air and an atmospheric backdrop of clouds, rainforest, and an array of wildlife. There’s also 11th century Bach Ho Temple at the top of the highest summit, overlooking the surrounding countryside.',
+            location: 'Ba Vi National Park',
+            user: users[6],
+            category: 'Landscapes',
+            likes: [
+              {
+                user: users[6]
+              },
+              {
+                user: users[4]
+              },{
+                user: users[2]
+              }
+              ,{
+                user: users[5]
+              }
+            ],
+            comments: [
+              {
+                user: users[6],
+                text: 'Such a nice area.'
+              },
+              {
+                user: users[7],
+                text: 'I love the lush forest!'
+              },
+              {
+                user: users[11],
+                text: 'Best Bridge ever.'
               }
             ]
           },
@@ -422,11 +600,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[6],
-                text: 'I am very excited to visit'
+                text: 'I am very excited to visit!'
               },
               {
                 user: users[8],
-                text: 'Great picture'
+                text: 'Great picture.'
               }
             ]
           },
@@ -457,7 +635,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               },
               {
                 user: users[6],
-                text: 'Wonderful, I went there as well'
+                text: 'Wonderful, I went there as well!'
               }
             ]
           }
