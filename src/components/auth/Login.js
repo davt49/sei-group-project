@@ -37,7 +37,7 @@ class Login extends React.Component {
               <label className="form-label" htmlFor="name">Email</label>
               <div className="control">
                 <input
-                  className="form-input"
+                  className={`form-input ${this.state.error ? 'is-danger' : ''} `}
                   name="email"
                   placeholder="Email"
                   onChange={this.handleChange}
@@ -46,13 +46,15 @@ class Login extends React.Component {
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="email">Password</label>
-              <input className="form-input"
+              <input  
+                className={`input ${this.state.error ? 'is-danger' : ''} `}
                 type="password"
                 name="password"
                 placeholder="Password"
                 onChange={this.handleChange}
               />
             </div>
+            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
             <button className="btn btn-primary input-group-btn">Login</button>
             <p> Dont have an account?
             Register here </p>
