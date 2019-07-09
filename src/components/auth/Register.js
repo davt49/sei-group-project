@@ -19,7 +19,7 @@ class Register extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-
+    console.log(this.state.data)
     axios.post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
@@ -34,21 +34,21 @@ class Register extends React.Component {
             <label className="form-label" htmlFor="name">Username</label>
             <input
               className="form-input input-sm"
-              name="Username"
+              name="username"
               placeholder="Username"
               onChange={this.handleChange}
             />
             <label className="form-label" htmlFor="email">Email</label>
             <input
               className="form-input input-sm"
-              name="Email"
+              name="email"
               placeholder="Email"
               onChange={this.handleChange}
             />
             <label className="form-label" htmlFor="password">Password</label>
             <input
               className="form-input input-sm"
-              name="Password"
+              name="password"
               placeholder="Password"
               onChange={this.handleChange}
             />
@@ -67,34 +67,33 @@ class Register extends React.Component {
               onChange={this.handleChange}
             />
 
-
             <label className="form-label" htmlFor="Lang">Lang</label>
             <div className="form-group">
               <label className="form-radio form-inline">
-                <input type="radio" name="lang" value="en"/><i className="form-icon"></i> English
+                <input type="radio" name="lang" value="en" onChange={this.handleChange}/><i className="form-icon"></i> English
               </label>
               <label className="form-radio form-inline">
-                <input type="radio" name="lang" value="vi"/><i className="form-icon"></i> Vietnamese
+                <input type="radio" name="lang" value="vi" onChange={this.handleChange}/><i className="form-icon"></i> Vietnamese
               </label>
             </div>
 
             <div className="form-group">
               <label className="form-label" htmlFor="text">Text</label>
-              <textarea className="form-input" placeholder="Textarea" rows="4"></textarea>
+              <textarea className="form-input" placeholder="Textarea" rows="4" name="text" onChange={this.handleChange}></textarea>
             </div>
 
             <label className="form-label" htmlFor="email">User Type</label>
             <div className="form-group">
               <label className="form-radio form-inline">
-                <input type="radio" name="userType" value="tourist"/><i className="form-icon"></i> Tourist
+                <input type="radio" name="userType" value="tourist" onChange={this.handleChange}/><i className="form-icon"></i> Tourist
               </label>
               <label className="form-radio form-inline">
-                <input type="radio" name="userType" value="local"/><i className="form-icon"></i> Local
+                <input type="radio" name="userType" value="local" onChange={this.handleChange}/><i className="form-icon"></i> Local
               </label>
 
             </div>
           </div>
-          <button className="btn btn-primary input-group-btn input-sm">Submit</button>
+          <button type="submit" className="btn btn-primary input-group-btn input-sm">Submit</button>
         </form>
       </section>
     )
