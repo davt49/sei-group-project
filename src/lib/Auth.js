@@ -7,6 +7,10 @@ class Auth {
     return localStorage.getItem('token')
   }
 
+  static logout() {
+    localStorage.removeItem('token')
+  }
+
   static getPayload() {
     const token = this.getToken()
     if (!token) return false

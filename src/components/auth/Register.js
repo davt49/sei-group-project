@@ -21,7 +21,7 @@ class Register extends React.Component {
     e.preventDefault()
     console.log(this.state.data)
     axios.post('/api/register', this.state.data)
-      .then(() => this.props.history.push('/login'))
+      .then(() => this.props.history.push('/'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 

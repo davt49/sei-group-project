@@ -22,7 +22,10 @@ class Profile extends React.Component {
     axios.get('/api/gems', {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(res => console.log(res.data))
+      .then(res => {
+        const newArray = res.data.filter(gem => gem.user._id === this.state.user._id)
+        return this.setState({ gems: newArray })
+      })
       .catch(err => console.log(err))
 
   }
@@ -33,35 +36,53 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
-        <div className="columns col-oneline">
-          <div className="column col-5">
-            <img src={this.state.user.image} />
-          </div>
-          <div className="column col-7">
-            <h2>{this.state.user.username}</h2>
-            <h3>
-              {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span> }
-              {this.state.user.userType}
-            </h3>
-            <p>{this.state.user.text}</p>
-            <p>Gems</p>
-          </div>
-        </div>
-        <div>
-          <hr />
-          <div className="columns col-oneline">
-            <div className="column col-6">
-              <button>Find new gems</button>
+        {
+          this.state.user &&
+          <div>
+            <div className="columns col-oneline">
+              <div className="column col-5">
+                <img src={this.state.user.image} />
+              </div>
+              <div className="column col-7">
+                <h2>{this.state.user.username}</h2>
+                <h3>
+                  {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span> }
+                  {this.state.user.userType}
+                </h3>
+                <p>{this.state.user.text}</p>
+                {
+                  this.state.gems.length > 0 &&
+                  <p>
+                    <span>{this.state.gems.length} </span>
+                    {
+                      this.state.gems.length > 1 ? 'Gems' : 'Gem'
+                    }
+                  </p>
+                }
+              </div>
             </div>
-            <div className="column col-6">
-              <button>Find new friends</button>
+            <div>
+              <hr />
+              <div className="columns col-oneline">
+                <div className="column col-6">
+                  <Link to="/gems">Find new gems</Link>
+                </div>
+                <div className="column col-6">
+                  <Link to="/chats">Find new friends</Link>
+                </div>
+              </div>
+            </div>
+            <div>
+              {
+                this.state.gems.map(gem => {
+                  return <img src={gem.image} key={gem._id}/>
+                })
+              }
             </div>
           </div>
-        </div>
-        <div>gems</div>
+        }
       </div>
     )
   }

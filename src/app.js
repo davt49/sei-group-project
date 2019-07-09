@@ -33,7 +33,7 @@ const App = () => {
           <Route path='/gems' component={Gems}/>
           <Route path='/profile' component={Profile}/>
           <Route path='/register' component={Register}/>
-          <Route path='/login' component={Login} />
+          <Route exact path='/' component={Login} />
         </Switch>
         <Footer/>
       </main>

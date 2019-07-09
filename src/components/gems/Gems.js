@@ -35,7 +35,6 @@ class Gems extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className='container'>
         <h1>Gems</h1>
