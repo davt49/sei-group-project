@@ -13,33 +13,18 @@ class ChatsShow extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.addEmoji = this.addEmoji.bind(this)
   }
+  
+  toggleEmojis(e){
+    this.setState(prevState => ({
+      showEmojis: !prevState.showEmojis
+    }))  
+  }
 
   addEmoji(e){
     const emoji = e.native
     this.setState({
       text: this.state.text + emoji
     })
-  }
-
-  showEmojis(e){
-    this.setState(
-      {
-        showEmojis: true
-      },
-      () => document.addEventListener('click', this.closeMenu)
-    )
-  }
-
-  closeMenu(e) {
-    console.log(this.emojiPicker)
-    if (this.emojiPicker !== null && !this.emojiPicker.contains(e.target)) {
-      this.setState(
-        {
-          showEmojis: false
-        },
-        () => document.removeEventListener('click', this.closeMenu)
-      )
-    }
   }
   
   getData() {
@@ -91,22 +76,17 @@ class ChatsShow extends React.Component {
                       value={this.state.text}
                       onChange={this.handleChange}
                       placeholder="Type your message" />
-                    <span className="add-emoji-button">😀</span>
+                    <span className="add-emoji-button" onClick={this.toggleEmojis.bind(this)}>😀</span>
                     <button type='submit' className="btn btn-primary input-group-btn">Send</button>
                   </form>
-                  {this.state.showEmojis ? (
-                    <span ref={el => (this.emojiPicker = el)}>
-                      <Picker
-                        onSelect={this.addEmoji}
-                        emojiTooltip={true}
-                        title="Chat"
-                      />
-                    </span>
-                  ) : (
-                    <p onClick={this.showEmojis}>
-                      {String.fromCodePoint(0x1f60a)}
-                    </p>
-                  )}
+                  {this.state.showEmojis && 
+                  <span className="emojipicker-container"> test
+                    <Picker className={this.state.showEmojis}
+                      onSelect={this.addEmoji}
+                      emojiTooltip={true}
+                      title="Chat"
+                    />
+                  </span>}
                 </div>
               </div>
             </div>
