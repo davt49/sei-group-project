@@ -37,7 +37,7 @@ class Gems extends React.Component {
   render() {
     return (
       <div className='container'>
-        <h1>Gems</h1>
+        <h1>Hidden Gems</h1>
         {
           this.state.data &&
           <div>

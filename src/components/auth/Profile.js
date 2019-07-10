@@ -78,7 +78,7 @@ class Profile extends React.Component {
             <div>
               {
                 this.state.gems.map(gem => {
-                  return <img src={gem.image} key={gem._id}/>
+                  return <Link to={`/gems/${gem._id}`} key={gem._id}><img src={gem.image} /></Link>
                 })
               }
             </div>
