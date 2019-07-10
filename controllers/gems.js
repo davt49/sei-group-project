@@ -94,9 +94,10 @@ function likeRoute(req, res, next) {
   req.body.user = req.currentUser
   Gem
     .findById(req.params.gemId)
-    .populate('user')
+    .populate('likes.user')
     .then(gem => {
       if (!gem) throw new Error('Not Found')
+      if (gem.likes.some(like => like.user.equals(req.currentUser))) return gem
       gem.likes.push({ user: req.currentUser })
       return gem.save()
     })

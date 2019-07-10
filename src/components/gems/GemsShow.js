@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import { Link } from  'react-router-dom'
 
 class GemsShow extends React.Component {
   constructor() {
     super()
 
-    this.state = { gem: null , comment: {} }
+    this.state = { gem: null , comment: {}, user: {} }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCommentDelete = this.handleCommentDelete.bind(this)
@@ -30,13 +31,15 @@ class GemsShow extends React.Component {
   }
 
   getData() {
-    console.log('this is happeneing')
+    console.log('this is happening')
     axios.get(`/api/gems/${this.props.match.params.gemId}`, {
       headers: { 'Authorization': `${Auth.getToken()}` }
     })
       .then(res => this.setState({ gem: res.data, comment: {} }))
+      .then(console.log(this.state))
       .catch(err => console.log(err))
   }
+
 
   handleSubmit(e) {
     e.preventDefault()
@@ -48,8 +51,11 @@ class GemsShow extends React.Component {
       .catch(err => console.log(err))
   }
 
-  isOwner(comment) {
+  isOwnerComment(comment) {
     return Auth.getPayload().sub === comment.user._id
+  }
+  isOwner() {
+    return Auth.getPayload().sub === this.state.gem.user._id
   }
 
   handleCommentDelete(comment) {
@@ -88,11 +94,18 @@ class GemsShow extends React.Component {
                 <p>{gem.user.username}</p>
                 <hr />
                 <h4 className="title is-4">Category</h4>
-                <p>{gem.category}</p>
+                <div className="chip">{gem.category}</div>
                 <hr />
                 <h4 className="title is-4">💎</h4>
                 <p>{gem.likeCount}</p>
                 <button onClick={this.addLike} >Like</button>
+                <hr />
+                {this.isOwner() && <Link
+                  className="button"
+                  to={`/gems/${this.props.match.params.gemId}/edit`}
+                >
+                  <button>Edit</button>
+                </Link>}
                 <hr />
               </div>
             </div>
@@ -100,9 +113,12 @@ class GemsShow extends React.Component {
             {gem.comments.map(comment => (
               <div key={comment._id} className="card">
                 <div className="card-content">
-                  {comment.text} - {new Date(comment.createdAt).toLocaleString()}
+                  {comment.text}
                 </div>
-                {this.isOwner(comment) && <button
+                <div>
+                  {comment.user.username} - {new Date(comment.createdAt).toLocaleString()}
+                </div>
+                {this.isOwnerComment(comment) && <button
                   className="button is-danger"
                   onClick={() => this.handleCommentDelete(comment)}
                 >Delete

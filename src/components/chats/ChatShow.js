@@ -39,7 +39,6 @@ class ChatsShow extends React.Component {
   render() {
 
     console.log(this.state.comments)
-    console.log(this.state.user)
 
     return (
       <section className="section">

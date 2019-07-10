@@ -21,6 +21,8 @@ function showRoute(req, res, next) {
   const lang = req.currentUser.lang === 'vi' ? 'en-vi' : 'vi-en'
   Chat
     .findById(req.params.chatId)
+    .populate('user')
+    .populate('comments.user')
     .then(chat => {
       if (!chat) throw new Error('Not Found')
       return Promise.all([chat, ...chat.comments.map(comment => {
@@ -44,6 +46,7 @@ function commentCreateRoute(req, res, next) {
   req.body.user = req.currentUser
   Chat
     .findById(req.params.chatId)
+    .populate('user')
     .then(chat => {
       if (!chat) throw new Error('Not Found')
       chat.comments.push(req.body)
