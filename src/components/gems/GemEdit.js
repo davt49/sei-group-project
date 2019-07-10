@@ -2,13 +2,21 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 
-class GemNew extends React.Component {
+class GemEdit extends React.Component {
   constructor() {
     super()
 
     this.state = { data: {}, errors: null }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get(`/api/gems/${this.props.match.params.gemId}`, {
+      headers: { 'Authorization': `${Auth.getToken()}` }
+    })
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
   handleChange({ target: { name, value } }) {
@@ -19,8 +27,8 @@ class GemNew extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    axios.post('/api/gems', this.state.data,{
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    axios.put(`/api/gems/${this.props.match.params.gemId}`, this.state.data, {
+      headers: { 'Authorization': `${Auth.getToken()}` }
     })
       .then(() => this.props.history.push('/gems'))
       .catch(err => this.setState({ errors: err.response.data.errors }))
@@ -34,6 +42,7 @@ class GemNew extends React.Component {
           <input
             className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
             name="image"
+            value = {this.state.data.image || ''}
             placeholder="image url"
             onChange={this.handleChange}
           />
@@ -42,6 +51,7 @@ class GemNew extends React.Component {
           <input
             className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
             name="caption"
+            value = {this.state.data.caption || ''}
             placeholder="caption here"
             onChange={this.handleChange}
           />
@@ -50,6 +60,7 @@ class GemNew extends React.Component {
           <input
             className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
             name="location"
+            value = {this.state.data.location || ''}
             placeholder="where is this?"
             onChange={this.handleChange}
           />
@@ -60,6 +71,7 @@ class GemNew extends React.Component {
             <select
               className={`form-select ${this.state.errors ? 'is-error' : ''} `}
               name="category"
+              value = {this.state.data.category || ''}
               onChange={this.handleChange}
             >
               <option>Choose an option</option>
@@ -79,4 +91,4 @@ class GemNew extends React.Component {
   }
 }
 
-export default GemNew
+export default GemEdit

@@ -25,7 +25,6 @@ class Register extends React.Component {
   }
 
   render() {
-    console.log(this.state.errors)
     return (
       <section className="section">
         <form onSubmit={this.handleSubmit}>
