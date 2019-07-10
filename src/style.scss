@@ -7,5 +7,21 @@
 }
 .imagestyle{
   height: 600px;
-  width: auto;
+   width: auto;
+}
+
+span.add-emoji-button {
+  position: absolute;
+  right: 94px;
+  margin-top: 6px;
+  cursor: pointer;
+  font-size: 17px;
+  width: 23px;
+  height: 24px;
+  text-align: center;
+  border-radius: 10px
+}
+
+span.add-emoji-button:hover {
+  background: #80808036;
 }

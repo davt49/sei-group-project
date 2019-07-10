@@ -38,11 +38,13 @@ class Gems extends React.Component {
     return (
       <div className='container'>
         <h1>Hidden Gems</h1>
+        <p className="text-center">Watch with glittering eyes the whole world around you.
+          - Roald Dahl</p>
         {
           this.state.data &&
           <div>
             <div>
-              <Link to="/gems/new">Post a gem</Link>
+              <Link to="/gems/new">💎 Post Your Gem</Link>
               <div className="filter">
                 <input
                   type="radio"

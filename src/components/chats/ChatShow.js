@@ -2,14 +2,46 @@ import React from 'react'
 import axios from 'axios'
 // import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
 
 class ChatsShow extends React.Component {
-  constructor() {
+  constructor() { 
     super()
 
-    this.state = { chat: {} }
+    this.state = { chat: {}, text: '', showEmojis: false }
+    this.handleChange = this.handleChange.bind(this)
+    this.addEmoji = this.addEmoji.bind(this)
   }
 
+  addEmoji(e){
+    const emoji = e.native
+    this.setState({
+      text: this.state.text + emoji
+    })
+  }
+
+  showEmojis(e){
+    this.setState(
+      {
+        showEmojis: true
+      },
+      () => document.addEventListener('click', this.closeMenu)
+    )
+  }
+
+  closeMenu(e) {
+    console.log(this.emojiPicker)
+    if (this.emojiPicker !== null && !this.emojiPicker.contains(e.target)) {
+      this.setState(
+        {
+          showEmojis: false
+        },
+        () => document.removeEventListener('click', this.closeMenu)
+      )
+    }
+  }
+  
   getData() {
     axios.get(`/api/chats/${this.props.match.params.chatId}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
@@ -20,6 +52,10 @@ class ChatsShow extends React.Component {
 
   componentDidMount(){
     this.getData()
+  }
+
+  handleChange(e) {
+    this.setState({ text: e.target.value })
   }
 
   render() {
@@ -50,9 +86,27 @@ class ChatsShow extends React.Component {
                 }
                 <div className="panel-footer">
                   <form onSubmit={this.handleSubmit} className="input-group">
-                    <input className="form-input" type="text" placeholder="Type your message" />
+                    <input className="form-input"
+                      type="text"
+                      value={this.state.text}
+                      onChange={this.handleChange}
+                      placeholder="Type your message" />
+                    <span className="add-emoji-button">😀</span>
                     <button type='submit' className="btn btn-primary input-group-btn">Send</button>
                   </form>
+                  {this.state.showEmojis ? (
+                    <span ref={el => (this.emojiPicker = el)}>
+                      <Picker
+                        onSelect={this.addEmoji}
+                        emojiTooltip={true}
+                        title="Chat"
+                      />
+                    </span>
+                  ) : (
+                    <p onClick={this.showEmojis}>
+                      {String.fromCodePoint(0x1f60a)}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

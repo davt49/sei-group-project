@@ -25,6 +25,11 @@ class ChatIndex extends React.Component {
   render() {
     return (
       <section>
+        <div>
+          <h1>Chat</h1>
+          <p className="text-center">“Be genuinely interested in everyone you meet and everyone you meet will be genuinely interested in you”
+          ― Rasheed Ogunlaru</p>
+        </div>
         <div className="text-center">
           Search Topics
         </div>
