@@ -11,6 +11,7 @@ class GemsShow extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCommentDelete = this.handleCommentDelete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
     this.addLike = this.addLike.bind(this)
   }
 
@@ -65,7 +66,16 @@ class GemsShow extends React.Component {
       .catch(err => console.log(err))
   }
 
+  handleDelete() {
+    axios.delete(`/api/gems/${this.props.match.params.gemId}`, {
+      headers: { 'Authorization': Auth.getToken() }
+    })
+      .then(() => this.props.history.push('/gems'))
+      .catch(err => console.log(err.response))
+  }
+
   render() {
+    console.log(this.props.match.params.gemId)
     if (!this.state.gem) return null
     const { gem } = this.state
     return (
@@ -81,7 +91,19 @@ class GemsShow extends React.Component {
                 </figure>
               </div>
               <div className="column is-half">
-                <h4 className="title is-4">Caption</h4>
+                <h4 className="title is-4">Caption {this.isOwner() && <Link
+                  className="btn btn-link btn-sm"
+                  to={`/gems/${this.props.match.params.gemId}/edit`}
+                >
+                  ✏️
+                </Link>}
+                </h4>
+                <div className="columns">
+                  <h4 className="title is-4 col-2"> 💎 </h4>
+                  <p className="title is-4 col-2">{gem.likeCount}</p>
+                  <button className="btn btn-primary btn-sm col-2" onClick={this.addLike} >Like</button>
+                </div>
+
                 <p>{gem.caption}</p>
                 <hr />
                 <h4 className="title is-4">Location</h4>
@@ -93,17 +115,9 @@ class GemsShow extends React.Component {
                 <h4 className="title is-4">Category</h4>
                 <div className="chip">{gem.category}</div>
                 <hr />
-                <h4 className="title is-4">💎</h4>
-                <p>{gem.likeCount}</p>
-                <button onClick={this.addLike} >Like</button>
-                <hr />
-                {this.isOwner() && <Link
-                  className="button"
-                  to={`/gems/${this.props.match.params.gemId}/edit`}
-                >
-                  <button>Edit</button>
-                </Link>}
-                <hr />
+
+                <hr/>
+                {this.isOwner() && <button onClick={this.handleDelete} className="btn btn-primary btn-sm btn-error">Delete ❌</button>}
               </div>
             </div>
             <hr />
