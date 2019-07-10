@@ -44,7 +44,7 @@ class Navbar extends React.Component {
         </section>
         <section className="navbar-section">
           {
-            Auth.isAuthenticated() && this.state.user &&
+            Auth.isAuthenticated() && this.state.user.username &&
             <div className="dropdown dropdown-right">
               <a href="#" className="btn btn-link dropdown-toggle" tabIndex="0">
                 <div className="chip">
