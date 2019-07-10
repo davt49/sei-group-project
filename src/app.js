@@ -26,9 +26,9 @@ const App = () => {
         <Switch>
           <Route path='/chats/:chatId' component={ChatShow}/>
           <Route path='/chats' component={ChatIndex}/>
+          <Route exact path='/gems/new' component={GemNew}/>
           <Route path='/gems/:gemId/edit' component={GemEdit}/>
           <Route path='/gems/:gemId' component={GemsShow}/>
-          <Route path='/gems/new' component={GemNew}/>
           <Route path='/gems' component={Gems}/>
           <Route path='/profile' component={Profile}/>
           <Route path='/register' component={Register}/>
