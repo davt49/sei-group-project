@@ -31,7 +31,6 @@ class GemsShow extends React.Component {
   }
 
   getData() {
-    console.log('this is happening')
     axios.get(`/api/gems/${this.props.match.params.gemId}`, {
       headers: { 'Authorization': `${Auth.getToken()}` }
     })
@@ -69,8 +68,6 @@ class GemsShow extends React.Component {
   render() {
     if (!this.state.gem) return null
     const { gem } = this.state
-    // const { user } = this.state
-    console.log(this.state)
     return (
       <section className="section">
         <div className="container">
