@@ -36,7 +36,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <header className="navbar">
         <section className="navbar-section">
@@ -44,7 +43,7 @@ class Navbar extends React.Component {
         </section>
         <section className="navbar-section">
           {
-            Auth.isAuthenticated() && this.state.user &&
+            Auth.isAuthenticated() && this.state.user.username &&
             <div className="dropdown dropdown-right">
               <a href="#" className="btn btn-link dropdown-toggle" tabIndex="0">
                 <div className="chip">
@@ -58,7 +57,7 @@ class Navbar extends React.Component {
                 <li><Link to="/chats">Join a Chat</Link></li>
                 <li><Link to="/profile">Your Profile</Link></li>
                 <hr />
-                <li><a onClick={this.logout}>Logout</a></li>
+                <li><a onClick={this.logout} className="c-hand">Logout</a></li>
               </ul>
             </div>
 

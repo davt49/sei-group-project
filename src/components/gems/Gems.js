@@ -8,7 +8,7 @@ class Gems extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: [], filterCategory: '' }
+    this.state = { data: [], filterCategory: '', checked: null }
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -24,9 +24,9 @@ class Gems extends React.Component {
     this.getData()
   }
 
-  handleChange(e) {
+  handleChange(e, n) {
     const category = e.target.value
-    this.setState({ filterCategory: category })
+    this.setState({ filterCategory: category, checked: n })
   }
 
   filterGems() {
@@ -35,6 +35,7 @@ class Gems extends React.Component {
   }
 
   render() {
+    console.log(this.state.checked)
     return (
       <div className='container'>
         <h1>Gems</h1>
@@ -43,14 +44,90 @@ class Gems extends React.Component {
           <div>
             <div>
               <Link to="/gems/new">Post a gem</Link>
-              <div className="form-group">
-                <select className="form-select" name="category" onChange={this.handleChange}>
-                  <option value="">Filter by category</option>
-                  <option value="Markets">Markets</option>
-                  <option value="Temples">Temples</option>
-                  <option value="Beaches">Beaches</option>
-                  <option value="Landscapes">Landscapes</option>
-                </select>
+              <div className="filter">
+                <input
+                  type="radio"
+                  id="tag-0"
+                  className="filter-tag"
+                  name="category"
+                  value=""
+                  onChange={(e) => {
+                    this.handleChange(e, 0)
+                  }
+                  }
+                  hidden/>
+                <input
+                  type="radio"
+                  id="tag-1"
+                  className="filter-tag"
+                  name="category"
+                  value="Markets"
+                  onChange={(e) => {
+                    this.handleChange(e, 1)
+                  }
+                  }
+                  hidden />
+                <input
+                  type="radio"
+                  id="tag-2"
+                  className="filter-tag"
+                  name="category"
+                  value="Temples"
+                  onChange={(e) => {
+                    this.handleChange(e, 2)
+                  }
+                  }
+                  hidden />
+                <input
+                  type="radio"
+                  id="tag-3"
+                  className="filter-tag"
+                  name="category"
+                  value="Beaches"
+                  onChange={(e) => {
+                    this.handleChange(e, 3)
+                  }
+                  }
+                  hidden />
+                <input
+                  type="radio"
+                  id="tag-4"
+                  className="filter-tag"
+                  name="category"
+                  value="Landscapes"
+                  onChange={(e) => {
+                    this.handleChange(e, 4)
+                  }
+                  }
+                  hidden
+                />
+                <div className="filter-nav">
+                  <label
+                    className={`chip ${this.state.checked === 0 ? 'bg-success' : ''}`}
+                    htmlFor="tag-0">
+                    All
+                  </label>
+                  <label
+                    className={`chip ${this.state.checked === 1 ? 'bg-success' : ''}`}
+                    htmlFor="tag-1">
+                    Markets
+                  </label>
+                  <label
+                    className={`chip ${this.state.checked === 2 ? 'bg-success' : ''}`}
+                    htmlFor="tag-2">
+                    Temples
+                  </label>
+                  <label
+                    className={`chip ${this.state.checked === 3 ? 'bg-success' : ''}`}
+                    htmlFor="tag-3">
+                    Beaches
+                  </label>
+                  <label
+                    className={`chip ${this.state.checked === 4 ? 'bg-success' : ''}`}
+                    htmlFor="tag-4">
+                    Landscapes
+                  </label>
+                </div>
               </div>
             </div>
             <div className='columns multiline is-mobile'>
