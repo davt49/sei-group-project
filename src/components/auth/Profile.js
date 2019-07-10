@@ -67,11 +67,11 @@ class Profile extends React.Component {
               <hr />
               <div className="columns col-oneline">
                 <div className="column col-5">
-                  <Link to="/gems">Find new gems</Link>
+                  <Link to="/gems">Hidden gems</Link>
                 </div>
                 <div className="divider text-center col-2" data-content="OR"></div>
                 <div className="column col-5">
-                  <Link to="/chats">Find new friends</Link>
+                  <Link to="/chats">Join a chat</Link>
                 </div>
               </div>
             </div>
