@@ -38,11 +38,11 @@ class Gems extends React.Component {
     return (
       <div className='container gemsindex'>
         <div className="gemsheader">
-          <h1 className="text-center">Hidden Gems</h1>
           <blockquote className="text-center gemsquote">
             <p>Watch with glittering eyes the whole world around you.</p>
             <cite>- Ronald Dahl</cite>
           </blockquote>
+          <h1 className="text-center">Hidden Gems</h1>
         </div>
         {
           !this.state.data &&
