@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'spectre.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import './style.scss'
+import './styles/style.scss'
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
 
