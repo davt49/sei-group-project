@@ -31,12 +31,4 @@ gemSchema
     return this.likes.length
   })
 
-gemSchema.set('toJSON', {
-  virtuals: true,
-  transform(doc, json) {
-    delete json.likes
-    return json
-  }
-})
-
 module.exports = mongoose.model('Gem', gemSchema)

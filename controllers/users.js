@@ -23,7 +23,7 @@ function login(req, res, next) {
 }
 
 // Profile show handler
-function show(req, res, next) {
+function profileShow(req, res, next) {
   req.body.user = req.currentUser
   User
     .findOne({ email: req.body.user.email })
@@ -34,4 +34,31 @@ function show(req, res, next) {
     .catch(next)
 }
 
-module.exports = { register, login, show }
+// Other users show handler
+function userShow(req, res, next) {
+  User
+    .findById(req.params.userId)
+    .populate('followers.user')
+    .then(user => {
+      if (!user) throw new Error('Not found')
+      return res.status(200).json(user)
+    })
+    .catch(next)
+}
+
+function followRoute(req, res, next) {
+  req.body.user = req.currentUser
+  User
+    .findById(req.params.userId)
+    .then(user => {
+      console.log(user)
+      if (!user) throw new Error('Not Found')
+      if (user.followers.some(follower => follower.user._id.equals(req.currentUser._id))) return user
+      user.followers.push({ user: req.currentUser })
+      return user.save()
+    })
+    .then(user => res.status(200).json(user))
+    .catch(next)
+}
+
+module.exports = { register, login, profileShow, userShow, followRoute }

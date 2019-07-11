@@ -40,8 +40,14 @@ router.route('/chats')
 
 
 // user login and register router
+router.route('/users/:userId/followers')
+  .get(secure, users.followRoute)
+
+router.route('/users/:userId')
+  .get(secure, users.userShow)
+
 router.route('/profile')
-  .get(secure, users.show)
+  .get(secure, users.profileShow)
 
 router.route('/register')
   .post(users.register)
