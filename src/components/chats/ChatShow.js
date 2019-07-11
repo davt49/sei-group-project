@@ -6,19 +6,25 @@ import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 
 class ChatsShow extends React.Component {
-  constructor() { 
+  constructor() {
     super()
 
     this.state = { chat: {}, text: '', showEmojis: false }
     this.handleChange = this.handleChange.bind(this)
     this.addEmoji = this.addEmoji.bind(this)
+    this.hideEmojis = this.hideEmojis.bind(this)
   }
-  
-  toggleEmojis(e){
+
+  toggleEmojis(){
     this.setState(prevState => ({
       showEmojis: !prevState.showEmojis
-    }))  
+    }))
   }
+
+  hideEmojis(){
+    this.setState({ showEmojis: false })
+  }
+
 
   addEmoji(e){
     const emoji = e.native
@@ -26,7 +32,7 @@ class ChatsShow extends React.Component {
       text: this.state.text + emoji
     })
   }
-  
+
   getData() {
     axios.get(`/api/chats/${this.props.match.params.chatId}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
@@ -79,12 +85,13 @@ class ChatsShow extends React.Component {
                     <span className="add-emoji-button" onClick={this.toggleEmojis.bind(this)}>😀</span>
                     <button type='submit' className="btn btn-primary input-group-btn">Send</button>
                   </form>
-                  {this.state.showEmojis && 
-                  <span className="emojipicker-container"> test
+                  {this.state.showEmojis &&
+                  <span className="emojipicker-container" onMouseLeave={this.hideEmojis}> test
                     <Picker className={this.state.showEmojis}
                       onSelect={this.addEmoji}
                       emojiTooltip={true}
                       title="Chat"
+                      emoji="grinning"
                     />
                   </span>}
                 </div>

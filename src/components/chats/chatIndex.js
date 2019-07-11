@@ -27,8 +27,10 @@ class ChatIndex extends React.Component {
       <section>
         <div>
           <h1>Chat</h1>
-          <p className="text-center">“Be genuinely interested in everyone you meet and everyone you meet will be genuinely interested in you”
-          ― Rasheed Ogunlaru</p>
+          <blockquote className="text-center">
+            <p>“Be genuinely interested in everyone you meet and everyone you meet will be genuinely interested in you”</p>
+            <cite>― Rasheed Ogunlaru</cite>
+          </blockquote>
         </div>
         <div className="text-center">
           Search Topics
