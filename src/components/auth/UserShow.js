@@ -66,20 +66,23 @@ class UserShow extends React.Component {
         }
         {
           this.state.user &&
-          <div>
-            <div className="columns ">
+          <div className='user-page'>
+            <div className="columns user-header">
               <div className="column col-5">
-                <img src={this.state.user.image} className="s-circle"/>
+                <img src={this.state.user.image} className="profile-pic"/>
               </div>
               <div className="column col-7">
-                <h2>{this.state.user.username}</h2>
+                <div className='user-top'>
+                  <h2>{this.state.user.username}</h2>
+                  <button className="btn follow-button btn-sm col-2" onClick={this.follow} >Follow</button>
+                </div>
                 <h3>
                   {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span> }
                   {this.state.user.userType}
                 </h3>
                 <p>{this.state.user.text}</p>
-                <div className="columns">
-                  <div className="popover popover-bottom"><a className="btn btn-primary" href="#popovers">{this.state.user.followers.length}</a>
+                <div className="user-info">
+                  <div className="popover popover-bottom"><a className="followers-btn" href="#popovers">{this.state.user.followers.length} Followers</a>
                     <div className="popover-container">
                       <div className="card">
                         <div className="card-header">
@@ -91,11 +94,9 @@ class UserShow extends React.Component {
                             this.state.user.followers.map(follower => {
                               return <div key={follower.user._id} className="tile">
                                 <Link to={`/users/${follower.user._id}`}>
-                                  <div className="tile-icon">
-                                    <figure className="avatar"><img src={follower.user.image} alt="Avatar"/></figure>
-                                  </div>
-                                  <div className="tile-content">
-                                    <p className="tile-title text-bold">{follower.user.username}</p>
+                                  <div className="chip">
+                                    <img src={follower.user.image} alt="Avatar" className="avatar avatar-sm"/>
+                                    {follower.user.username}
                                   </div>
                                 </Link>
                               </div>
@@ -105,23 +106,21 @@ class UserShow extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <button className="btn btn-primary btn-sm col-2" onClick={this.follow} >Follow</button>
+
+                  {
+                    this.state.gems.length > 0 &&
+                    <p>
+                      <span> 💎  {this.state.gems.length} </span>
+                      {
+                        this.state.gems.length > 1 ? 'Gems' : 'Gem'
+                      }
+                    </p>
+                  }
                 </div>
-                {
-                  this.state.gems.length > 0 &&
-                  <p>
-                    <span> 💎  {this.state.gems.length} </span>
-                    {
-                      this.state.gems.length > 1 ? 'Gems' : 'Gem'
-                    }
-                  </p>
-                }
               </div>
             </div>
-            <div>
-              <hr />
-            </div>
-            <div>
+            <hr className="divider"/>
+            <div className='user-gems'>
               {
                 this.state.gems.length === 0 && this.state.likedGems.length === 0 &&
                 <div className="empty">
@@ -139,23 +138,27 @@ class UserShow extends React.Component {
               {
                 this.state.gems.length > 0 &&
                 <div>
-                  <h1>{this.state.user.username}&#39;s hidden gems:</h1>
-                  {
-                    this.state.gems.map(gem => {
-                      return <Link to={`/gems/${gem._id}`} key={gem._id}><img src={gem.image} /></Link>
-                    })
-                  }
+                  <h3>{this.state.user.username}&#39;s hidden gems:</h3>
+                  <div className='gems-list'>
+                    {
+                      this.state.gems.map(gem => {
+                        return <Link to={`/gems/${gem._id}`} key={gem._id}><img src={gem.image} /></Link>
+                      })
+                    }
+                  </div>
                 </div>
               }
               {
                 this.state.likedGems.length > 0 &&
                 <div>
-                  <h1>Hidden gems {this.state.user.username} liked:</h1>
-                  {
-                    this.state.likedGems.map(gem => {
-                      return <Link to={`/gems/${gem._id}`} key={gem._id}><img src={gem.image} /></Link>
-                    })
-                  }
+                  <h3>Hidden gems {this.state.user.username} liked:</h3>
+                  <div className='gems-list'>
+                    {
+                      this.state.likedGems.map(gem => {
+                        return <Link to={`/gems/${gem._id}`} key={gem._id}><img src={gem.image} /></Link>
+                      })
+                    }
+                  </div>
                 </div>
               }
             </div>

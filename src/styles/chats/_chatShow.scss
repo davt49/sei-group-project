@@ -1,6 +1,41 @@
+$title: 'Muli', sans-serif;
+$text: 'Open Sans', sans-serif;
+$yellow: goldenrod;
+$grey: #4d4d4d;
+$title-size: 30px;
+$subtitle-size: 28px;
+$subtitle-second-size: 22px;
+$paragraph-size: 18px;
 
+.chat-show {
+  margin: 50px 150px;
+  .panel {
+    border-radius: 10px;
+    padding: 30px;
+    height: 90vh;
+    flex: 0 0 auto;
+    .panel-body {
+      flex: 1 1 auto;
+      overflow-y: auto;
+    }
+    .panel-footer, .panel-header {
+      flex: 0 0 auto;
+      position: sticky;
+    }
+  }
 
-
+  .chat-message {
+    margin: 10px;
+    padding: 10px;
+    .tile-subtitle {
+      width: 60%;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      padding: 20px;
+    }
+  }
+}
+// emojii
 span.add-emoji-button {
   position: absolute;
   right: 94px;
