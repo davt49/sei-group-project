@@ -5,6 +5,7 @@ import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
+import { TiLocationArrow } from 'react-icons/ti'
 
 
 class ChatsShow extends React.Component {
@@ -74,7 +75,7 @@ class ChatsShow extends React.Component {
         }
         {
           this.state.chat.comments &&
-          <div>
+          <div className="chat-show">
             <div className="panel">
               <div className="panel-header">
                 <h2 className="panel-title">{this.state.chat.title}</h2>
@@ -82,7 +83,7 @@ class ChatsShow extends React.Component {
               </div>
               <div className="panel-body">
                 {this.state.chat.comments.map(comment => {
-                  return <div key={comment._id} className="tile">
+                  return <div key={comment._id} className="tile chat-message">
                     <div className="tile-icon">
                       <Link to={`/users/${comment.user._id}`}>
                         <figure className="avatar"><img src={comment.user.image} alt="Avatar"/></figure>
@@ -92,34 +93,38 @@ class ChatsShow extends React.Component {
                       <p className="tile-title text-bold">
                         {comment.user.username}
                         <span>{comment.user.userType === 'Local' ? ' 🇻🇳 ' : ' ✈️ '}</span>
+                        <small> {new Date(comment.createdAt).toLocaleString().slice(0,17)} </small>
                       </p>
                       <p className="tile-subtitle">{comment.text}</p>
-                      <small>{new Date(comment.createdAt).toLocaleString().slice(0,17)}</small>
+
                     </div>
                   </div>
                 })
                 }
-                <div className="panel-footer">
-                  <form onSubmit={this.handleSubmit} className="input-group">
-                    <input className="form-input"
-                      name="text"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                      placeholder="Type your message" />
-                    <span className="add-emoji-button" onClick={this.toggleEmojis}>😀</span>
-                    <button type='submit' className="btn btn-primary input-group-btn">Send</button>
-                  </form>
-                  {this.state.showEmojis &&
-                  <span className="emojipicker-container" onMouseLeave={this.hideEmojis}>
-                    <Picker className={this.state.showEmojis}
-                      onSelect={this.addEmoji}
-                      emojiTooltip={true}
-                      title="Chat"
-                      emoji="grinning"
-                    />
-                  </span>
-                  }
-                </div>
+              </div>
+              <div className="panel-footer">
+                <form onSubmit={this.handleSubmit} className="input-group">
+                  <input className="form-input"
+                    name="text"
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    placeholder="Type your message"
+                  />
+                  <span className="add-emoji-button" onClick={this.toggleEmojis}>😀</span>
+                  <button type='submit' className="btn input-group-btn">
+                    <TiLocationArrow />
+                  </button>
+                </form>
+                {this.state.showEmojis &&
+                <span className="emojipicker-container" onMouseLeave={this.hideEmojis}>
+                  <Picker className={this.state.showEmojis}
+                    onSelect={this.addEmoji}
+                    emojiTooltip={true}
+                    title="Chat"
+                    emoji="grinning"
+                  />
+                </span>
+                }
               </div>
             </div>
 

@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Muli%7COpen+Sans&display=swap');
+@import 'auth/profile';
+@import 'chats/chatShow';
+$title: 'Muli', sans-serif;
+$text: 'Open Sans', sans-serif;
+$yellow: goldenrod;
+$grey: #4d4d4d;
+$title-size: 30px;
+$subtitle-size: 28px;
+$subtitle-second-size: 22px;
+$paragraph-size: 18px;
+
+
 .form-input {
   margin: 0 auto;
 }
