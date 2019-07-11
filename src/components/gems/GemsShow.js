@@ -79,79 +79,87 @@ class GemsShow extends React.Component {
     if (!this.state.gem) return null
     const { gem } = this.state
     return (
-      <section className="section">
+      <section className="section gemshow">
         <div className="container">
           <Fragment>
             <h2 className="title">{gem.name}</h2>
-            <hr />
+
             <div className="columns">
               <div className="column is-half">
                 <figure className="image">
-                  <img src={gem.image} alt={gem.name} />
+                  <img className="gemshowimage" src={gem.image} alt={gem.name} />
                 </figure>
               </div>
               <div className="column is-half">
-                <h4 className="title is-4">Caption {this.isOwner() && <Link
-                  className="btn btn-link btn-sm"
-                  to={`/gems/${this.props.match.params.gemId}/edit`}
-                >
-                  ✏️
-                </Link>}
-                </h4>
                 <div className="columns">
-                  <h4 className="title is-4 col-2"> 💎 </h4>
-                  <p className="title is-4 col-2">{gem.likeCount}</p>
-                  <button className="btn btn-primary btn-sm col-2" onClick={this.addLike} >Like</button>
+                  <div className="col-6">
+                    <h4>{gem.location}</h4>
+                  </div>
+                  <div className="col-3">
+                    <div className="chip">{gem.category}</div>
+                  </div>
+                </div>
+                <div className="columns">
+                  <p className="text-normal">Posted by {gem.user.username}</p>
+                  {this.isOwner() && <Link
+                    className="btn btn-link btn-sm"
+                    to={`/gems/${this.props.match.params.gemId}/edit`}
+                  >
+                    ✏️
+                  </Link>}
+                </div>
+
+
+                <div className="columns">
+                  <div className="col-2">
+                    <button className="btn btn-link btn-lg" onClick={this.addLike} > 💎 </button>
+                  </div>
+                  <p className="text-center text-bold col-3">{gem.likeCount} Likes</p>
+
                 </div>
 
                 <p>{gem.caption}</p>
-                <hr />
-                <h4 className="title is-4">Location</h4>
-                <p>{gem.location}</p>
-                <hr />
-                <h4 className="title is-4">User</h4>
-                <p>{gem.user.username}</p>
-                <hr />
-                <h4 className="title is-4">Category</h4>
-                <div className="chip">{gem.category}</div>
-                <hr />
+
+
+                {this.isOwner() && <button onClick={this.handleDelete} className="btn btn-link btn-sm btn-error text-sm"> ❌  Delete Gem</button>}
 
                 <hr/>
-                {this.isOwner() && <button onClick={this.handleDelete} className="btn btn-primary btn-sm btn-error">Delete ❌</button>}
+                {gem.comments.map(comment => (
+                  <div key={comment._id} className="">
+                    <div className="text-bold">
+                      {comment.text}
+                    </div>
+                    <div>
+                      {comment.user.username} {<small>{new Date(comment.createdAt).toLocaleString().slice(0,17)}  </small>}
+                      {this.isOwnerComment(comment) && <button
+                        className="btn btn-link btn-sm btn-error"
+                        onClick={() => this.handleCommentDelete(comment)}
+                      >Delete
+                      </button>}
+                    </div>
+                  </div>
+                ))}
+
+                {Auth.isAuthenticated() &&
+                  <form onSubmit={this.handleSubmit}>
+                    <div className="field">
+                      <div className="control">
+                        <textarea
+                          className="form-input"
+                          placeholder="What do you think?"
+                          rows="2"
+                          onChange={this.handleChange}
+                          value={this.state.comment.text || ''}
+                        >
+                        </textarea>
+                      </div>
+                    </div>
+                    <button className="btn btn-primary btn-sm" type="submit">Comment</button>
+                  </form>}
+
+                <Link to="/gems" className="float-right">Find More Gems</Link>
               </div>
             </div>
-            <hr />
-            {gem.comments.map(comment => (
-              <div key={comment._id} className="card">
-                <div className="card-content">
-                  {comment.text}
-                </div>
-                <div>
-                  {comment.user.username} - {new Date(comment.createdAt).toLocaleString()}
-                </div>
-                {this.isOwnerComment(comment) && <button
-                  className="button is-danger"
-                  onClick={() => this.handleCommentDelete(comment)}
-                >Delete
-                </button>}
-              </div>
-            ))}
-            <hr />
-            {Auth.isAuthenticated() &&
-            <form onSubmit={this.handleSubmit}>
-              <div className="field">
-                <div className="control">
-                  <textarea
-                    className="textarea"
-                    placeholder="Comment........."
-                    onChange={this.handleChange}
-                    value={this.state.comment.text || ''}
-                  >
-                  </textarea>
-                </div>
-              </div>
-              <button className="button" type="submit">Comment</button>
-            </form>}
           </Fragment>
         </div>
       </section>
