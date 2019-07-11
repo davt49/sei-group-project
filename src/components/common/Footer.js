@@ -5,7 +5,7 @@ const Footer = () => (
     <section className="navbar-section footersection">
       <p>
       Made by
-        <a href="#"> Mia</a>
+        <a href="https://github.com/MiaLearnsToCode"> Mia</a>
         ,
         <a href="#"> Guy </a>
         &

@@ -33,12 +33,50 @@ $paragraph-size: 18px;
       border-radius: 10px;
       padding: 20px;
     }
+
   }
+
+
+  .user-message {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    text-align: right;
+    .tile-content {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      text-align: right;
+      margin-right: 10px;
+    }
+    .tile-title {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+      small {
+        margin-right: 10px;
+        margin-top: 2px;
+      }
+    }
+    .user-subtitle {
+      width: 60%;
+      background-color: $yellow;
+      color:white;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+  }
+
+
 }
 // emojii
 span.add-emoji-button {
   position: absolute;
-  right: 94px;
+  right: 60px;
   margin-top: 6px;
   cursor: pointer;
   font-size: 17px;
@@ -57,4 +95,15 @@ span.add-emoji-button:hover {
   position: absolute;
   right: 33px;
   margin-top: -468px;
+}
+
+.message-btn {
+  border: 1px solid $yellow;
+  color: $yellow;
+  font-size: 20px;
+}
+.message-btn:hover {
+  border: 1px solid white;
+  color: white;
+  background: $yellow;
 }

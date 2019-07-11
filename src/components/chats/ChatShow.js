@@ -83,7 +83,7 @@ class ChatsShow extends React.Component {
               </div>
               <div className="panel-body">
                 {this.state.chat.comments.map(comment => {
-                  return <div key={comment._id} className="tile chat-message">
+                  return <div key={comment._id} className={`${Auth.getPayload().sub === comment.user._id ? 'user-message' : 'tile chat-message'}`}>
                     <div className="tile-icon">
                       <Link to={`/users/${comment.user._id}`}>
                         <figure className="avatar"><img src={comment.user.image} alt="Avatar"/></figure>
@@ -92,10 +92,10 @@ class ChatsShow extends React.Component {
                     <div className="tile-content">
                       <p className="tile-title text-bold">
                         {comment.user.username}
-                        <span>{comment.user.userType === 'Local' ? ' 🇻🇳 ' : ' ✈️ '}</span>
+                        <span> {comment.user.userType === 'Local' ? ' 🇻🇳 ' : '✈️ '} </span>
                         <small> {new Date(comment.createdAt).toLocaleString().slice(0,17)} </small>
                       </p>
-                      <p className="tile-subtitle">{comment.text}</p>
+                      <p className={`${Auth.getPayload().sub === comment.user._id ? 'user-subtitle' : 'tile-subtitle'}`}>{comment.text}</p>
 
                     </div>
                   </div>
@@ -111,7 +111,7 @@ class ChatsShow extends React.Component {
                     placeholder="Type your message"
                   />
                   <span className="add-emoji-button" onClick={this.toggleEmojis}>😀</span>
-                  <button type='submit' className="btn input-group-btn">
+                  <button type='submit' className="btn message-btn input-group-btn">
                     <TiLocationArrow />
                   </button>
                 </form>
