@@ -9,6 +9,7 @@ import Footer from './components/common/Footer'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Profile from './components/auth/Profile'
+import UserShow from './components/auth/UserShow'
 
 import GemNew from './components/gems/GemNew'
 import GemsShow from './components/gems/GemsShow'
@@ -31,6 +32,7 @@ const App = () => {
           <Route path='/gems/:gemId' component={GemsShow}/>
           <Route path='/gems' component={Gems}/>
           <Route path='/profile' component={Profile}/>
+          <Route path='/users/:userId' component={UserShow}/>
           <Route path='/register' component={Register}/>
           <Route exact path='/' component={Login} />
         </Switch>

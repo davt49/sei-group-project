@@ -46,11 +46,10 @@ function commentCreateRoute(req, res, next) {
   req.body.user = req.currentUser
   Chat
     .findById(req.params.chatId)
-    .populate('user')
     .then(chat => {
       if (!chat) throw new Error('Not Found')
       chat.comments.push(req.body)
-      chat.save()
+      return chat.save()
     })
     .then(chat => res.status(201).json(chat))
     .catch(next)

@@ -25,30 +25,35 @@ class ChatIndex extends React.Component {
   render() {
     return (
       <section>
-        <div className="text-center">
-          Search Topics
-        </div>
-        <div className="container">
-          <div className="columns text-center">
-            {
-              this.state.chats &&
-              this.state.chats.map(chat => (
-                <div className="col-6" key={chat._id}>
-                  <Link to={`chats/${chat._id}`}>
-                    <div className="card cardstyle">
-                      <div className="card-image">
-                        <img src={chat.image} alt={chat.title} className="imagestyle"/>
-                      </div>
-                      <div className="card-body">
-                        {chat.title}
-                      </div>
+        {
+          this.state.chats &&
+          <div>
+            <div className="text-center">
+              Search Topics
+            </div>
+            <div className="container">
+              <div className="columns text-center">
+                {
+                  this.state.chats &&
+                  this.state.chats.map(chat => (
+                    <div className="col-6" key={chat._id}>
+                      <Link to={`chats/${chat._id}`}>
+                        <div className="card cardstyle">
+                          <div className="card-image">
+                            <img src={chat.image} alt={chat.title} className="imagestyle"/>
+                          </div>
+                          <div className="card-body">
+                            {chat.title}
+                          </div>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
-                </div>
-              ))
-            }
+                  ))
+                }
+              </div>
+            </div>
           </div>
-        </div>
+        }
       </section>
     )
   }

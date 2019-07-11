@@ -650,7 +650,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
       return Chat.create([
         {
           title: 'locals',
-          image: 'http://static.asiawebdirect.com/m/bangkok/portals/vietnam/homepage/food/allParagraphs/BucketComponent/ListingContainer/014/image/hanoi-beer.jpg',
+          image: 'https://www.vietvisiontravel.com/wp-content/uploads/2017/05/Thai-people-in-Vietnam-1.jpg',
           comments: [
             {
               text: 'Hi, I am planning to visit your beautiful town. Do you have some suggestion for me to where to stay?',

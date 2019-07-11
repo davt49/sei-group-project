@@ -8,7 +8,7 @@ class Gems extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: [], filterCategory: '', checked: null }
+    this.state = { data: null, filterCategory: '', checked: null }
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -38,6 +38,10 @@ class Gems extends React.Component {
     return (
       <div className='container'>
         <h1>Hidden Gems</h1>
+        {
+          !this.state.data &&
+          <img src='https://media2.giphy.com/media/mFHVvtrf1n3qm3pdvr/giphy.gif?cid=790b76115d25fc155230413373f1d5d2&rid=giphy.gif' />
+        }
         {
           this.state.data &&
           <div>
