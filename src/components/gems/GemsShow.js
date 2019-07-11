@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import { Link } from  'react-router-dom'
+import { MdClear } from 'react-icons/md'
+import { TiPencil } from 'react-icons/ti'
 
 class GemsShow extends React.Component {
   constructor() {
@@ -103,7 +105,7 @@ class GemsShow extends React.Component {
                     className="btn btn-link btn-sm"
                     to={`/gems/${this.props.match.params.gemId}/edit`}
                   >
-                    ✏️
+                    <TiPencil />
                   </Link>}
                 </div>
 
@@ -112,14 +114,18 @@ class GemsShow extends React.Component {
                   <div className="col-2">
                     <button className="btn btn-link btn-lg" onClick={this.addLike} > 💎 </button>
                   </div>
-                  <p className="text-center text-bold col-3">{gem.likeCount} Likes</p>
+                  <p className="text-center text-bold col-3">{gem.likes.length} Likes</p>
 
                 </div>
 
                 <p>{gem.caption}</p>
 
 
-                {this.isOwner() && <button onClick={this.handleDelete} className="btn btn-link btn-sm btn-error text-sm"> ❌  Delete Gem</button>}
+                {this.isOwner() &&
+                  <button onClick={this.handleDelete} className="btn btn-link btn-sm btn-error text-sm">
+                    <i className="icon icon-cross"></i>
+                  </button>
+                }
 
                 <hr/>
                 {gem.comments.map(comment => (
@@ -129,11 +135,11 @@ class GemsShow extends React.Component {
                     </div>
                     <div>
                       {comment.user.username} {<small>{new Date(comment.createdAt).toLocaleString().slice(0,17)}  </small>}
-                      {this.isOwnerComment(comment) && <button
-                        className="btn btn-link btn-sm btn-error"
-                        onClick={() => this.handleCommentDelete(comment)}
-                      >Delete
-                      </button>}
+                      {
+                        this.isOwnerComment(comment) &&
+                        <button className="btn btn-link btn-sm" onClick={() => this.handleCommentDelete(comment)}><MdClear /></button>
+
+                      }
                     </div>
                   </div>
                 ))}
