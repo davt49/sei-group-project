@@ -69,7 +69,6 @@ class Profile extends React.Component {
                       <div className="card-body">
                         {
                           this.state.user.followers.map(follower => {
-                            console.log(follower)
                             return <div key={follower.user._id} className="tile">
                               <Link to={`/users/${follower.user._id}`}>
                                 <div className="tile-icon">

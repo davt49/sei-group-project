@@ -51,7 +51,6 @@ function followRoute(req, res, next) {
   User
     .findById(req.params.userId)
     .then(user => {
-      console.log(user)
       if (!user) throw new Error('Not Found')
       if (user.followers.some(follower => follower.user._id.equals(req.currentUser._id))) return user
       user.followers.push({ user: req.currentUser })

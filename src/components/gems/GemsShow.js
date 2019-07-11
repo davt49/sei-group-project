@@ -36,7 +36,6 @@ class GemsShow extends React.Component {
       headers: { 'Authorization': `${Auth.getToken()}` }
     })
       .then(res => this.setState({ gem: res.data, comment: {} }))
-      .then(console.log(this.state))
       .catch(err => console.log(err))
   }
 
@@ -71,11 +70,10 @@ class GemsShow extends React.Component {
       headers: { 'Authorization': Auth.getToken() }
     })
       .then(() => this.props.history.push('/gems'))
-      .catch(err => console.log(err.response))
+      .catch(err => console.log(err))
   }
 
   render() {
-    console.log(this.props.match.params.gemId)
     if (!this.state.gem) return null
     const { gem } = this.state
     return (
