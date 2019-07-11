@@ -19,7 +19,6 @@ class ChatsShow extends React.Component {
   }
 
   toggleEmojis(){
-    console.log(this.state)
     this.setState(prevState => ({
       showEmojis: !prevState.showEmojis
     }))
@@ -31,7 +30,6 @@ class ChatsShow extends React.Component {
 
 
   addEmoji(e){
-    console.log(e.native)
     const emoji = e.native
     this.setState({
       value: this.state.value + emoji

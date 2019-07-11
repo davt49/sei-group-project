@@ -42,7 +42,6 @@ class Register extends React.Component {
   }
 
   render() {
-    console.log(this.state.data)
     return (
       <section className="section">
         {

@@ -47,8 +47,17 @@ class UserShow extends React.Component {
     this.getUserData()
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      if (this.props.match.params.userId === Auth.getPayload().sub) {
+        this.props.history.push('/profile')
+      } else {
+        this.getUserData()
+      }
+    }
+  }
+
   render() {
-    console.log(this.state.user)
     return (
       <div>
         {
@@ -80,7 +89,6 @@ class UserShow extends React.Component {
                         <div className="card-body">
                           {
                             this.state.user.followers.map(follower => {
-                              console.log(follower)
                               return <div key={follower.user._id} className="tile">
                                 <Link to={`/users/${follower.user._id}`}>
                                   <div className="tile-icon">

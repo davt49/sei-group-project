@@ -36,10 +36,7 @@ function editRoute(req, res, next) {
   Gem
     .findById(req.params.gemId)
     .then(gem => {
-      console.log('here')
       if (!gem) throw new Error('Not Found')
-      console.log(gem.user)
-      console.log(req.currentUser)
       if (!gem.user.equals(req.currentUser._id)) throw new Error('Unauthorized')
       Object.assign(gem, req.body)
       return gem.save()
