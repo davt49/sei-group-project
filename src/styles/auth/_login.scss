@@ -8,7 +8,7 @@ width: 100vw;
 height: 85vh;
 }
 
-.col-3 {
+.logincolumn {
     background: white;
     border: 50px;
     padding: 8px;
@@ -22,4 +22,37 @@ height: 85vh;
 
 .login-form {
     margin: 20px;
+}
+// .btn.btn-warning {
+//     background: gold;
+//     border-color: goldenrod;
+//     color: grey;
+// }
+//
+// .btn.btn-warning:focus, .btn.btn-warning:hover {
+//   text-decoration: none;
+//   // color: $yellow;
+//   color: #fff;
+// }
+
+a:visited {
+    color: goldenrod;
+}
+
+.column.col-7 {
+    flex: auto;
+}
+
+.btn.btn-warning {
+  margin: 10px;
+  background-color: white;
+  text-decoration: none;
+  color: $yellow;
+  border: 1px solid $yellow;
+}
+.btn.btn-warning:hover {
+  background-color: $yellow;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
 }
