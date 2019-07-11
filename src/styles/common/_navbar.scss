@@ -1,0 +1,19 @@
+$grey: #4d4d4d;
+$yellow: goldenrod;
+
+.navbar {
+  height: 10vh;
+  padding: 0px 20px;
+  .navbar-section, .dropdown {
+    display: flex;
+    align-items: center;
+    a, chip-link {
+      color: $grey;
+      text-decoration: none;
+    }
+    a:hover, chip-link:hover {
+      color: $yellow;
+      text-decoration: none;
+    }
+  }
+}

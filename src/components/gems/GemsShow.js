@@ -124,7 +124,7 @@ class GemsShow extends React.Component {
                 <hr/>
                 {gem.comments.map(comment => (
                   <div key={comment._id} className="">
-                    <div className="text-bold">
+                    <div className="text text-bold">
                       {comment.text}
                     </div>
                     <div>

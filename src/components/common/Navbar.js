@@ -48,10 +48,9 @@ class Navbar extends React.Component {
         </section>
         {
           Auth.isAuthenticated() &&
-          <div>
+          <section className="navbar-section">
             {
               this.state.user.username &&
-              <section className="navbar-section">
                 <div className="dropdown dropdown-right">
                   <a href="#" className="btn btn-link dropdown-toggle" tabIndex="0">
                     <div className="chip chip-link">
@@ -60,17 +59,16 @@ class Navbar extends React.Component {
                     </div>
                     <i className="icon icon-caret"></i>
                   </a>
-                  <ul className="menu">
-                    <li><Link className="nav-link" to="/gems">Find new Gems</Link></li>
-                    <li><Link className="nav-link" to="/chats">Join a Chat</Link></li>
-                    <li><Link className="nav-link" to="/profile">Your Profile</Link></li>
+                  <ul className="menu nav-menu">
+                    <li><Link to="/gems">Find new Gems</Link></li>
+                    <li><Link to="/chats">Join a Chat</Link></li>
+                    <li><Link to="/profile">Your Profile</Link></li>
                     <hr />
-                    <li><a onClick={this.logout} className="c-hand nav-link">Logout</a></li>
+                    <li><a onClick={this.logout} className="c-hand">Logout</a></li>
                   </ul>
                 </div>
-              </section>
             }
-          </div>
+          </section>
         }
 
 

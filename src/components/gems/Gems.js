@@ -36,12 +36,14 @@ class Gems extends React.Component {
 
   render() {
     return (
-      <div className='container'>
-        <h1>Hidden Gems</h1>
-        <blockquote className="text-center">
-          <p>Watch with glittering eyes the whole world around you.</p>
-          <cite>- Roald Dahl</cite>
-        </blockquote>
+      <div className='container gemsindex'>
+        <div className="gemsheader">
+          <h1 className="text-center">Hidden Gems</h1>
+          <blockquote className="text-center gemsquote">
+            <p>Watch with glittering eyes the whole world around you.</p>
+            <cite>- Ronald Dahl</cite>
+          </blockquote>
+        </div>
         {
           !this.state.data &&
           <img src='https://media2.giphy.com/media/mFHVvtrf1n3qm3pdvr/giphy.gif?cid=790b76115d25fc155230413373f1d5d2&rid=giphy.gif' />
@@ -50,7 +52,7 @@ class Gems extends React.Component {
           this.state.data &&
           <div>
             <div>
-              <Link to="/gems/new">💎 Post Your Gem</Link>
+              <Link to="/gems/new" className="float-right">💎 Post Your Gem</Link>
               <div className="filter">
                 <input
                   type="radio"
@@ -110,27 +112,27 @@ class Gems extends React.Component {
                 />
                 <div className="filter-nav">
                   <label
-                    className={`chip ${this.state.checked === 0 ? 'bg-success' : ''}`}
+                    className={`chip ${this.state.checked === 0 ? 'bg-warning' : ''}`}
                     htmlFor="tag-0">
                     All
                   </label>
                   <label
-                    className={`chip ${this.state.checked === 1 ? 'bg-success' : ''}`}
+                    className={`chip ${this.state.checked === 1 ? 'bg-warning' : ''}`}
                     htmlFor="tag-1">
                     Markets
                   </label>
                   <label
-                    className={`chip ${this.state.checked === 2 ? 'bg-success' : ''}`}
+                    className={`chip ${this.state.checked === 2 ? 'bg-warning' : ''}`}
                     htmlFor="tag-2">
                     Temples
                   </label>
                   <label
-                    className={`chip ${this.state.checked === 3 ? 'bg-success' : ''}`}
+                    className={`chip ${this.state.checked === 3 ? 'bg-warning' : ''}`}
                     htmlFor="tag-3">
                     Beaches
                   </label>
                   <label
-                    className={`chip ${this.state.checked === 4 ? 'bg-success' : ''}`}
+                    className={`chip ${this.state.checked === 4 ? 'bg-warning' : ''}`}
                     htmlFor="tag-4">
                     Landscapes
                   </label>

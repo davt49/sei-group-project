@@ -650,10 +650,10 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
       return Chat.create([
         {
           title: 'locals',
-          image: 'https://www.vietvisiontravel.com/wp-content/uploads/2017/05/Thai-people-in-Vietnam-1.jpg',
+          image: 'https://farm5.staticflickr.com/4573/38561719246_60354b9d09_o.jpg',
           comments: [
             {
-              text: 'Hi, I am planning to visit your beautiful town. Do you have some suggestion for me to where to stay?',
+              text: 'Hi, I am planning to visit your beautiful town. Do you have some suggestion for me where to stay?',
               user: users[5]
             },
             {
@@ -661,15 +661,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[0]
             },
             {
-              text: 'You can stay in our hostel, is very close to the beach. You are going to love it!',
+              text: 'You can stay at our hostel, is very close to the beach. You are going to love it!',
               user: users[4]
             },
             {
-              text: 'Thank you for the tips! What is the name of the hostel',
+              text: 'Thanks for the tips! What is the name of the hostel?',
               user: users[5]
             },
             {
-              text: 'I think he was reletated to the Backpacker Hostel, I am not sure you wanna go there. Check their reviews on TripAdvisor or Google',
+              text: 'I think he was referring to the Backpacker Hostel. Check their reviews on TripAdvisor or Google?',
               user: users[3]
             },
             {
@@ -685,11 +685,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[8]
             },
             {
-              text: 'Thank you all! I have made my decision',
+              text: 'Thank you all! I have made my decision.',
               user: users[5]
             },
             {
-              text: 'I am curious now. What is your decision? Coach or hostel? Please rent my coach! I need money!!!!',
+              text: 'I am curious now. What is your decision? Couch or hostel?',
               user: users[3]
             }
           ]
@@ -703,19 +703,19 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[8]
             },
             {
-              text: 'I am in! 🎉🎉🎉 Have you been to the Binh Minh Jazz Club' ,
+              text: 'I am in! 🎉🎉🎉 Have you been to the Binh Minh Jazz Club?' ,
               user: users[2]
             },
             {
-              text: 'Yeah! I have jus arrived in Hanoi from London, it would be nice to meet new people before I live on Friday. Count me in! ',
+              text: 'Yeah! I have just arrived in Hanoi from London, it would be nice to meet new people before I live on Friday. Count me in! ',
               user: users[5]
             },
             {
-              text: 'Fantastic! What about 7PM at the Binh Minh Jazz Club entrance',
+              text: 'Fantastic! What about 7PM at the Binh Minh Jazz Club entrance?',
               user: users[1]
             },
             {
-              text: 'I will wearing a funny red hat 😁! See you toinght!!!! ',
+              text: 'I will be wearing a funny red hat 😁! See you tonight!!!! ',
               user: users[5]
             },
             {
@@ -727,7 +727,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[1]
             },
             {
-              text: 'Here is the link of the venue guys! http://minhjazzvietnam.com/ . See you tonight. I can not wait to meet you all',
+              text: 'Here is the link for the venue guys! http://minhjazzvietnam.com/ . See you tonight. I can not wait to meet you all',
               user: users[2]
             },
             {
