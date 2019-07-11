@@ -30,7 +30,13 @@ class GemNew extends React.Component {
     return (
 
       <div>
-        <p>If you have a favourite #hiddengem that you think deserves a bit more recognition (and you do not mind sharing it with more people), post it.</p>
+        <blockquote className="text-center">
+          <p>“There are little gems around us that can hold glimmers of inspiration.”</p>
+          <cite>Richelle Mead</cite>
+        </blockquote>
+        <div className="chatsheader text-center">
+          <h1>Post Your Gem</h1>
+        </div>
         <form onSubmit={this.handleSubmit} className="form-autocomplete">
           <label className="form-label" htmlFor="name">Image</label>
           <input
