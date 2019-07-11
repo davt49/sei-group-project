@@ -28,7 +28,9 @@ class GemNew extends React.Component {
 
   render() {
     return (
+
       <div>
+        <p>If you have a favourite #hiddengem that you think deserves a bit more recognition (and you do not mind sharing it with more people), post it.</p>
         <form onSubmit={this.handleSubmit} className="form-autocomplete">
           <label className="form-label" htmlFor="name">Image</label>
           <input
