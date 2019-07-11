@@ -26,19 +26,15 @@ class ChatIndex extends React.Component {
     return (
       <section>
         <div>
-          <h1>Chat</h1>
           <blockquote className="text-center">
             <p>“Be genuinely interested in everyone you meet and everyone you meet will be genuinely interested in you”</p>
             <cite>― Rasheed Ogunlaru</cite>
           </blockquote>
         </div>
-        <div className="text-center">
-          Search Topics
-        </div>
         {
           this.state.chats &&
           <div>
-            <div className="text-center">
+            <div className="chatsheader text-center">
               <h1>Join a chat</h1>
             </div>
             <div className="container">
@@ -49,11 +45,11 @@ class ChatIndex extends React.Component {
                     return <div className="col-6" key={chat._id}>
                       <Link to={`chats/${chat._id}`}>
                         <div className="card cardstyle">
+                          <div className="chatstitle">
+                            {chat.title}
+                          </div>
                           <div className="card-image">
                             <img src={chat.image} alt={chat.title} className="imagestyle"/>
-                          </div>
-                          <div className="card-body">
-                            {chat.title}
                           </div>
                         </div>
                       </Link>
