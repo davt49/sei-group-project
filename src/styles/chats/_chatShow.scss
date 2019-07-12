@@ -33,28 +33,75 @@ $paragraph-size: 18px;
       border-radius: 10px;
       padding: 20px;
     }
+
   }
+
+
+  .user-message {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    text-align: right;
+    .tile-content {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      text-align: right;
+      margin-right: 10px;
+    }
+    .tile-title {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+      small {
+        margin-right: 10px;
+        margin-top: 2px;
+      }
+    }
+    .user-subtitle {
+      width: 60%;
+      background-color: $yellow;
+      color:white;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+  }
+
+
 }
 // emojii
 span.add-emoji-button {
-  position: absolute;
-  right: 94px;
-  margin-top: 6px;
+  right: 60px;
+  margin: 10px auto;
   cursor: pointer;
-  font-size: 17px;
-  width: 23px;
-  height: 24px;
-  text-align: center;
-  border-radius: 10px;
-  z-index: 100;
+  border: 1px solid $yellow;
+  text-align: justify;
+  line-height: 2.1;
 }
-
-span.add-emoji-button:hover {
-  background: #4d4d4d;
-}
-
+//pop-up container 
 .emojipicker-container {
   position: absolute;
   right: 33px;
   margin-top: -468px;
+}
+
+.chatshowpanel {
+  padding: none;
+}
+
+
+.message-btn {
+  border: 1px solid $yellow;
+  color: $yellow;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.message-btn:hover {
+  border: 1px solid white;
+  color: white;
+  background: $yellow;
 }

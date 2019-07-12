@@ -1,10 +1,12 @@
-.card-header {
-  height: 90px;
-  width: auto;
-}
-.gemindexcard {
-  padding: 0;
-}
-.gemsheader {
-  margin: 70px 0px;
+$title: 'Muli', sans-serif;
+$text: 'Open Sans', sans-serif;
+$yellow: goldenrod;
+$grey: #4d4d4d;
+$title-size: 30px;
+$subtitle-size: 28px;
+$subtitle-second-size: 22px;
+$paragraph-size: 18px;
+
+.gems-index {
+  padding: 80px;
 }

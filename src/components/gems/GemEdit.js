@@ -44,14 +44,14 @@ class GemEdit extends React.Component {
             <h2 className="title">{gem.name}</h2>
             <hr />
             <div className="columns">
-              <div className="column is-half">
+              <div className="col-6">
                 <figure className="image">
                   <img src={gem.image} alt={gem.name} />
                 </figure>
               </div>
-              <div className="column is-half">
+              <div className="col-4 gemeditcolumn">
                 <form onSubmit={this.handleSubmit} className="form-autocomplete">
-                  <label className="form-label" htmlFor="location">Location</label>
+                  <h2 className="title text-center">Location</h2>
                   <input
                     className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
                     name="location"
@@ -61,18 +61,19 @@ class GemEdit extends React.Component {
                   />
                   {this.state.errors && <small className="help is-danger">{this.state.errors.location}</small>}
 
-                  <label className="form-label" htmlFor="caption">Caption</label>
+                  <h2 className="title text-center">Caption</h2>
                   <textarea
                     className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
                     name="caption"
                     value = {gem.caption || ''}
+                    rows= "5"
                     placeholder="caption here"
                     onChange={this.handleChange}
                   />
                   {this.state.errors && <small className="help is-danger">{this.state.errors.caption}</small>}
 
+                  <h2 className="title text-center">Category</h2>
 
-                  <label className="form-label" htmlFor="category">Category</label>
                   <div className="form-group">
                     <select
                       className={`form-select ${this.state.errors ? 'is-error' : ''} `}
@@ -89,7 +90,9 @@ class GemEdit extends React.Component {
                   </div>
                   {this.state.errors && <small className="help is-danger">{this.state.errors.category}</small>}
                   <br />
-                  <button type="submit" className="btn btn-primary input-group-btn input-sm">Submit</button>
+                  <div className="text-center">
+                    <button type="submit" className="btn btn-primary input-group-btn input-sm gemeditsubmit">Submit</button>
+                  </div>
                 </form>
               </div>
             </div>

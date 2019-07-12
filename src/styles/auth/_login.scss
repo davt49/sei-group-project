@@ -15,54 +15,34 @@ height: 85vh;
     margin: 75px 51px;
 }
 
-.loginsection .form-input {
-    margin: 0 auto;
-    background: #fafafa;
+.loginsection {
+    .form-input {
+      margin: 0 auto;
+      background: #fafafa;
+    }
+    .column.col-7 {
+        flex: auto;
+    }
+    .btn.btn-warning {
+      margin: 10px;
+      background-color: white;
+      text-decoration: none;
+      color: $yellow;
+      border: 1px solid $yellow;
+    }
+    .btn.btn-warning:hover {
+      background-color: $yellow;
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+    }
+
 }
 
 .login-form {
     margin: 20px;
-}
-// .btn.btn-warning {
-//     background: gold;
-//     border-color: goldenrod;
-//     color: grey;
-// }
-//
-// .btn.btn-warning:focus, .btn.btn-warning:hover {
-//   text-decoration: none;
-//   // color: $yellow;
-//   color: #fff;
-// }
-
-.login-form a {
-    font-weight: bold;
-    color: goldenrod;
-}
-
-.loginsection a:visited {
-    color: goldenrod;
-}
-
-.login-form a:hover {
-    color: rgb(59, 67, 81);
-}
-
-.loginsection .column.col-7 {
-    flex: auto;
-}
-
-.loginsection .btn.btn-warning {
-  margin: 10px;
-  background-color: white;
-  text-decoration: none;
-  color: $yellow;
-  border: 1px solid $yellow;
-}
-
-.loginsection .btn.btn-warning:hover {
-  background-color: $yellow;
-  text-decoration: none;
-  color: white;
-  border: 1px solid white;
+    a {
+        font-weight: bold;
+        color: goldenrod;
+    }
 }

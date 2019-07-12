@@ -30,7 +30,7 @@ class Login extends React.Component {
 
   render(){
     return (
-      <section className="container loginsection col-<1-12>">
+      <section className="container loginsection">
         <div className="columns">
           <div className="column col-7"></div>
           <div className="column col-3 logincolumn">
@@ -57,7 +57,7 @@ class Login extends React.Component {
                 />
               </div>
               <hr />
-              <button className="btn btn-warning input-group-btn">Login</button>
+              <button className="btn btn-primary input-group-btn">Login</button>
               <p> Dont have an account? </p>
               <Link to="/register" className="c-hand">Register here</Link>
             </form>
