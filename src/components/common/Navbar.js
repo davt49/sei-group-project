@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import { GiIsland } from 'react-icons/gi'
 
 class Navbar extends React.Component {
   constructor(){
@@ -44,7 +45,7 @@ class Navbar extends React.Component {
     return (
       <header className="navbar">
         <section className="navbar-section">
-          <Link to="/" className="title">Vietgram</Link>
+          <Link to="/" className="title"><GiIsland /><span>  </span>Vietgram</Link>
         </section>
         {
           Auth.isAuthenticated() &&

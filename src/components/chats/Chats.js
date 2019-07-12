@@ -3,7 +3,7 @@ import axios from 'axios'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
 
-class ChatIndex extends React.Component {
+class Chats extends React.Component {
   constructor() {
     super()
 
@@ -25,31 +25,31 @@ class ChatIndex extends React.Component {
   render() {
     return (
       <section>
-        <div>
-          <blockquote className="text-center">
+        <div className="chatsheader">
+          <div className="text-center">
+            <h1>Join a chat</h1>
+          </div>
+          <div className="text-center">
             <p>“Be genuinely interested in everyone you meet and everyone you meet will be genuinely interested in you”</p>
             <cite>― Rasheed Ogunlaru</cite>
-          </blockquote>
+          </div>
         </div>
         {
           this.state.chats &&
-          <div>
-            <div className="chatsheader text-center">
-              <h1>Join a chat</h1>
-            </div>
+          <div className="chats">
             <div className="container">
               <div className="columns text-center">
                 {
                   this.state.chats &&
                   this.state.chats.map(chat => {
-                    return <div className="col-6" key={chat._id}>
+                    return <div className="col-6 chat-cards" key={chat._id}>
                       <Link to={`chats/${chat._id}`}>
                         <div className="card cardstyle">
                           <div className="chatstitle">
-                            {chat.title}
+                            Chat with {chat.title}
                           </div>
                           <div className="card-image">
-                            <img src={chat.image} alt={chat.title} className="imagestyle"/>
+                            <img src={chat.image} alt={chat.title} className="img-responsive"/>
                           </div>
                         </div>
                       </Link>
@@ -65,4 +65,4 @@ class ChatIndex extends React.Component {
   }
 }
 
-export default ChatIndex
+export default Chats

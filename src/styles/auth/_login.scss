@@ -1,4 +1,3 @@
-
 .loginsection {
 text-align: center;
 background-image: url("https://www.visa-vietnam.org.vn/files/upload/image/tour-of-Vietnam.jpg");
@@ -15,44 +14,35 @@ height: 85vh;
     /* float: right; */
     margin: 75px 51px;
 }
-.form-input {
-    margin: 0 auto;
-    background: #fafafa;
+
+.loginsection {
+    .form-input {
+      margin: 0 auto;
+      background: #fafafa;
+    }
+    .column.col-7 {
+        flex: auto;
+    }
+    .btn.btn-warning {
+      margin: 10px;
+      background-color: white;
+      text-decoration: none;
+      color: $yellow;
+      border: 1px solid $yellow;
+    }
+    .btn.btn-warning:hover {
+      background-color: $yellow;
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+    }
+
 }
 
 .login-form {
     margin: 20px;
-}
-// .btn.btn-warning {
-//     background: gold;
-//     border-color: goldenrod;
-//     color: grey;
-// }
-//
-// .btn.btn-warning:focus, .btn.btn-warning:hover {
-//   text-decoration: none;
-//   // color: $yellow;
-//   color: #fff;
-// }
-
-a:visited {
-    color: goldenrod;
-}
-
-.column.col-7 {
-    flex: auto;
-}
-
-.btn.btn-warning {
-  margin: 10px;
-  background-color: white;
-  text-decoration: none;
-  color: $yellow;
-  border: 1px solid $yellow;
-}
-.btn.btn-warning:hover {
-  background-color: $yellow;
-  text-decoration: none;
-  color: white;
-  border: 1px solid white;
+    a {
+        font-weight: bold;
+        color: goldenrod;
+    }
 }

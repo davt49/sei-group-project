@@ -11,12 +11,12 @@ import Register from './components/auth/Register'
 import Profile from './components/auth/Profile'
 import UserShow from './components/auth/UserShow'
 
-import GemNew from './components/gems/GemNew'
+import GemCreate from './components/gems/GemCreate'
 import GemsShow from './components/gems/GemsShow'
 import Gems from './components/gems/Gems'
 import GemEdit from './components/gems/GemEdit'
 
-import ChatIndex from './components/chats/ChatIndex'
+import Chats from './components/chats/Chats'
 import ChatShow from './components/chats/ChatShow'
 
 const App = () => {
@@ -26,8 +26,8 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path='/chats/:chatId' component={ChatShow}/>
-          <Route path='/chats' component={ChatIndex}/>
-          <Route path='/gems/new' component={GemNew}/>
+          <Route path='/chats' component={Chats}/>
+          <Route path='/gems/new' component={GemCreate}/>
           <Route path='/gems/:gemId/edit' component={GemEdit}/>
           <Route path='/gems/:gemId' component={GemsShow}/>
           <Route path='/gems' component={Gems}/>

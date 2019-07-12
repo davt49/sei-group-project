@@ -6,7 +6,6 @@ $title-size: 30px;
 $subtitle-size: 28px;
 $subtitle-second-size: 22px;
 $paragraph-size: 18px;
-
 .chat-show {
   margin: 50px 150px;
   .panel {
@@ -26,10 +25,8 @@ $paragraph-size: 18px;
       display: flex;
       justify-content: center;
       align-items: center;
-
     }
   }
-
   .chat-message {
     margin: 10px;
     padding: 10px;
@@ -39,10 +36,7 @@ $paragraph-size: 18px;
       border-radius: 10px;
       padding: 20px;
     }
-
   }
-
-
   .user-message {
     margin: 10px;
     padding: 10px;
@@ -74,10 +68,7 @@ $paragraph-size: 18px;
       border-radius: 10px;
       padding: 20px;
     }
-
   }
-
-
 }
 // emojii
 span.add-emoji-button {
@@ -91,17 +82,14 @@ span.add-emoji-button {
   border-radius: 10px;
   z-index: 100;
 }
-
 span.add-emoji-button:hover {
   background: #4d4d4d;
 }
-
 .emojipicker-container {
   position: absolute;
   right: 33px;
   margin-top: -468px;
 }
-
 .message-btn {
   border: 1px solid $yellow;
   color: $yellow;

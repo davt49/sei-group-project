@@ -30,7 +30,7 @@ class Login extends React.Component {
 
   render(){
     return (
-      <section className="container loginsection col-<1-12>">
+      <section className="container loginsection">
         <div className="columns">
           <div className="column col-7"></div>
           <div className="column col-3 logincolumn">
