@@ -3,9 +3,9 @@ import { Link } from  'react-router-dom'
 
 const Gem = ({ image, location, user, _id }) => {
   return (
-    <div className="column col-3 col-lg-6 col-sm-12 gemindexcard">
+    <div className="column col-3 col-lg-6 col-sm-12 gem-card">
 
-      <div className="card">
+      <div className="card gem-card">
         <Link to={`/gems/${_id}`} >
           <div className="card-image">
             <img src={image} className="img-responsive"/>

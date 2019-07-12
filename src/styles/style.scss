@@ -48,3 +48,13 @@ a:hover {
   text-decoration: none;
   color: $yellow;
 }
+
+a:visited {
+  text-decoration: none;
+  color: $grey;
+}
+
+a:visited:hover {
+  text-decoration: none;
+  color: $yellow;
+}

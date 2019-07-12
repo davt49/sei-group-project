@@ -1,9 +1,17 @@
 $grey: #4d4d4d;
 $yellow: goldenrod;
+$subtitle-size: 28px;
 
 .navbar {
   height: 10vh;
   padding: 0px 20px;
+  .title {
+    font-size: $subtitle-size;
+  }
+  .chip {
+    height: 35px;
+    font-size: 17px;
+  }
   .navbar-section, .dropdown {
     display: flex;
     align-items: center;

@@ -36,7 +36,7 @@ class Gems extends React.Component {
 
   render() {
     return (
-      <div className='container gems-index'>
+      <div className="gems-index">
         <div>
           <h1 className="text-center">Hidden Gems</h1>
           <div className="text-center">
@@ -51,8 +51,8 @@ class Gems extends React.Component {
         {
           this.state.data &&
           <div>
-            <div>
-              <Link to="/gems/new" className="float-right">💎 Post Your Gem</Link>
+            <div className="gems-nav">
+              <Link to="/gems/new" className="float-right">💎 Post a Gem</Link>
               <div className="filter">
                 <input
                   type="radio"
@@ -139,7 +139,7 @@ class Gems extends React.Component {
                 </div>
               </div>
             </div>
-            <div className='columns multiline is-mobile'>
+            <div className='columns gems-background multiline is-mobile'>
               {
                 this.filterGems().map(gem => {
                   return <Gem key={gem._id} {...gem}/>

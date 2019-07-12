@@ -21,24 +21,24 @@ class GemsShow extends React.Component {
     this.getData()
   }
 
-  addLike() {
-    axios.get(`/api/gems/${this.props.match.params.gemId}/likes`, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    })
-      .then(this.getData())
-      .catch(err => console.log(err))
-  }
-
-  handleChange(e) {
-    this.setState({ comment: { text: e.target.value } })
-  }
-
   getData() {
     axios.get(`/api/gems/${this.props.match.params.gemId}`, {
       headers: { 'Authorization': `${Auth.getToken()}` }
     })
       .then(res => this.setState({ gem: res.data, comment: {} }))
       .catch(err => console.log(err))
+  }
+
+  addLike() {
+    axios.get(`/api/gems/${this.props.match.params.gemId}/likes`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(() => this.getData())
+      .catch(err => console.log(err))
+  }
+
+  handleChange(e) {
+    this.setState({ comment: { text: e.target.value } })
   }
 
 
@@ -100,7 +100,7 @@ class GemsShow extends React.Component {
                   </div>
                 </div>
                 <div className="columns">
-                  <p className="text-normal">Posted by {gem.user.username}</p>
+                  <p className="text-normal">Posted by <Link to={`/users/${gem.user._id}`} >{gem.user.username}</Link></p>
                   {this.isOwner() && <Link
                     className="btn btn-link btn-sm"
                     to={`/gems/${this.props.match.params.gemId}/edit`}
@@ -110,12 +110,9 @@ class GemsShow extends React.Component {
                 </div>
 
 
-                <div className="columns">
-                  <div className="col-2">
-                    <button className="btn btn-link btn-lg" onClick={this.addLike} > 💎 </button>
-                  </div>
-                  <p className="text-center text-bold col-3">{gem.likes.length} Likes</p>
-
+                <div className='gem-likes'>
+                  <button className="btn btn-link btn-lg" onClick={this.addLike} >💎</button>
+                  <p className="text-bold">{gem.likes.length} likes</p>
                 </div>
 
                 <p>{gem.caption}</p>
@@ -129,12 +126,13 @@ class GemsShow extends React.Component {
 
                 <hr/>
                 {gem.comments.map(comment => (
-                  <div key={comment._id} className="">
+                  <div key={comment._id} className="gem-comment">
                     <div className="text text-bold">
                       {comment.text}
                     </div>
-                    <div>
-                      {comment.user.username} {<small>{new Date(comment.createdAt).toLocaleString().slice(0,17)}  </small>}
+                    <div className="user-comment">
+                      <Link to={`/users/${comment.user._id}`} >{comment.user.username} </Link>
+                      {<small>{new Date(comment.createdAt).toLocaleString().slice(0,17)}  </small>}
                       {
                         this.isOwnerComment(comment) &&
                         <button className="btn btn-link btn-sm" onClick={() => this.handleCommentDelete(comment)}><MdClear /></button>

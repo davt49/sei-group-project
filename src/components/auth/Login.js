@@ -56,7 +56,9 @@ class Login extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <hr />
+              <br />
+              <hr className="divider"/>
+              <br />
               <button className="btn btn-warning input-group-btn">Login</button>
               <p> Dont have an account? </p>
               <Link to="/register" className="c-hand">Register here</Link>
