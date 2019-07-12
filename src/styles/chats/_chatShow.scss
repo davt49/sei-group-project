@@ -75,32 +75,30 @@ $paragraph-size: 18px;
 }
 // emojii
 span.add-emoji-button {
-  position: absolute;
   right: 60px;
-  margin-top: 6px;
+  margin: 10px auto;
   cursor: pointer;
-  font-size: 17px;
-  width: 23px;
-  height: 24px;
-  text-align: center;
-  border-radius: 10px;
-  z-index: 100;
+  border: 1px solid $yellow;
+  text-align: justify;
+  line-height: 2.1;
 }
-
-span.add-emoji-button:hover {
-  background: #4d4d4d;
-}
-
+//pop-up container 
 .emojipicker-container {
   position: absolute;
   right: 33px;
   margin-top: -468px;
 }
 
+.chatshowpanel {
+  padding: none;
+}
+
+
 .message-btn {
   border: 1px solid $yellow;
   color: $yellow;
   font-size: 20px;
+  margin-top: 10px;
 }
 .message-btn:hover {
   border: 1px solid white;

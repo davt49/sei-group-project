@@ -653,7 +653,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
           image: 'https://farm5.staticflickr.com/4573/38561719246_60354b9d09_o.jpg',
           comments: [
             {
-              text: 'Hi, I am planning to visit your beautiful town. Do you have some suggestion for me where to stay?',
+              text: 'Hi, I am planning to visit your beautiful town. Any suggestions for me where to stay?',
               user: users[5]
             },
             {
@@ -669,7 +669,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[5]
             },
             {
-              text: 'I think he was referring to the Backpacker Hostel. Check their reviews on TripAdvisor or Google?',
+              text: 'I think he was referring to the Backpacker Hostel. Check their reviews?',
               user: users[3]
             },
             {
@@ -681,7 +681,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[3]
             },
             {
-              text: 'Hi, just read your post. Vietnamese people are very welcome. I am sure you are going to love your stay there. I have been to the Backpacker Hostel and is a nice place to be. I met my girlfriend there, and we are going to get married in May. 💒',
+              text: 'I have been to the Backpacker Hostel and it is a nice place!',
               user: users[8]
             },
             {
@@ -707,7 +707,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[2]
             },
             {
-              text: 'Yeah! I have just arrived in Hanoi from London, it would be nice to meet new people before I live on Friday. Count me in! ',
+              text: 'Yeah! I have just arrived in Hanoi from London, it would be nice to meet new people!',
               user: users[5]
             },
             {
@@ -727,7 +727,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[1]
             },
             {
-              text: 'Here is the link for the venue guys! http://minhjazzvietnam.com/ . See you tonight. I can not wait to meet you all',
+              text: 'Here is the link for the venue guys! http://minhjazzvietnam.com/',
               user: users[2]
             },
             {

@@ -76,10 +76,10 @@ class ChatsShow extends React.Component {
         {
           this.state.chat.comments &&
           <div className="chat-show">
-            <div className="panel">
+            <div className="panel chatshowcenterpanel">
               <div className="panel-header">
-                <h2 className="panel-title">{this.state.chat.title}</h2>
-                <p className="title">Chat with fellow {this.state.chat.title} about accomodation, transport, hidden gems and so on!</p>
+                <h2 className="panel-title text-center">{this.state.chat.title}</h2>
+                <p className="title text-center">Chat with fellow {this.state.chat.title} about accomodation, transport, hidden gems and so on!</p>
               </div>
               <div className="panel-body">
                 {this.state.chat.comments.map(comment => {
@@ -102,7 +102,7 @@ class ChatsShow extends React.Component {
                 })
                 }
               </div>
-              <div className="panel-footer">
+              <div className="panel-footer chatshowpanel">
                 <form onSubmit={this.handleSubmit} className="input-group">
                   <input className="form-input"
                     name="text"
