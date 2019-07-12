@@ -74,7 +74,15 @@ class UserShow extends React.Component {
               <div className="column col-7">
                 <div className='user-top'>
                   <h2>{this.state.user.username}</h2>
-                  <button className="btn follow-button btn-sm col-2" onClick={this.follow} >Follow</button>
+                  {
+                    !this.state.user.followers.some(follower => follower.user._id === Auth.getPayload().sub) &&
+                    <button className="btn follow-button btn-sm col-2" onClick={this.follow} >Follow</button>
+                  }
+                  {
+                    this.state.user.followers.some(follower => follower.user._id === Auth.getPayload().sub) &&
+                    <p></p>
+                  }
+
                 </div>
                 <h3>
                   {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span> }

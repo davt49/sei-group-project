@@ -83,7 +83,7 @@ class ChatsShow extends React.Component {
               </div>
               <div className="panel-body">
                 {this.state.chat.comments.map(comment => {
-                  return <div key={comment._id} className={`${Auth.getPayload().sub === comment.user._id ? 'user-message' : 'tile chat-message'}`}>
+                  return <div key={comment._id} className={`message ${Auth.getPayload().sub === comment.user._id ? 'user-message' : 'tile chat-message'}`}>
                     <div className="tile-icon">
                       <Link to={`/users/${comment.user._id}`}>
                         <figure className="avatar"><img src={comment.user.image} alt="Avatar"/></figure>

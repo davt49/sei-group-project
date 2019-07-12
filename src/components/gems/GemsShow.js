@@ -83,7 +83,6 @@ class GemsShow extends React.Component {
         <div className="container">
           <Fragment>
             <h2 className="title">{gem.name}</h2>
-
             <div className="columns">
               <div className="column is-half">
                 <figure className="image">
@@ -106,24 +105,19 @@ class GemsShow extends React.Component {
                     to={`/gems/${this.props.match.params.gemId}/edit`}
                   >
                     <TiPencil />
-                  </Link>}
+                  </Link>
+                  }
+                  {this.isOwner() &&
+                    <button onClick={this.handleDelete} className="btn btn-link btn-sm">
+                      <MdClear />
+                    </button>
+                  }
                 </div>
-
-
                 <div className='gem-likes'>
                   <button className="btn btn-link btn-lg" onClick={this.addLike} >💎</button>
                   <p className="text-bold">{gem.likes.length} likes</p>
                 </div>
-
                 <p>{gem.caption}</p>
-
-
-                {this.isOwner() &&
-                  <button onClick={this.handleDelete} className="btn btn-link btn-sm btn-error text-sm">
-                    <i className="icon icon-cross"></i>
-                  </button>
-                }
-
                 <hr/>
                 {gem.comments.map(comment => (
                   <div key={comment._id} className="gem-comment">
