@@ -97,16 +97,15 @@ describe('Gem Tests', () => {
             .and.have.all.keys([
               '__v',
               '_id',
-              'image',
               'caption',
-              'location',
-              'user',
               'category',
               'comments',
               'createdAt',
-              'id',
-              'likeCount',
-              'updatedAt'
+              'image',
+              'likes',
+              'location',
+              'updatedAt',
+              'user'
             ])
           done()
         })
@@ -237,16 +236,15 @@ describe('Gem Tests', () => {
             .and.have.all.keys([
               '__v',
               '_id',
-              'image',
               'caption',
-              'location',
-              'user',
               'category',
               'comments',
               'createdAt',
-              'id',
-              'likeCount',
-              'updatedAt'
+              'image',
+              'likes',
+              'location',
+              'updatedAt',
+              'user'
             ])
           done()
         })
@@ -319,14 +317,6 @@ describe('Gem Tests', () => {
         )
         .end((err, res) => {
           const gem = res.body
-
-          // expect(gem)
-          //   .to.have.property('_id')
-          //   .and.to.be.a('object')
-
-          expect(gem)
-            .to.have.property('id')
-            .and.to.be.a('string')
 
           expect(gem)
             .to.have.property('_id')

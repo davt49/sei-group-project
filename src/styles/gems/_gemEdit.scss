@@ -1,4 +1,10 @@
-.gemeditcolumn {
-  margin-top: 30px;
-  margin-left: 80px;
+.gem-edit {
+  height: 100vh;
+  padding: 100px;
+  .columns {
+    .img-responsive {
+      max-width: 40vw;
+    }
+  }
+
 }

@@ -76,7 +76,7 @@ class ChatsShow extends React.Component {
         {
           this.state.chat.comments &&
           <div className="chat-show">
-            <div className="panel chatshowcenterpanel">
+            <div className="panel">
               <div className="panel-header">
                 <h2 className="panel-title text-center">{this.state.chat.title}</h2>
                 <p className="title text-center">Chat with fellow {this.state.chat.title} about accomodation, transport, hidden gems and so on!</p>
@@ -95,8 +95,9 @@ class ChatsShow extends React.Component {
                         <span> {comment.user.userType === 'Local' ? ' 🇻🇳 ' : '✈️ '} </span>
                         <small> {new Date(comment.createdAt).toLocaleString().slice(0,17)} </small>
                       </p>
-                      <p className={`${Auth.getPayload().sub === comment.user._id ? 'user-subtitle' : 'tile-subtitle'}`}>{comment.text}</p>
-
+                      <div className={`${Auth.getPayload().sub === comment.user._id ? 'user-flex' : ''}`}>
+                        <p className={`${Auth.getPayload().sub === comment.user._id ? 'user-subtitle' : 'tile-subtitle'}`}>{comment.text}</p>
+                      </div>
                     </div>
                   </div>
                 })

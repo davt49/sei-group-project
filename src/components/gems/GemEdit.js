@@ -20,7 +20,7 @@ class GemEdit extends React.Component {
   }
 
   handleChange({ target: { name, value } }) {
-    const gem = { ...this.state.data, [name]: value }
+    const gem = { ...this.state.gem, [name]: value }
     this.setState({ gem })
   }
 
@@ -39,17 +39,14 @@ class GemEdit extends React.Component {
     const { gem } = this.state
     return (
       <section className="section">
-        <div className="container">
+        <div className="container gem-edit">
           <Fragment>
             <h2 className="title">{gem.name}</h2>
-            <hr />
             <div className="columns">
               <div className="col-6">
-                <figure className="image">
-                  <img src={gem.image} alt={gem.name} />
-                </figure>
+                <img src={gem.image} alt={gem.name} className="img-responsive"/>
               </div>
-              <div className="col-4 gemeditcolumn">
+              <div className="col-6">
                 <form onSubmit={this.handleSubmit} className="form-autocomplete">
                   <h2 className="title text-center">Location</h2>
                   <input

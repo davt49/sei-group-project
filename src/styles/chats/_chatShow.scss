@@ -46,11 +46,6 @@ $paragraph-size: 18px;
     justify-content: flex-start;
     text-align: right;
     .tile-content {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row-reverse;
-      justify-content: flex-start;
-      text-align: right;
       margin-right: 10px;
     }
     .tile-title {
@@ -61,6 +56,11 @@ $paragraph-size: 18px;
         margin-right: 10px;
         margin-top: 2px;
       }
+    }
+    .user-flex {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
     }
     .user-subtitle {
       width: 60%;
