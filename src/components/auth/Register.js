@@ -5,15 +5,15 @@ class Register extends React.Component {
   constructor() {
     super()
 
-    this.state = { data: {}, errors: {}, vnFlag: '', gbFlag: '' }
+    this.state = { data: {}, errors: {}, deFlag: '', gbFlag: '' }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  getVnData() {
-    axios('https://restcountries.eu/rest/v2/alpha/vn')
-      .then(res => this.setState({ vnFlag: res.data.flag }))
+  getDeData() {
+    axios('https://restcountries.eu/rest/v2/alpha/de')
+      .then(res => this.setState({ deFlag: res.data.flag }))
       .catch(err => console.log(err))
   }
 
@@ -24,7 +24,7 @@ class Register extends React.Component {
   }
 
   componentDidMount() {
-    this.getVnData()
+    this.getDeData()
     this.getGbData()
   }
 
@@ -107,7 +107,7 @@ class Register extends React.Component {
                           data-badge={`${this.state.data.lang === 'vi' ? '✔️' : ''} `}
                         >
                           <img
-                            src={this.state.vnFlag}
+                            src={this.state.deFlag}
                             style={ {
                               objectFit: 'cover'
                             } }

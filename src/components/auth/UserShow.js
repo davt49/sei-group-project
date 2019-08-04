@@ -85,7 +85,7 @@ class UserShow extends React.Component {
 
                 </div>
                 <h3>
-                  {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span> }
+                  {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇩🇪 </span> }
                   {this.state.user.userType}
                 </h3>
                 <p>{this.state.user.text}</p>

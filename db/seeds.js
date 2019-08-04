@@ -13,53 +13,53 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
     .then(() => {
       return User.create([
         {
-          username: 'jennypham',
-          email: 'jennypham@email',
+          username: 'elenamüller',
+          email: 'elenamüller@email',
           password: 'pass',
           passwordConfirmation: 'pass',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Midu_-_Summer_2012_%28Explored_1_-_May_24th%29_cropped.jpg',
-          lang: 'vi',
-          text: 'I know places yeah.',
+          image: 'https://i.imgur.com/1SJppe5.jpg',
+          lang: 'de',
+          text: 'I love the Bavarian Alps',
           userType: 'Local'
         },
         {
-          username: 'johnnyuyen',
-          email: 'johnnyuyen@email',
+          username: 'tomschmidt',
+          email: 'tomschmidt@email',
           password: 'pass',
           passwordConfirmation: 'pass',
-          image: 'http://raydarmedia.com/Content/cacheImages/img-55692-0.jpg',
-          lang: 'vi',
-          text: 'Fishing mogul hit me up.',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQQJudV2y_lrWNhKnxKn9gEybojsOvqUPmM_v4uYKEVRJsoBSi',
+          lang: 'de',
+          text: 'Local DJ hit me up.',
           userType: 'Local'
         },
         {
-          username: 'jonnyho',
-          email: 'jonnyho@email',
+          username: 'timschneider',
+          email: 'timschneider@email',
           password: 'pass',
           passwordConfirmation: 'pass',
-          image: 'https://pbs.twimg.com/media/CjU4ZSNUUAEZBOD.jpg',
-          lang: 'vi',
+          image: 'https://www.thestar.com/content/dam/thestar/news/gta/2017/03/31/dutch-teen-ends-up-in-the-wrong-sydney/ci-sydney31.jpg',
+          lang: 'de',
           text: 'Reall awesome guy. Everyone loves me.',
           userType: 'Local'
         },
         {
-          username: 'alicetran',
-          email: 'alicetran@email',
+          username: 'alicefischer',
+          email: 'alicefischer@email',
           password: 'pass',
           passwordConfirmation: 'pass',
-          image: 'https://i.pinimg.com/originals/c6/8f/96/c68f96329dd7e9b7159d6f272ea89a02.jpg',
-          lang: 'vi',
-          text: 'I know the food and hotels.',
+          image: 'https://cdn.evoke.ie/wp-content/uploads/2018/03/16140234/german-2222.jpg',
+          lang: 'de',
+          text: 'I know the food and shops.',
           userType: 'Local'
         },
         {
-          username: 'randyvu',
-          email: 'randyvu@email',
+          username: 'randyweber',
+          email: 'randyweber@email',
           password: 'pass',
           passwordConfirmation: 'pass',
-          image: 'http://www.vietnamesedatingsites.com/images/tips-to-get-date-with-vietnamese-men.jpg',
-          lang: 'vi',
-          text: 'Michelin starred chef in Hanoi',
+          image: 'http://www.kickassindiejams.com/wp-content/uploads/2019/01/Banner-853x1024.jpg',
+          lang: 'de',
+          text: 'Michelin starred chef',
           userType: 'Local'
         },
         {
@@ -97,9 +97,9 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
           email: 'peterengland@email',
           password: 'pass',
           passwordConfirmation: 'pass',
-          image: 'https://i.pinimg.com/originals/bc/29/99/bc2999b5a91aa925cef6501abd6c21c3.jpg',
+          image: 'https://talksport.com/wp-content/uploads/sites/5/2016/10/jurgen_klopp.jpg?strip=all&w=620&h=413&crop=1',
           lang: 'en',
-          text: 'I love Vietnam it is so cheap.',
+          text: 'I love Germany',
           userType: 'Tourist'
         },
         {
@@ -119,7 +119,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
           passwordConfirmation: 'pass',
           image: 'https://images-i.jpimedia.uk/imagefetch/c_fill,f_auto,h_840,q_auto:eco,w_1200/https://inews.co.uk/wp-content/uploads/2019/07/1153120184.jpg',
           lang: 'en',
-          text: 'i love noodles and market.',
+          text: 'i love currywurst and the christmas market.',
           userType: 'Tourist'
         },
         {
@@ -140,11 +140,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
       return Promise.all([
         Gem.create([
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/0/image.jpg',
-            caption: 'Hoi An Central Market in this UNESCO-listed ancient town offers an authentic shopping experience for travellers in Vietnam. Located along the Thu Bon Riverbank, the marketplace is flocked with locals and tourists bargaining purchasing fresh fruits, vegetables, spices, handicrafts, and street snacks.',
-            location: 'Hoi An Central Market',
+            image: 'https://upload.wikimedia.org/wikipedia/commons/2/2b/Berlin_Brandenburger_Tor_Abend.jpg',
+            caption: 'The Brandenburg Gate is an 18th-century neoclassical monument in Berlin, built on the orders of Prussian king Frederick William II after the (temporarily) successful restoration of order during the early Batavian Revolution. One of the best-known landmarks of Germany, it was built on the site of a former city gate that marked the start of the road from Berlin to the town of Brandenburg an der Havel, which used to be capital of the Margraviate of Brandenburg.',
+            name: 'Brandenburg Gate',
             user: users[8],
-            category: 'Markets',
+            category: 'Historic',
             likes: [
               {
                 user: users[9]
@@ -166,16 +166,16 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               },
               {
                 user: users[9],
-                text: 'Looks like fun :)'
+                text: 'Beautiful :)'
               }
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-markets-in-vietnam/allParagraphs/00/top10Set/00/image.jpg',
-            caption: 'Han Market is a prominent attraction in Da Nang, having served the local population since the French occupation in the early 20th century. Located at the grand intersection of Tran Phu Street, Bach Dang Street, Hung Vuong Street and Tran Hung Dao Street, visitors can find hundreds of stalls selling just about everything from local produce and coffee beans to T-shirts, jewellery, and accessories.',
-            location: 'Han Market',
+            image: 'https://media2.trover.com/T/5991f0e68cdc48c941017e07/fixedw_large_4x.jpg',
+            caption: 'Cologne Cathedral is a Catholic cathedral in Cologne, North Rhine-Westphalia, Germany. It is the seat of the Archbishop of Cologne and of the administration of the Archdiocese of Cologne. It is a renowned monument of German Catholicism and Gothic architecture and was declared a World Heritage Site in 1996. It is Germany\'s most visited landmark, attracting an average of 20,000 people a day, and currently the tallest twin-spired church at 157 m (515 ft) tall, second in Europe after the Ulm Cathedral and third in the world.',
+            name: 'Cologne Cathedral',
             user: users[0],
-            category: 'Markets',
+            category: 'Historic',
             likes: [
               {
                 user: users[10]
@@ -187,7 +187,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[6],
-                text: 'Great stuff.'
+                text: 'Looks wonderful.'
               },
               {
                 user: users[7],
@@ -196,11 +196,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'https://www.holidify.com/images/cmsuploads/compressed/31454200935_b4b70cb5af_b_20180827144238.jpg',
-            caption: 'Under the starry Vietnamese sky, the experience of shopping at Hanoi Night Market is one that is unique in every right. A myriad of colours and bubbling crowd will welcome you into this happy affair, where you can also see historic landmarks decorated for this weekly market. The best part about this shopping encounter is perhaps its wide array of delicious Hanoi street food such as bun thang (rice vermicelli soup with shredded chicken, fried egg, and pork), La Vong grilled fish, pho (noodle soup with beef or chicken), banh mi (Vietnamese sandwich), and bun cha (rice noodles served with roasted pork). Other miscellaneous items up for sale are t-shirts, handicrafts, accessories, shoes, sunglasses and souvenirs, which you can buy at prices as low as 25 percent of the original quoted prices, so do not forget to bargain! Many cultural and musical events hosted by the locals are regularly held here, and the entire spectacle of this market is an aesthetic extravaganza.',
-            location: 'Hanoi Night Market',
+            image: 'https://www.agoda.com/wp-content/uploads/2019/02/International-Womens-Day-2019-Germany-The-Berlin-Wall.jpg',
+            caption: 'The Berlin Wall was a guarded concrete barrier that physically and ideologically divided Berlin from 1961 to 1989. Constructed by the German Democratic Republic (GDR, East Germany), starting on 13 August 1961, the Wall cut off (by land) West Berlin from surrounding East Germany, including East Berlin, until East German officials ordered it opened in November 1989. Its demolition officially began on 13 June 1990 and finished in 1992. The barrier included guard towers placed along large concrete walls, accompanied by a wide area (later known as the "death strip") that contained anti-vehicle trenches, "fakir beds" and other defenses. The Eastern Bloc portrayed the Wall as protecting its population from fascist elements conspiring to prevent the "will of the people" in building a socialist state in East Germany.',
+            name: 'Berlin Wall',
             user: users[1],
-            category: 'Markets',
+            category: 'Historic',
             likes: [
               {
                 user: users[10]
@@ -221,11 +221,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'https://www.holidify.com/images/cmsuploads/compressed/Lemarche%C3%8C%C2%81flottant(CaiRang,Vietnam)_20180827180805.jpg',
-            caption: 'If you have had enough of land-based markets, worry not for Vietnam has you covered! Located in the Mekong Delta is Cai Rang which is an entire market-spread based on boats, and the biggest one in the entire delta region. A picturesque bridge serves as the perfect location for some good old photography. If you wish to avoid the rush of customers, you might want to visit this destination during the morning hours. Navigating the market requires you to hire a boat after which you can quickly look into the various goodies up for sale. The market mainly sells fruit, vegetables and fish, but you can also get an authentic pho breakfast here. Visit this destination for an authentic experience.',
-            location: 'Cai Rang Floating Market',
+            image: 'https://d5xydlzdo08s0.cloudfront.net/media/celebrities/12265/products/300x300_m502_lawenbrau_stammtisch_image_2__L.jpg',
+            caption: 'Oktoberfest is the world\'s largest Volksfest (beer festival and travelling funfair). Held annually in Munich, Bavaria, Germany, it is a 16- to 18-day folk festival running from mid or late September to the first weekend in October, with more than six million people from around the world attending the event every year. Locally, it is often called the Wiesn, after the colloquial name for the fairgrounds, Theresa\'s meadows (Theresienwiese). The Oktoberfest is an important part of Bavarian culture, having been held since the year 1810. Other cities across the world also hold Oktoberfest celebrations that are modeled after the original Munich event.',
+            name: 'Oktoberfest, Munich',
             user: users[1],
-            category: 'Markets',
+            category: 'Culture',
             likes: [
               {
                 user: users[10]
@@ -246,11 +246,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Chua_Tran_Quoc1.jpg',
-            caption: 'Dating back to the 6th century, Tran Quoc Pagoda is one of the oldest temples in Hanoi, Vietnam. ',
-            location: 'Tran Quoc Pagoda',
+            image: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Schwerin_Castle_Aerial_View_Island_Luftbild_Schweriner_Schloss_Insel_See_%28cropped%29.jpg',
+            caption: 'The Schwerin Palace, is a palatial schloss located in the city of Schwerin, the capital of Mecklenburg-Vorpommern state, Germany. It is situated on an island in the city\'s main lake, the Lake Schwerin. For centuries the palace was the home of the dukes and grand dukes of Mecklenburg and later Mecklenburg-Schwerin.',
+            name: 'Schwerin Castle',
             user: users[9],
-            category: 'Temples',
+            category: 'Historic',
             likes: [
               {
                 user: users[11]
@@ -268,11 +268,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: []
           },
           {
-            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Cao-Dai-Temple.jpg',
-            caption: 'Cao Dai Temple is one of 1,000 Cao Dai Temples, and one of the most well-known temples in Vietnam. Constructed in the 1930s and completed in 1955, Cao Dai temple is a technicolored religious site that attracts hundreds of travelers every day.',
-            location: 'Cao Dai Temple',
+            image: 'http://fotostrasse.com/wp-content/uploads/2014/07/Checkpoint-Charlie-Why-you-shouldnt-visit-it.jpg',
+            caption: 'Checkpoint Charlie was the name given by the Western Allies to the best-known Berlin Wall crossing point between East Berlin and West Berlin during the Cold War.',
+            name: 'Checkpoint Charlie',
             user: users[10],
-            category: 'Temples',
+            category: 'Historic',
             likes: [
               {
                 user: users[9]
@@ -295,11 +295,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Mariamman-Hindu-Temple.jpg',
-            caption: 'Visit one of the most famous Hindu temples in Vietnam, the Mariamman Hindu Temple of Ho Chi Minh City. It is called Chua Ba Mariamman in Vietnamese and was built at the end of the 19th century as a dedication to the Hindu goddess Mariamman. ',
-            location: 'Mariamman Hindu Temple',
+            image: 'https://media-cdn.tripadvisor.com/media/photo-s/0c/f6/b1/a9/rheinfels-castle.jpg',
+            caption: 'Rheinfels Castle is a castle ruin located above the left bank of the Rhine in Sankt Goar, Germany. It was started in 1245 by Count Diether V of Katzenelnbogen. After expansions, it was the largest fortress in the Middle Rhein Valley between Koblenz and Mainz.',
+            name: 'Rheinfels Castle',
             user: users[6],
-            category: 'Temples',
+            category: 'Historic',
             likes: [
               {
                 user: users[7]
@@ -327,11 +327,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2018/07/Thien-Mu-Pagoda.jpg',
-            caption: 'Located in the village of Huong Long, this beautiful temple is at a distance of 5 km from the city of Hue. The temple is situated on the banks of the Perfume River and is a very well preserved tourist attraction.',
-            location: 'Thien Mu Pagoda',
+            image: 'https://cdn1.thr.com/sites/default/files/imagecache/landscape_928x523/2017/06/rock_am_ring.jpg',
+            caption: 'Combined, these twin rock festivals draw some of the biggest crowds in the world. The allure is no secret, the festivals offer nothing short of legendary rock acts and seriously revved up fans who eat, sleep and breath rock and roll. ',
+            name: 'Rock am Ring/ Rock im Park',
             user: users[2],
-            category: 'Temples',
+            category: 'Culture',
             likes: [],
             comments: [
               {
@@ -341,11 +341,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-beaches-in-vietnam/allParagraphs/00/top10Set/0/image.jpg',
-            caption: 'Long Beach (Bai Trong) is a 20-km-long coastal area on Phu Quoc Island, where you can find swanky beachfront resorts, beachfront restaurants, cafés and bars with breathtaking sunset views.',
-            location: 'Long Beach (Bai Trong)',
+            image: 'http://4.bp.blogspot.com/-cgZAKP1YJfc/UIy_ADSOQII/AAAAAAAAJ5w/qD1iLxcNnhc/s1600/Bavarian+Forest+National+Park+Germany+13.jpg',
+            caption: 'The Bavarian Forest National Park is a national park in the Eastern Bavarian Forest immediately on Germany\'s border with the Czech Republic. It was founded on 7 October 1970 as the first national park in Germany. Since its expansion on 1 August 1997 it has covered an area of 24,250 hectares.',
+            name: 'Bavarian Forest National Park',
             user: users[8],
-            category: 'Beaches',
+            category: 'Nature',
             likes: [
               {
                 user: users[10]
@@ -370,11 +370,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-beaches-in-vietnam/allParagraphs/00/top10Set/00/image.jpg',
-            caption: 'Mui Ne Beach spans 15 km of sandy beaches and rock-free waters, with luxurious beachfront resorts concentrated at the northern end and a traditional fishing village in the south. Located in the Binh Thuan province, the beach attracts throngs of visitors looking for somewhere to swim and enjoy some water sports, but the most popular activity in Mui Ne Beach is kitesurfing.',
-            location: 'Mui Ne Beach',
+            image: 'https://www.nationalpark-harz.de/__thumbs__/5935_13_Rabenklippe_LehmannMirko.jpg?m=1476279524',
+            caption: 'Harz National Park is a forested reserve in the Harz mountains of north-central Germany, spanning the states of Lower Saxony and Saxony-Anhalt. Themed trails wind through the park’s beech and spruce woods, including the Bark Beetle Trail and the Dandelion Trail. Park wildlife includes deer, wild boar, woodpeckers and lynxes. A narrow-gauge steam train climbs up Mt. Brocken, with a botanical garden at its peak.',
+            name: 'Harz National Park',
             user: users[10],
-            category: 'Beaches',
+            category: 'Nature',
             likes: [
               {
                 user: users[11]
@@ -399,11 +399,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'https://asianwaytravel.com/wp-content/uploads/2018/12/ban-gioc-waterfall-2.jpg',
-            caption: 'Ban Gioc Waterfall is a lesser-known destination in North Vietnam compared to Sapa and Ha Long Bay, making a truly hidden gem for nature lovers and adventurers to discover. Located in northeastern of Vietnam, Cao Bang Province, on a height of 30 meters and a width of 300 meters, Ban Gioc is the widest waterfall in Vietnam, creating such impressive sight of nature.',
-            location: 'Ban Gioc Waterfall',
+            image: 'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/07/0f/09/d5.jpg',
+            caption: 'The Speicherstadt in Hamburg, Germany is the largest warehouse district in the world where the buildings stand on timber-pile foundations, oak logs, in this particular case. It is located in the port of Hamburg—within the HafenCity quarter—and was built from 1883 to 1927.',
+            name: 'Hamburg Speicherstadt',
             user: users[1],
-            category: 'Landscapes',
+            category: 'Historic',
             likes: [
               {
                 user: users[10]
@@ -427,11 +427,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'https://asianwaytravel.com/wp-content/uploads/2018/10/Halong_Bay_Sunset.jpg',
-            caption: 'As the name describes, Halong is a land where dragon descended into. This is a rather poetic explanation of thousands of limestone islands and islets scattering on an area of 434 sqkm, reflecting on the greenish bay water. Halong Bay’s geographical landscape was the result of complex geological processes taking over 500 million years. Halong is home to beautiful, unique karst caves such as Dau Go Cave, Sung Sot Cave and Thien Cung Cave.',
-            location: 'Halong Bay',
+            image: 'https://d36tnp772eyphs.cloudfront.net/blogs/1/2019/01/curry-wurst-pieces-of-curried-sausage-served-with-chips-french-fries-on-disposable-paper-tray-on-a-wooden-table-as-background-1200x853.jpg',
+            caption: 'Currywurst is a fast food dish of German origin consisting of steamed, then fried pork sausage typically cut into bite-sized chunks and seasoned with curry ketchup, a sauce based on spiced ketchup or tomato paste, itself topped with curry powder, or a ready-made ketchup seasoned with curry and other spices.',
+            name: 'Currywurst',
             user: users[10],
-            category: 'Landscapes',
+            category: 'Food',
             likes: [
               {
                 user: users[11]
@@ -444,20 +444,20 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               },
               {
                 user: users[7],
-                text: 'Lovely!'
+                text: 'Tasty!'
               },
               {
                 user: users[11],
-                text: 'Visited last year, would go again.'
+                text: 'It is actually really tasty.'
               }
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-amazing-landscape-vietnam/allParagraphs/00/top10Set/04/image.jpg',
-            caption: 'Hiking Sapa’s Fansipan Mountain may require a good level of fitness, but you’ll be rewarded with breathtaking views of mountain ranges and countryside within north-western Vietnam as well as glimpses of Yulong Mountain in China. Located 9 kilometres southwest of Sapa Village, three-day to five-day hiking excursions are available between October and March, where you’ll pass through hill tribe hamlets and dense forest trails, followed by a 2000 metre-tall climb to the top of the mountain.',
-            location: 'Fansipan Mountain',
+            image: 'http://brotzeit.com.au/joondalup/wp-content/uploads/2018/06/IMG_4892-1024x687.jpg',
+            caption: 'Sauerbraten is a German pot roast that can be prepared with a variety of meats—most often beef, but also from venison, lamb, mutton, pork, and traditionally, horse. Before cooking, the cut of meat is marinated for several days in a mixture of vinegar or wine, water, herbs, spices, and seasonings.',
+            name: 'Sauerbraten',
             user: users[5],
-            category: 'Landscapes',
+            category: 'Food',
             likes: [
               {
                 user: users[11]
@@ -473,20 +473,20 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               },
               {
                 user: users[7],
-                text: 'Nice views!'
+                text: 'Amazing.'
               },
               {
                 user: users[11],
-                text: 'Would definitely go again.'
+                text: 'Would definitely try again.'
               }
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-amazing-landscape-vietnam/allParagraphs/00/top10Set/05/image.jpg',
-            caption: 'Home to thousands of endangered flora and fauna species, Cuc Phuong National Park is Vietnam’s largest nature reserve. Set within the Ninh Binh Province, there are dozens of hiking trails within the forest, with guided tours available at USD 25 upwards. The park also houses the ethnic Muong hill tribe, where you can visit traditional stilt houses, waterwheels, bamboo rafts, and expansive rice terraces. It takes between three and four hours to reach Cuc Phuong National Park from Hanoi if you’re travelling by bus, car or motorbike.',
-            location: 'Cuc Phuong National Park',
+            image: 'https://www.fabfood4all.co.uk/wp-content/uploads/2018/06/R%C3%B8dgr%C3%B8d-med-fl%C3%B8de-64-lr2.jpg',
+            caption: 'Rødgrød, Rote Grütze, or Rode Grütt, meaning "red groats", is a sweet fruit dish from Denmark and Northern Germany',
+            name: 'Rødgrød',
             user: users[6],
-            category: 'Landscapes',
+            category: 'Food',
             likes: [
               {
                 user: users[9]
@@ -508,16 +508,16 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               },
               {
                 user: users[11],
-                text: 'Would definitely go again.'
+                text: 'Oh wow.'
               }
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-amazing-landscape-vietnam/allParagraphs/00/top10Set/06/image.jpg',
-            caption: 'Located within Dong Thap Province, Tram Chim National Park is a must-visit for avid bird enthusiasts and wildlife photographers. Between late December and early May, over 60,000 birds (particularly the sarus cranes) fly to Tram Chim every year and the best way to see them is by taking a boat through the park. There are three boat routes available, with the shortest route (45 minutes) priced at VND500,000 per boat and the longest (2½ hours) costing VND800,000 per boat. Visitors can enjoy various activities during off-peak seasons, including cycling, trekking, rice harvesting, and fishing.',
-            location: 'Tram Chim National Park',
+            image: 'https://4.bp.blogspot.com/-VccIqYjxhvA/Vl5DAAMMDXI/AAAAAAAAK18/Og7wCDBCoYAqhxb46_jTqAUzm_fU7__WgCKgB/s1600/Germany%2BRhine%2BView%2Bof%2BRhine%2BValley%2Bfrom%2BMarksburg%2B2.JPG',
+            caption: 'The Rhine is one of the major European rivers, which has its sources in Switzerland and flows in a mostly northerly direction through Germany and the Netherlands, emptying into the North Sea.',
+            name: 'Rhine',
             user: users[6],
-            category: 'Landscapes',
+            category: 'Nature',
             likes: [
               {
                 user: users[9]
@@ -534,11 +534,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[6],
-                text: 'Why is it purple?'
+                text: 'Nice view!'
               },
               {
                 user: users[7],
-                text: 'colorful picture!'
+                text: 'great picture!'
               },
               {
                 user: users[11],
@@ -547,11 +547,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/vietnam-top10s/best-amazing-landscape-vietnam/allParagraphs/00/top10Set/01/image.jpg',
-            caption: 'Ba Vi National Park, located 58 kilometres west of downtown Hanoi, is famed for its three-peaked mountain that juts steeply up into the sky. Featuring numerous forest trails, natural hot springs, and slopes between three mountain summits, the park offers a great escape from the city with fresh air and an atmospheric backdrop of clouds, rainforest, and an array of wildlife. There’s also 11th century Bach Ho Temple at the top of the highest summit, overlooking the surrounding countryside.',
-            location: 'Ba Vi National Park',
+            image: 'https://www.bucketlist127.com/uploads/images/ae89d723e44a793ca1ec711c20274952.jpg',
+            caption: 'The Black Forest is a mountainous region in southwest Germany, bordering France. Known for its dense, evergreen forests and picturesque villages, it is often associated with the Brothers Grimm fairy tales. It\'s renowned for its spas and the cuckoo clocks produced in the region since the 1700s. The region’s largest town, Freiburg, is filled with Gothic buildings and surrounded by vineyards.',
+            name: 'Black Forest',
             user: users[6],
-            category: 'Landscapes',
+            category: 'Nature',
             likes: [
               {
                 user: users[6]
@@ -568,7 +568,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
             comments: [
               {
                 user: users[6],
-                text: 'Such a nice area.'
+                text: 'Such a nice view.'
               },
               {
                 user: users[7],
@@ -576,16 +576,16 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               },
               {
                 user: users[11],
-                text: 'Best Bridge ever.'
+                text: 'I loved it.'
               }
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/ho-chi-minh-city/top10/top10-ho-chi-minh-nightlife/allParagraphs/00/top10Set/0/image.jpg',
-            caption: 'Ho Chi Minh City has one of the most impressive collections of rooftop bars in the world. From the colonial charm of Saigon Saigon to the chic and modern style of the Chill Skybar, there is a rooftop spot to suit any mood in Saigon. Sit back with a cocktail and soak up the stunning view of Ho Chi Minh City from sunset until the early hours of morning',
-            location: 'Chill Skybar',
+            image: 'https://www.tripsavvy.com/thmb/WGa9EzVAP1Dv7LRTS2UWD6x7fEo=/1600x1071/filters:no_upscale():max_bytes(150000):strip_icc()/3456_1600-56a3acf15f9b58b7d0d32115.jpg',
+            caption: 'The Palmengarten is one of three botanical gardens in Frankfurt am Main, Germany. It is located in the Westend-Süd district. It covers a surface of 22 hectares. Like many public sites in Frankfurt, it was privately financed and implemented by the architect Heinrich Siesmayer.',
+            name: 'Palmengarten Frankfurt',
             user: users[7],
-            category: 'Others',
+            category: 'Culture',
             likes: [
               {
                 user: users[10]
@@ -604,16 +604,16 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               },
               {
                 user: users[8],
-                text: 'Great picture.'
+                text: 'Can\'t wait to go'
               }
             ]
           },
           {
-            image: 'http://static.asiawebdirect.com/m/.imaging/678x452/website/bangkok/portals/vietnam/homepage/ho-chi-minh-city/top10/best-theatre-live-shows-ho-chi-minh/allParagraphs/0/top10Set/0/image.jpg',
-            caption: 'The Golden Dragon Water Puppetry Theatre is where you can learn about the culture, traditions and folklore of Vietnamese life during your holiday in Ho Chi Minh City. Located in Tao Dan Park, visitors are entertained by puppets acting on a ‘stage’ of water accompanied by live old-fashioned music played on authentic instruments.',
-            location: 'The Golden Dragon Water Puppetry Theatre',
+            image: 'https://i0.gmx.at/image/932/33894932,pd=1,f=opengraph/gamescom-koeln-spiele-videospiele-youtube-programm.jpg',
+            caption: 'Gamescom is a trade fair for video games held annually at the Koelnmesse in Cologne, North Rhine-Westphalia, Germany. Since 2018, it has been organised by game – Verband der deutschen Games-Branche; and before that, by the Bundesverband Interaktive Unterhaltungssoftware (BIU). Until 2008, it was held in Leipzig, Saxony, Germany. Gamescom is used by many video game developers to exhibit upcoming games and game-related hardware.',
+            name: 'Gamescom',
             user: users[0],
-            category: 'Others',
+            category: 'Culture',
             likes: [
               {
                 user: users[11]
@@ -650,7 +650,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
       return Chat.create([
         {
           title: 'locals',
-          image: 'https://farm5.staticflickr.com/4573/38561719246_60354b9d09_o.jpg',
+          image: 'https://www.aspirantsg.com/wp-content/uploads/2018/03/Brotzeit-Wonder-Platter-AspirantSG.jpg',
           comments: [
             {
               text: 'Hi, I am planning to visit your beautiful town. Any suggestions for me where to stay?',
@@ -661,11 +661,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[0]
             },
             {
-              text: 'You can stay at our hostel, is very close to the beach. You are going to love it!',
+              text: 'You can stay at our hostel, is very close to the Mitte. You are going to love it!',
               user: users[4]
             },
             {
-              text: 'Thanks for the tips! What is the name of the hostel?',
+              text: 'Thanks for the reply! What is the name of the hostel?',
               user: users[5]
             },
             {
@@ -673,7 +673,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[3]
             },
             {
-              text: 'Oh 😢! Ok, thanks. Do you have a better suggestion? Travelling solo is never that easy.',
+              text: 'Oh Ok, thanks. Do you have a better suggestion? Travelling solo is never that easy.',
               user: users[5]
             },
             {
@@ -696,22 +696,22 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
         },
         {
           title: 'travellers',
-          image: 'https://www.adventureinyou.com/wp-content/uploads/2015/07/solo-female-traveller-INDEPENDENCE-960x640.jpg',
+          image: 'https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2019/05/Solo-Travel-in-Nature-acbfea52bfaf.jpg',
           comments: [
             {
-              text: 'Hi guys, I am in Hanoi toinght. Someone wants to go out for a drink?',
+              text: 'Hi guys, I am in Frankfurt toinght. Someone wants to go out for a drink?',
               user: users[8]
             },
             {
-              text: 'I am in! 🎉🎉🎉 Have you been to the Binh Minh Jazz Club?' ,
+              text: 'I am in! 🎉🎉🎉 Have you been to the Jazz Club? Jazzkeller Frankfurt' ,
               user: users[2]
             },
             {
-              text: 'Yeah! I have just arrived in Hanoi from London, it would be nice to meet new people!',
+              text: 'Yeah! I have just arrived in Frankfurt from London, it would be nice to meet new people!',
               user: users[5]
             },
             {
-              text: 'Fantastic! What about 7PM at the Binh Minh Jazz Club entrance?',
+              text: 'Fantastic! What about 7PM at the Jazzkeller Frankfurt entrance?',
               user: users[1]
             },
             {
@@ -727,7 +727,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
               user: users[1]
             },
             {
-              text: 'Here is the link for the venue guys! http://minhjazzvietnam.com/',
+              text: 'Here is the link for the venue guys! http://www.jazzkeller.com/',
               user: users[2]
             },
             {

@@ -92,7 +92,7 @@ class ChatsShow extends React.Component {
                     <div className="tile-content">
                       <p className="tile-title text-bold">
                         {comment.user.username}
-                        <span> {comment.user.userType === 'Local' ? ' 🇻🇳 ' : '✈️ '} </span>
+                        <span> {comment.user.userType === 'Local' ? '🇩🇪 ' : '✈️ '} </span>
                         <small> {new Date(comment.createdAt).toLocaleString().slice(0,17)} </small>
                       </p>
                       <div className={`${Auth.getPayload().sub === comment.user._id ? 'user-flex' : ''}`}>

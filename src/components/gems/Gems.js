@@ -70,7 +70,7 @@ class Gems extends React.Component {
                   id="tag-1"
                   className="filter-tag"
                   name="category"
-                  value="Markets"
+                  value="Nature"
                   onChange={(e) => {
                     this.handleChange(e, 1)
                   }
@@ -81,7 +81,7 @@ class Gems extends React.Component {
                   id="tag-2"
                   className="filter-tag"
                   name="category"
-                  value="Temples"
+                  value="Historic"
                   onChange={(e) => {
                     this.handleChange(e, 2)
                   }
@@ -92,7 +92,7 @@ class Gems extends React.Component {
                   id="tag-3"
                   className="filter-tag"
                   name="category"
-                  value="Beaches"
+                  value="Food"
                   onChange={(e) => {
                     this.handleChange(e, 3)
                   }
@@ -103,7 +103,7 @@ class Gems extends React.Component {
                   id="tag-4"
                   className="filter-tag"
                   name="category"
-                  value="Landscapes"
+                  value="Culture"
                   onChange={(e) => {
                     this.handleChange(e, 4)
                   }
@@ -119,22 +119,22 @@ class Gems extends React.Component {
                   <label
                     className={`chip ${this.state.checked === 1 ? 'bg-warning' : ''}`}
                     htmlFor="tag-1">
-                    Markets
+                    Nature
                   </label>
                   <label
                     className={`chip ${this.state.checked === 2 ? 'bg-warning' : ''}`}
                     htmlFor="tag-2">
-                    Temples
+                    Historic
                   </label>
                   <label
                     className={`chip ${this.state.checked === 3 ? 'bg-warning' : ''}`}
                     htmlFor="tag-3">
-                    Beaches
+                    Food
                   </label>
                   <label
                     className={`chip ${this.state.checked === 4 ? 'bg-warning' : ''}`}
                     htmlFor="tag-4">
-                    Landscapes
+                    Culture
                   </label>
                 </div>
               </div>

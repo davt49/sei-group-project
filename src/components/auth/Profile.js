@@ -53,7 +53,7 @@ class Profile extends React.Component {
                 <img src={this.state.user.image} className="profile-pic"/>
               </div>
               <div className="column col-7">
-                <h2>{this.state.user.username} {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span> }</h2>
+                <h2>{this.state.user.username} {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇩🇪 </span> }</h2>
                 <br />
                 <p>{this.state.user.text}</p>
                 <div className='user-info'>

@@ -18,7 +18,7 @@ function indexRoute(req, res, next) {
 // SHOW
 function showRoute(req, res, next) {
   req.body.user = req.currentUser
-  const lang = req.currentUser.lang === 'vi' ? 'en-vi' : 'vi-en'
+  const lang = req.currentUser.lang === 'de' ? 'en-de' : 'de-en'
   Chat
     .findById(req.params.chatId)
     .populate('user')

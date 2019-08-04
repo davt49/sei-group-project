@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from  'react-router-dom'
 
-const Gem = ({ image, location, user, _id }) => {
+const Gem = ({ image, name, user, _id }) => {
   return (
     <div className="column col-3 col-lg-6 col-sm-12 gem-card">
 
@@ -11,7 +11,7 @@ const Gem = ({ image, location, user, _id }) => {
             <img src={image} className="img-responsive"/>
           </div>
           <div className="card-header">
-            <div className="card-title h5">{location}</div>
+            <div className="card-title h5">{name}</div>
           </div>
         </Link>
         <div className="card-body">
@@ -20,7 +20,7 @@ const Gem = ({ image, location, user, _id }) => {
               <Link to={`/users/${user._id}`} aria-label="Close" role="button">
                 <img src={user.image} className="avatar avatar-sm" />
                 {user.username}
-                <span> {user.userType === 'Local' ? ' 🇻🇳 ' : ' ✈️ '} </span>
+                <span> {user.userType === 'Local' ? ' 🇩🇪 ' : ' ✈️ '} </span>
               </Link>
             </div>
           </div>
