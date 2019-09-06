@@ -26,9 +26,6 @@ router.route('/gems')
 
 // chats routes
 
-router.route('/chats/:chatId/comments/:commentId')
-  .delete(secure, chats.commentDelete)
-
 router.route('/chats/:chatId/comments')
   .post(secure, chats.commentCreate)
 
