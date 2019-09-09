@@ -32,7 +32,7 @@ A social networking site for explorers, bringing together hidden gems reviews an
 
 ## Deployment
 
-This web app is deployed on Heroku and it can be found here: 
+This web app is deployed on Heroku and it can be found here: https://vietgram-app.herokuapp.com/
 
 ## Getting Started
 
