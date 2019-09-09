@@ -117,11 +117,14 @@ I also made some wireframes so that we could get an idea of what api endpoints w
 <p float="left">
 <img src="src/assets/one.png" width=300>
 <img src="src/assets/two.png" width=300>
-<img src="src/assets/three.png" width=300>
 </p>
 
 <p float="left">
+<img src="src/assets/three.png" width=300>
 <img src="src/assets/four.png" width=300>
+</p>
+
+<p float="left">
 <img src="src/assets/five.png" width=300>
 <img src="src/assets/six.png" width=300>
 </p>
