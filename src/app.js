@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import './styles/style.scss'
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
+import Error from './components/common/Error'
 
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
@@ -34,13 +35,16 @@ const App = () => {
           <Route path='/profile' component={Profile}/>
           <Route path='/users/:userId' component={UserShow}/>
           <Route path='/register' component={Register}/>
+          <Route path='/error' component={Error} />
           <Route exact path='/' component={Login} />
+          <Route path='*' component={Error} />
         </Switch>
         <Footer/>
       </main>
     </BrowserRouter>
   )
 }
+
 ReactDOM.render(
   <App />,
   document.getElementById('root')
