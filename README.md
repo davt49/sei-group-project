@@ -106,9 +106,11 @@ From various points in the app the user can click on other users profile image a
 
 -- BACKEND -- 
 
-The non-relational database we set out to build was quite complex, given the social nature of the app. So I made a sketch of the main models and how they interact with each other: 
+The non-relational database we set out to build was quite complex, given the social nature of the app. So I made a sketch of the main models and the routes we would need and how they interact with each other: 
 
 <img src="src/assets/database.png">
+
+<img src="src/assets/routes.png">
 
 -- FRONTEND --
 
