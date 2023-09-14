@@ -55,28 +55,8 @@ function commentCreateRoute(req, res, next) {
     .catch(next)
 }
 
-
-// COMMENT: DELETE
-function commentDeleteRoute(req, res, next) {
-  req.body.user = req.currentUser
-  Chat
-    .findById(req.params.chatId)
-    .populate('user')
-    .then(chat => {
-      if (!chat) throw new Error('Not Found')
-      const comment = chat.comments.id(req.params.commentId)
-      if (!comment) throw new Error('Not Found')
-      if (!comment.user.equals(req.currentUser._id)) throw new Error('Unauthorized')
-      comment.remove()
-      return chat.save()
-    })
-    .then(() => res.status(200).json({ message: 'Comment deleted' }))
-    .catch(next)
-}
-
 module.exports = {
   index: indexRoute,
   show: showRoute,
-  commentCreate: commentCreateRoute,
-  commentDelete: commentDeleteRoute
+  commentCreate: commentCreateRoute
 }
